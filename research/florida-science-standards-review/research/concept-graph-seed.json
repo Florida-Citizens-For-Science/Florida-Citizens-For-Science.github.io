@@ -1,0 +1,244 @@
+{
+  "@context": "./knowledge-graph-schema.json",
+  "@graph": [
+    {
+      "id": "doc:fl-science-1996",
+      "type": "StandardVersion",
+      "status": "adopted; original four grade clusters",
+      "sourceDocument": "https://fcit.usf.edu/sss/sss/",
+      "sourceFiles": [
+        { "file": "florida-1996-science-prek2.pdf", "sha256": "8929838e557aacdbf696c46d060f4298f7d187651072cbd181a2b6b94628356a" },
+        { "file": "florida-1996-science-35.pdf", "sha256": "c4c60d3eed7e092b5cf33290b1e5e015427132a6287c12ac888d16a4792371c3" },
+        { "file": "florida-1996-science-68.pdf", "sha256": "ba8d47356ba30137253891fb0c832cc954330734e36f868b5c3a34680aeafbaf" },
+        { "file": "florida-1996-science-912.pdf", "sha256": "f05546a8daa6611089e0aba9ad47af2cef5e1d00a80c0746042f53628cb98a35" }
+      ]
+    },
+    {
+      "id": "doc:fl-science-gle-1999",
+      "type": "StandardVersion",
+      "status": "grade-level elaboration of 1996 standards; K-8",
+      "sourceDocument": "https://fcit.usf.edu/sss/sss/",
+      "sourceFiles": [
+        { "file": "florida-gle-science-k.pdf", "sha256": "b2253f3deb7b271e5ca88fece56265e886fbeb8ae0ee9fc9c323b4cc066b963c" },
+        { "file": "florida-gle-science-35.pdf", "sha256": "26d0665dede9685ea8e346336f988961300fddbcd1d1f2869e387ca06854ac7d" },
+        { "file": "florida-gle-science-68.pdf", "sha256": "92338a5eee50a3e932f588b758e2395c36c0422c4bb4d9054c6d62871803b9c3" },
+        { "file": "florida-gle-science-intro.pdf", "sha256": "96eea2a8cbc4539c6ed207a187d60f86b46b63b257523cbd14e5cd9c25f32456" }
+      ]
+    },
+    {
+      "id": "doc:fl-science-2008",
+      "type": "StandardVersion",
+      "status": "adopted February 2008",
+      "sourceDocument": "https://www.fldoe.org/academics/standards/subject-areas/math-science/science/",
+      "sha256": "330e833b30aaaebdc6d6b0bd09c695afeee1abc3aceac5ee047cc69c2d147bdb"
+    },
+    {
+      "id": "doc:fl-science-2026-draft",
+      "type": "StandardVersion",
+      "status": "proposed draft for public review",
+      "sourceDocument": "https://www.fldoe.org/standardsreview/",
+      "sourceFiles": [
+        { "file": "fl-k5.pdf", "sha256": "3ae3ee6ff100a5f9e8e6d856c7db34e0bcce1f7885e1914032d23cffba6954bf" },
+        { "file": "fl-68.pdf", "sha256": "82568a6c4ac90e2a299b3aa58e77531b008d49cd6c4563f65c49d70273757902" },
+        { "file": "fl-912.pdf", "sha256": "d713a5c1d8e2f157d654af19545877215b0c3c450ed2f0be1df0f20ae70209a2" },
+        { "file": "fl-foreword.pdf", "sha256": "b7b08e3b9385745d5352fba694fda431f076db158566bae7b64b0b3f7ad35081" },
+        { "file": "fl-tables.pdf", "sha256": "23f45801426be9b7c2eb501c14dcce0ed3c474d7d738ced033f29144a72cc62e" }
+      ]
+    },
+    {
+      "id": "concept:genetic-variation",
+      "type": "Concept",
+      "conceptId": "genetic-variation",
+      "text": "Variation in inherited genetic or observable traits within or among offspring in a population."
+    },
+    {
+      "id": "concept:natural-selection",
+      "type": "Concept",
+      "conceptId": "natural-selection",
+      "text": "Environmental conditions cause differential survival and reproduction associated with heritable trait variation, changing trait distributions over generations."
+    },
+    {
+      "id": "concept:adaptation-population-change",
+      "type": "Concept",
+      "conceptId": "adaptation-population-change",
+      "text": "Heritable population characteristics change over time in relation to environmental conditions."
+    },
+    {
+      "id": "concept:fossil-evidence-change-over-time",
+      "type": "Concept",
+      "conceptId": "fossil-evidence-change-over-time",
+      "text": "Fossils provide evidence for changes in organisms and life forms over time."
+    },
+    {
+      "id": "unit:1996:SC.F.2.4.3",
+      "type": "TextUnit",
+      "code": "SC.F.2.4.3",
+      "gradeSpan": "9-12",
+      "text": "Understands the mechanisms of change (e.g., mutation and natural selection) that lead to adaptations in a species and their ability to survive naturally in changing conditions and to increase species diversity.",
+      "sourceDocument": "doc:fl-science-1996",
+      "pageOrAnchor": "SC.F.2.4, Benchmark 3"
+    },
+    {
+      "id": "unit:1996:SC.G.2.4.3",
+      "type": "TextUnit",
+      "code": "SC.G.2.4.3",
+      "gradeSpan": "9-12",
+      "text": "Understands how genetic variation of offspring contributes to population control in an environment and that natural selection ensures that those who are best adapted to their surroundings survive to reproduce.",
+      "sourceDocument": "doc:fl-science-1996",
+      "pageOrAnchor": "SC.G.2.4, Benchmark 3"
+    },
+    {
+      "id": "unit:1996:SC.F.2.3.4",
+      "type": "TextUnit",
+      "code": "SC.F.2.3.4",
+      "gradeSpan": "6-8",
+      "text": "Knows that the fossil record provides evidence that changes in the kinds of plants and animals in the environment have been occurring over time.",
+      "sourceDocument": "doc:fl-science-1996",
+      "pageOrAnchor": "SC.F.2.3, Benchmark 4"
+    },
+    {
+      "id": "unit:gle:SC.F.2.3.4:grade-placement",
+      "type": "TextUnit",
+      "code": "SC.F.2.3.4",
+      "gradeSpan": "6-8",
+      "text": "The same fossil-record benchmark is retained; the GLE places its specific expectation at eighth grade.",
+      "sourceDocument": "doc:fl-science-gle-1999",
+      "pageOrAnchor": "grades 6-8 GLE, SC.F.2.3.4"
+    },
+    {
+      "id": "unit:2008:SC.7.L.15.2",
+      "type": "TextUnit",
+      "code": "SC.7.L.15.2",
+      "gradeSpan": "7",
+      "text": "Explore the scientific theory of evolution by recognizing and explaining ways in which genetic variation and environmental factors contribute to evolution by natural selection and diversity of organisms.",
+      "sourceDocument": "doc:fl-science-2008",
+      "pageOrAnchor": "SC.7.L.15.2"
+    },
+    {
+      "id": "unit:2008:SC.912.L.15.13",
+      "type": "TextUnit",
+      "code": "SC.912.L.15.13",
+      "gradeSpan": "9-12",
+      "text": "Describe the conditions required for natural selection, including overproduction of offspring, inherited variation, and the struggle to survive, resulting in differential reproductive success.",
+      "sourceDocument": "doc:fl-science-2008",
+      "pageOrAnchor": "SC.912.L.15.13"
+    },
+    {
+      "id": "unit:2026:SC.8.SL.2.1",
+      "type": "TextUnit",
+      "code": "SC.8.SL.2.1",
+      "gradeSpan": "8",
+      "text": "Recognize the requirements for natural selection to occur in a population.",
+      "sourceDocument": "doc:fl-science-2026-draft",
+      "pageOrAnchor": "SC.8.SL.2.1"
+    },
+    {
+      "id": "unit:2026:SC.8.SL.2.2",
+      "type": "TextUnit",
+      "code": "SC.8.SL.2.2",
+      "gradeSpan": "8",
+      "text": "Explain how inherited traits and variation within a population influence survival and reproduction in changing environments.",
+      "sourceDocument": "doc:fl-science-2026-draft",
+      "pageOrAnchor": "SC.8.SL.2.2"
+    },
+    {
+      "id": "unit:2026:SC.8.SL.2.3",
+      "type": "TextUnit",
+      "code": "SC.8.SL.2.3",
+      "gradeSpan": "8",
+      "text": "Investigate natural selection as a process in which traits in a population may change over time in response to environmental conditions.",
+      "sourceDocument": "doc:fl-science-2026-draft",
+      "pageOrAnchor": "SC.8.SL.2.3"
+    },
+    {
+      "id": "unit:2026:SC.8.SL.3.2",
+      "type": "TextUnit",
+      "code": "SC.8.SL.3.2",
+      "gradeSpan": "8",
+      "text": "Analyze the fossil record to show that life forms have changed over time.",
+      "sourceDocument": "doc:fl-science-2026-draft",
+      "pageOrAnchor": "SC.8.SL.3.2"
+    },
+    {
+      "id": "assertion:1996-selection-concepts",
+      "type": "EvidenceAssertion",
+      "unit": "unit:1996:SC.F.2.4.3",
+      "concept": "concept:natural-selection",
+      "relation": "expressesConcept",
+      "evidence": "Direct wording in the recovered 1996 grade 9-12 standards PDF.",
+      "pageOrAnchor": "SC.F.2.4, Benchmark 3",
+      "confidence": 0.99,
+      "method": "human_review",
+      "status": "verified content; no claim about 2026 source attribution"
+    },
+    {
+      "id": "assertion:1996-variation-selection",
+      "type": "EvidenceAssertion",
+      "unit": "unit:1996:SC.G.2.4.3",
+      "concept": "concept:genetic-variation",
+      "relation": "expressesConcept",
+      "evidence": "Direct wording in the recovered 1996 grade 9-12 standards PDF.",
+      "pageOrAnchor": "SC.G.2.4, Benchmark 3",
+      "confidence": 0.99,
+      "method": "human_review",
+      "status": "verified content; no claim about 2026 source attribution"
+    },
+    {
+      "id": "assertion:2026-middle-selection-alignment",
+      "type": "EvidenceAssertion",
+      "unit": "unit:2026:SC.8.SL.2.2",
+      "concept": "concept:natural-selection",
+      "relation": "expressesConcept",
+      "evidence": "Inherited variation and environmental conditions are linked to survival, reproduction, and population change. This is a concept-level correspondence to the 1996 and 2008 units; no distinctive textual borrowing is established.",
+      "pageOrAnchor": "SC.8.SL.2.1-2.3",
+      "confidence": 0.96,
+      "method": "conceptual_alignment",
+      "status": "verified concept match; source lineage unresolved"
+    },
+    {
+      "id": "assertion:2026-fossil-continuity",
+      "type": "EvidenceAssertion",
+      "unit": "unit:2026:SC.8.SL.3.2",
+      "concept": "concept:fossil-evidence-change-over-time",
+      "relation": "expressesConcept",
+      "evidence": "Both versions connect fossil evidence to changes in life forms over time; wording and structure differ.",
+      "pageOrAnchor": "SC.8.SL.3.2 compared with 1996 SC.F.2.3.4",
+      "confidence": 0.98,
+      "method": "conceptual_alignment",
+      "status": "verified concept match; direct source unresolved"
+    },
+    {
+      "id": "assertion:candidate-lineage-2026-natural-selection-1996",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:1996:SC.G.2.4.3",
+      "targetUnit": "unit:2026:SC.8.SL.2.1",
+      "relation": "candidatePredecessor",
+      "evidence": "Both address inherited variation and differential survival/reproduction in populations. The 1996 statement is more compact; the 2026 material divides the ideas among adjacent benchmarks and clarifications. This shows conceptual continuity, not direct reuse.",
+      "confidence": 0.8,
+      "method": "conceptual_alignment",
+      "status": "candidate; 2008 is also a plausible predecessor"
+    },
+    {
+      "id": "assertion:candidate-lineage-2026-natural-selection-2008",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:2008:SC.912.L.15.13",
+      "targetUnit": "unit:2026:SC.8.SL.2.1",
+      "relation": "candidatePredecessor",
+      "evidence": "Both enumerate inherited variation and differential survival/reproduction as requirements or mechanisms of selection. Similarity is conceptual and shared with 1996; no distinctive wording establishes this as the source.",
+      "confidence": 0.8,
+      "method": "conceptual_alignment",
+      "status": "candidate; source attribution unresolved"
+    },
+    {
+      "id": "assertion:candidate-lineage-2026-fossils-1996",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:1996:SC.F.2.3.4",
+      "targetUnit": "unit:2026:SC.8.SL.3.2",
+      "relation": "candidatePredecessor",
+      "evidence": "Both connect fossil evidence to changes in life forms over time. This is a long-standing scientific learning objective and does not establish textual borrowing.",
+      "confidence": 0.85,
+      "method": "conceptual_alignment",
+      "status": "candidate; source attribution unresolved"
+    }
+  ]
+}

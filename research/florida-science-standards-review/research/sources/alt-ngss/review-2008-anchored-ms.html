@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Source-first task-equivalence audit: anchored 2008 Florida middle-school benchmarks | Florida Science Standards Draft Review</title><link rel="stylesheet" href="/research/florida-science-standards-review/site.css"></head><body class="document"><header class="docbar"><a href="../../../index.html">← Florida Science Standards Draft Review</a><span>Research document · October 22, 2026</span></header><main class="prose"><h1 class="doc-title">Source-first task-equivalence audit: anchored 2008 Florida middle-school benchmarks</h1><h2 id="scope-and-result">Scope and result</h2>
+<p>This appendix audits every 2008 Florida benchmark row in <code>sources/alt-ngss/2008-reverse-screen.csv</code> whose <code>direct_anchor_in_register</code> is <code>yes</code> and whose source grade is 6, 7, or 8. The bounded filter returns <strong>72 unique IDs</strong>. Each appears once in the row table below. Draft code anchors and similarity-ranked candidates were used only to find passages; neither was treated as an equivalence verdict.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R — retained/relocated</td>
+<td style="text-align: right;">31</td>
+</tr>
+<tr>
+<td>P — partial</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>O — possible omission of a source-specific task/concept</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>U — unresolved</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>72</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>O is a corpus-bounded candidate only.</strong> It means the source-specific task/concept was not located after checking relevant current corpus text; it is not proof of classroom absence, nor evidence about provenance or why a standard changed. P means meaningful overlap exists but a named element, scope, or task demand is missing or altered. R includes clear grade/strand relocation and reasonable distribution across benchmarks. U is reserved for a case the current corpus does not permit us to assess.</p>
+<h2 id="method-and-evidence-boundary">Method and evidence boundary</h2>
+<p>I filtered the CSV to the 72 exact rows above, then read each full source benchmark passage from <code>sources/2008/florida-2008-science-standards.txt</code> at the cited line and checked its PDF page in <code>sources/2008/florida-2008-science-standards.pdf</code> (the page numbers shown are 1-based, corresponding to the CSV <code>source_pdf_page_index</code>). For each row I opened the linked 2026 benchmark text in <code>sources/2026/fl-k5.txt</code>, <code>fl-68.txt</code>, or <code>fl-912.txt</code>, then checked nearby related benchmark text and, where applicable, the clarification, example, student task, common framework, table, or practice passages in those extracts. The table gives at least one 2026 line locator per row; grouped ranges refer only to the stated related benchmarks. The marked draft lines are locators, not the whole evidence record. The adjudication asks whether the full source’s expected student action and concept survive—not whether a code, phrase, or topic is still present.</p>
+<p>Extract line references are stable locators in the supplied text files; they do not replace the PDFs as the authoritative source. No material outside this corpus was used to infer classroom instruction, local implementation, or drafting provenance. The audit is a corpus review, not an experimental assessment of instruction.</p>
+<h2 id="row-level-findings">Row-level findings</h2>
+<p><code>…standards.txt</code> in source locators below abbreviates <code>sources/2008/florida-2008-science-standards.txt</code>. Draft-file names in locators are under <code>sources/2026/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th style="text-align: center;">Class</th>
+<th>2008 source locator</th>
+<th>2026 draft locator(s)</th>
+<th>Task-equivalence finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SC.6.N.2.2</td>
+<td style="text-align: center;">P</td>
+<td><code>sources/2008/florida-2008-science-standards.txt:1959</code> (PDF p. 43)</td>
+<td><code>fl-68.txt:5636</code> SC.6.SL.2.5</td>
+<td>The source states scientific knowledge is durable yet revisable with new evidence or interpretations. Draft classification systems changing over time offers a specific example, not the general knowledge claim.</td>
+</tr>
+<tr>
+<td>SC.6.E.6.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:1994</code> (p. 44)</td>
+<td><code>fl-68.txt:3665</code> SC.7.PE.2.1; <code>3382</code> SC.6.PE.2.1; <code>4216</code> SC.8.PE.3.1</td>
+<td>Surface shaping and Earth-system energy/processes recur at grades 6–8, but the benchmark bundles internal/external energy, constructive/destructive change, resource dependence, and weathering/erosion; no one target carries the whole task.</td>
+</tr>
+<tr>
+<td>SC.6.E.6.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:1998</code> (p. 44)</td>
+<td><code>fl-k5.txt:2930</code> SC.2.PE.1.2; <code>3211</code> SC.3.PE.1.2; <code>fl-68.txt:3665</code> SC.7.PE.2.1</td>
+<td>Landforms and Florida examples are distributed across K–3 and grade 7 surface-process work; the 2008 act of recognizing and relating a broad landform set to Florida is only partial.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2006</code> (p. 44)</td>
+<td><code>fl-68.txt:3285</code> SC.6.PE.1.1; <code>3333</code> SC.6.PE.1.3; <code>4120</code> SC.8.PE.2.1</td>
+<td>Energy/matter and Earth-system interactions recur, but the source’s explicit Earth-evolution theory and five-sphere dynamic account (including cryosphere and human resources) is not preserved as a whole.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2010</code> (p. 44)</td>
+<td><code>fl-k5.txt:4018</code> SC.5.PE.2.2; <code>fl-68.txt:3936</code> SC.8.PE.1.2; <code>4161</code> SC.8.PE.2.2</td>
+<td>Weather/climate and Earth-system cycling appear, but water’s atmosphere–hydrosphere cycle as an investigated cause of both weather and climate is not explicit in the located targets.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.3</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2014</code> (p. 44)</td>
+<td><code>fl-68.txt:3900</code> SC.8.PE.1.1; <code>3980</code> SC.8.PE.1.3; <code>4024</code> SC.8.PE.1.4</td>
+<td>Weather models, ocean-current heat transfer, and climate factors are present; jet stream/ocean-current effects on local measured conditions (pressure, wind, humidity, precipitation) are not all retained.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.4</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2019</code> (p. 44)</td>
+<td><code>fl-68.txt:3285</code> SC.6.PE.1.1; <code>4120</code> SC.8.PE.2.1; <code>4161</code> SC.8.PE.2.2</td>
+<td>The draft explicitly treats Earth systems as interacting through matter and energy and revisits their interactions and cycles. The grade-level organization changes, but the central differentiation/interaction task remains.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.5</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2023</code> (p. 44)</td>
+<td><code>fl-68.txt:3302</code> SC.6.PE.1.2; <code>3936</code> SC.8.PE.1.2; <code>3980</code> SC.8.PE.1.3</td>
+<td>Solar energy and atmospheric processes recur, but the specific causal chain from solar heating to global movement and contrasting temperatures of air, water, and land is spread across targets and only partly stated.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.6</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2027</code> (p. 44)</td>
+<td><code>fl-k5.txt:4066</code> SC.5.PE.2.3; <code>fl-68.txt:3900</code> SC.8.PE.1.1</td>
+<td>Weather/climate differentiation is explicit in both grade 5 and grade 8.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.7</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2030</code> (p. 44)</td>
+<td><code>fl-68.txt:4298</code> SC.8.PE.4.1</td>
+<td>Natural hazards are analyzed as Earth-system processes; the source’s investigation of how Florida disasters affected human life is not clearly the same student task.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.8</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2033</code> (p. 44)</td>
+<td><code>fl-k5.txt:3084</code> SC.2.PE.2.1</td>
+<td>Sun exposure/safety is taught, while protection from hazardous weather is not explicit at the cited target; the combined benchmark is partial.</td>
+</tr>
+<tr>
+<td>SC.6.E.7.9</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2038</code> (p. 45)</td>
+<td><code>fl-68.txt:3442</code> SC.6.PE.2.2; <code>fl-912.txt:5333</code> SC.912.PE.5.4</td>
+<td>Middle-school atmosphere structure/function is complemented by an explicit later-grade account of atmospheric protection; the protective role is retained across grades.</td>
+</tr>
+<tr>
+<td>SC.6.P.11.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2051</code> (p. 45)</td>
+<td><code>fl-68.txt:134</code> SC.6.EN.1.5; <code>564</code> SC.7.EN.1.7; <code>918</code> SC.8.EN.1.2</td>
+<td>Potential/kinetic energy and conservation transfer are explicit. Wave transfer without matter transfer, wave media, light in vacuum, and the source’s full bundled investigation are not all evident in these linked targets.</td>
+</tr>
+<tr>
+<td>SC.6.P.12.1</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2060</code> (p. 45)</td>
+<td><code>fl-68.txt:2535</code> SC.7.FM.1.1; <code>2766</code> SC.7.FM.3.1</td>
+<td>Speed as distance/time and interpretation of distance–time graphs preserve the measurement/graphing task at grade 7.</td>
+</tr>
+<tr>
+<td>SC.6.P.13.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2075</code> (p. 45)</td>
+<td><code>fl-68.txt:966</code> SC.8.EN.1.3; nearby gravity/motion benchmarks</td>
+<td>Gravity’s role in motion/orbital systems appears, but the benchmark’s universal pairwise attraction and dependence on both masses and separation are not explicit in the direct anchor.</td>
+</tr>
+<tr>
+<td>SC.6.P.13.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2079</code> (p. 45)</td>
+<td><code>fl-68.txt:2913</code> SC.8. FM.1.2; <code>2968</code> SC.8. FM.2.1; <code>3021</code> SC.8. FM.2.2</td>
+<td>Grade 8 force benchmarks connect force imbalance to changes in motion, including speed/direction; this is a close task-level continuation.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2092</code> (p. 45)</td>
+<td><code>fl-68.txt:6578</code> SC.6.CB.1.1; <code>8560</code> SC.6.HB.1.1; <code>9234</code> SC.8.HB.1.1</td>
+<td>Cell-to-organism/body-system organization and homeostasis recur, but the source bundles common life characteristics, cell theory, hierarchy, and physiological functions more broadly than these linked targets.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2101</code> (p. 46)</td>
+<td><code>fl-68.txt:6646</code> SC.6.CB.1.3; <code>6692</code> SC.6.CB.2.1; <code>fl-912.txt:9963</code> SC.912.CB.1.4</td>
+<td>Cell theory principles and common cell features are explicit; the pre-existing-cells statement also appears in high school.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.3</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2106</code> (p. 46)</td>
+<td><code>fl-68.txt:9796</code> SC.7.NT.1.1; <code>9843</code> SC.7.NT.1.2; <code>9946</code> SC.7.NT.1.4</td>
+<td>Nutrient use, cellular energy, waste/homeostasis ideas recur, but reproducing as a shared cellular process and the full set of examples are not all present in the linked targets.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.4</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2110</code> (p. 46)</td>
+<td><code>fl-68.txt:6769</code> SC.6.CB.2.3; <code>6847</code> SC.6.CB.3.1</td>
+<td>Plant/animal differences and component functions are explicit, while the source’s compare/contrast of the named organelles, including chloroplasts, mitochondria, and vacuoles, is broader than the located benchmark wording.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.5</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2114</code> (p. 46)</td>
+<td><code>fl-68.txt:8560</code> SC.6.HB.1.1; <code>8611</code> SC.6.HB.1.2; SC.7.HB.2–3 and SC.8.HB.1.1</td>
+<td>General system functions and interaction/homeostasis are distributed across digestive, respiratory, circulatory, nervous, musculoskeletal, excretory, and reproductive system benchmarks.</td>
+</tr>
+<tr>
+<td>SC.6.L.14.6</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2119</code> (p. 46)</td>
+<td><code>fl-68.txt:9013</code> SC.7.HB.3.5; <code>9306</code> SC.8.HB.2.1; <code>11244</code> SC.7.MO.1.1</td>
+<td>Infection and agents occur in human-health and microorganism content; the source’s explicit compare/contrast across viruses, bacteria, fungi, and parasites is not preserved in the linked targets.</td>
+</tr>
+<tr>
+<td>SC.6.L.15.1</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2130</code> (p. 46)</td>
+<td><code>fl-68.txt:5495</code> SC.6.SL.2.2; <code>5546</code> SC.6.SL.2.3; <code>8159</code> SC.8.P.2.1</td>
+<td>Evidence for evolution and its organizing role is represented through life-science evidence and evolutionary explanations, with more detail distributed across grades.</td>
+</tr>
+<tr>
+<td>SC.7.N.3.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2209</code> (p. 48)</td>
+<td><code>fl-912.txt:7804</code> SC.912.SP.7.3</td>
+<td>Benefits and limitations of scientific models are explicit in the later-grade model-evaluation target; the task is relocated beyond middle school.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2216</code> (p. 48)</td>
+<td><code>fl-k5.txt:3758</code> SC.5.PE.1.2; <code>fl-68.txt:3382</code> SC.6.PE.2.1; <code>4216</code> SC.8.PE.3.1</td>
+<td>Surface processes and internal energy appear across grade bands, but the source’s combined geologic-time account, constructive/destructive forces, and human resource dependence is only partial.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2220</code> (p. 48)</td>
+<td><code>fl-68.txt:3814</code> SC.7.PE.3.1; <code>fl-912.txt:5025</code> SC.912.PE.3.2</td>
+<td>Rock-cycle patterns and surface events recur; the explicit linkage to subsurface plate-tectonic events is split into later material and not fully carried in the middle-school task.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2224</code> (p. 48)</td>
+<td><code>fl-68.txt:3853</code> SC.7.PE.3.2; <code>fl-912.txt:5402</code> SC.912.PE.6.1; <code>5563</code> SC.912.PE.7.1</td>
+<td>Relative dating/rock-layer evidence is taught in grade 7 and radioactive dating later; the methods and age-of-Earth task are redistributed.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.4</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2228</code> (p. 48)</td>
+<td><code>fl-68.txt:3853</code> SC.7.PE.3.2; <code>fl-912.txt:5402</code> SC.912.PE.6.1</td>
+<td>Physical evidence supporting Earth’s long history is retained through rock record and geologic-time benchmarks, with evidence types elaborated later.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.5</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2232</code> (p. 48)</td>
+<td><code>fl-68.txt:3539</code> SC.7.PE.1.2; <code>3625</code> SC.7.PE.1.4; <code>fl-912.txt:5778</code> SC.912.PE.8.3</td>
+<td>Plate movement and its slow/rapid surface effects are explicit in grade 7 and extended in high school.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.6</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2237</code> (p. 48)</td>
+<td><code>fl-68.txt:3333</code> SC.6.PE.1.3; <code>4340</code> SC.8.PE.4.2</td>
+<td>Human effects on Earth are addressed, but the source’s named range (deforestation, urbanization, desertification, erosion, air/water quality, climate) and impacts are broader.</td>
+</tr>
+<tr>
+<td>SC.7.E.6.7</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2241</code> (p. 48)</td>
+<td><code>fl-68.txt:3495</code> SC.7.PE.1.1; <code>3585</code> SC.7.PE.1.3; <code>4298</code> SC.8.PE.4.1</td>
+<td>Internal heat/material movement, tectonic outcomes, and related hazards occur in the grade 7–8 sequence; major causal concepts remain.</td>
+</tr>
+<tr>
+<td>SC.7.P.10.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2248</code> (p. 48)</td>
+<td><code>fl-68.txt:190</code> SC.6.EN.2.1; <code>709</code> SC.7.EN.2.3; <code>1107</code> SC.8.EN.2.1</td>
+<td>Energy forms and transformations are represented, but the source-wide unifying claim and ability to do work/cause change are not fully stated in the spectral/energy benchmarks.</td>
+</tr>
+<tr>
+<td>SC.7.P.10.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2252</code> (p. 48)</td>
+<td><code>fl-68.txt:273</code> SC.6.EN.2.3; <code>308</code> SC.6.EN.2.4; <code>752</code> SC.7.EN.2.4</td>
+<td>Reflection, refraction, and absorption are treated across light-energy targets, retaining the main observation/explanation task.</td>
+</tr>
+<tr>
+<td>SC.7.P.10.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2255</code> (p. 48)</td>
+<td><code>fl-68.txt:624</code> SC.7.EN.2.1; <code>752</code> SC.7.EN.2.4; <code>794</code> SC.7.EN.2.5</td>
+<td>Wave speed and behavior across materials are addressed in the grade 7 wave sequence; examples are redistributed by wave type.</td>
+</tr>
+<tr>
+<td>SC.7.P.11.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2273</code> (p. 49)</td>
+<td><code>fl-68.txt:2245</code> SC.8.M.4.1</td>
+<td>A materials/waves target is linked, but the full source bundle—wave energy without matter transfer, sound/water media, light in vacuum, and conservation—is not all visible in the direct match.</td>
+</tr>
+<tr>
+<td>SC.7.P.11.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2277</code> (p. 49)</td>
+<td><code>fl-68.txt:354</code> SC.7.EN.1.1; <code>413</code> SC.7.EN.1.3; <code>873</code> SC.8.EN.1.1</td>
+<td>Energy transformation is explicitly investigated/explained across forms and systems.</td>
+</tr>
+<tr>
+<td>SC.7.P.11.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2280</code> (p. 49)</td>
+<td><code>fl-68.txt:475</code> SC.7.EN.1.5; <code>873</code> SC.8.EN.1.1</td>
+<td>Conservation is explicit: energy is not created or destroyed and is transferred/transformed within systems.</td>
+</tr>
+<tr>
+<td>SC.7.L.15.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2295</code> (p. 49)</td>
+<td><code>fl-k5.txt:2619</code> SC.1.PE.1.6; <code>3014</code> SC.2.PE.1.5; <code>3313</code> SC.3.PE.1.5; <code>fl-68.txt:6206</code> SC.8.SL.2.1</td>
+<td>Traits, change, and survival progress through the grades, but the source’s statement that evolution organizes life science and is supported by multiple evidence lines is not wholly retained by these distributed targets.</td>
+</tr>
+<tr>
+<td>SC.7.L.15.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2299</code> (p. 49)</td>
+<td><code>fl-68.txt:6206</code> SC.8.SL.2.1; <code>6245</code> SC.8.SL.2.2; <code>6305</code> SC.8.SL.2.3</td>
+<td>Variation, environmental factors, and differential survival are taught in an explicit evolutionary sequence.</td>
+</tr>
+<tr>
+<td>SC.7.L.15.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2303</code> (p. 49)</td>
+<td><code>fl-68.txt:6206</code> SC.8.SL.2.1; <code>6245</code> SC.8.SL.2.2; <code>6305</code> SC.8.SL.2.3; <code>8159</code> SC.8.P.2.1</td>
+<td>Adaptation, environmental change, and extinction/evolution outcomes remain in grade 8 content.</td>
+</tr>
+<tr>
+<td>SC.7.L.16.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2315</code> (p. 49)</td>
+<td><code>fl-68.txt:6806</code> SC.6.CB.2.4; <code>7135</code> SC.7.CB.2.1</td>
+<td>Reproduction and inheritance are explicit, but the source’s general characterization of reproduction as necessary for species survival and genetic transmission needs neighboring benchmarks to complete the bundle.</td>
+</tr>
+<tr>
+<td>SC.7.L.16.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2320</code> (p. 49)</td>
+<td><code>fl-68.txt:7185</code> SC.7.CB.2.2</td>
+<td>Genotype/phenotype probability is retained through the grade 7 inheritance task.</td>
+</tr>
+<tr>
+<td>SC.7.L.16.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2327</code> (p. 50)</td>
+<td><code>fl-912.txt:13456</code> SC.912.P.10.2; <code>13561</code> SC.912.P.10.7; <code>17416</code> SC.912.A.14.1</td>
+<td>Sexual/asexual reproduction and relevant mechanisms recur in high-school plant/animal benchmarks; the grade placement shifts later.</td>
+</tr>
+<tr>
+<td>SC.7.L.16.4</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2331</code> (p. 50)</td>
+<td><code>fl-912.txt:17466</code> SC.912.A.14.5; <code>17488</code> SC.912.A.14.8</td>
+<td>Cloning appears as human-directed reproduction; genetic engineering, artificial selection, and impacts across individual/society/environment are not all represented by these targets.</td>
+</tr>
+<tr>
+<td>SC.7.L.17.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2343</code> (p. 50)</td>
+<td><code>fl-68.txt:8489</code> SC.8.A.1.2; <code>10744</code> SC.6.FG.1.2; <code>11372</code> SC.8.MO.1.1</td>
+<td>Energy flow, matter cycling, decomposers, and organism/environment interactions appear across animal/fungi/microbe strands. The full producers-consumers-decomposers and human/natural impact bundle is distributed and incomplete.</td>
+</tr>
+<tr>
+<td>SC.7.L.17.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2347</code> (p. 50)</td>
+<td><code>fl-k5.txt:9129</code> SC.3.FG.1.2; <code>9175</code> SC.4.FG.1.1; <code>fl-912.txt:17569</code> SC.912.A.14.15</td>
+<td>Mutualistic association is explicit for fungi/plants and other interactions occur, but comparison of the named relationship types is not retained as a middle-school task.</td>
+</tr>
+<tr>
+<td>SC.7.L.17.3</td>
+<td style="text-align: center;">O</td>
+<td><code>…standards.txt:2351</code> (p. 50)</td>
+<td><code>fl-912.txt:17139</code> SC.912.A.12.13; related ecosystem/population benchmarks</td>
+<td>The 2008 task asks students to investigate local limiting factors and their effects on native populations. A high-school disease/population example is narrower; a comparable middle-school local-population investigation was not located in this corpus.</td>
+</tr>
+<tr>
+<td>SC.8.N.1.6</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2394</code> (p. 51)</td>
+<td><code>fl-68.txt:11635</code> SC.6.ASL.2.1; lab/model practices <code>fl-tables.txt:1749–1798, 2079–2119, 2764–2801</code></td>
+<td>Evidence, models, and decisions recur, but the source’s empirical collection, logical reasoning, imagination, hypothesis, prediction, and explanation sequence is not explicit as one investigative task.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.1</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2445</code> (p. 52)</td>
+<td><code>fl-68.txt:4449</code> SC.6.SP.1.2; <code>4493</code> SC.6.SP.1.3; <code>5256</code> SC.8.SP.2.3</td>
+<td>Cosmic distances, galaxy types, and expansion are taught; the source’s origin/fate question and gravity/energy formation account is not fully represented by those linked rows.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2449</code> (p. 52)</td>
+<td><code>fl-68.txt:4493</code> SC.6.SP.1.3; <code>5256</code> SC.8.SP.2.3</td>
+<td>Galaxy types and universe expansion appear, but the quantitative “billions of galaxies / billions of stars” scale claim is not explicit.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.3</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2453</code> (p. 52)</td>
+<td><code>fl-68.txt:4884</code> SC.7.SP.1.7; <code>5256</code> SC.8.SP.2.3; nearby SC.7.SP.1.1–1.6</td>
+<td>Astronomical bodies and solar-system relationships recur, but hierarchy plus relative distance, size, and composition across planet–system–galaxy–universe is not fully evident.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.4</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2457</code> (p. 52)</td>
+<td><code>fl-68.txt:4796</code> SC.7.SP.1.5; nearby solar-system formation target</td>
+<td>Gravity’s effect on motion is explicit; its role in forming planets, stars, and solar systems is not stated in the direct anchor.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.5</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2461</code> (p. 52)</td>
+<td><code>fl-68.txt:4540</code> SC.6.SP.1.4</td>
+<td>Star properties are studied, but the full named set (apparent magnitude, color/temperature, size, absolute luminosity) is not confirmed in the linked benchmark wording.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.7</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2469</code> (p. 52)</td>
+<td><code>fl-k5.txt:4679</code> SC.5.SP.1.1; neighboring nearby grade 7 solar-system rows</td>
+<td>Comparing solar-system objects is shifted earlier, while the source’s comparison to Earth across gravity, distance, speed, motion, temperature, and atmospheric conditions is broader.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.9</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2482</code> (p. 53)</td>
+<td><code>fl-68.txt:4973</code> SC.8.SP.1.1; <code>5085</code> SC.8.SP.1.4; <code>5130</code> SC.8.SP.1.5; <code>5299</code> SC.8.SP.2.4</td>
+<td>Solar effects, eclipses, lunar tides, and space–Earth phenomena occur across the linked grade 8 tasks; the relationships are redistributed among benchmarks.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.10</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2487</code> (p. 53)</td>
+<td><code>fl-k5.txt:4830</code> SC.5.SP.1.4; <code>fl-68.txt:5224</code> SC.8.SP.2.2</td>
+<td>Space-study technology is explicit, but source applications including remote access, sampling, measurement, storage, computation, and communication are not all represented.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.11</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2492</code> (p. 53)</td>
+<td><code>fl-68.txt:190</code> SC.6.EN.2.1; <code>709</code> SC.7.EN.2.3; <code>5173</code> SC.8.SP.2.1</td>
+<td>Spectrum organization and astronomical use appear, but wavelength/frequency, hazards, and application to planetary images/satellite photographs are not all present in the linked targets.</td>
+</tr>
+<tr>
+<td>SC.8.E.5.12</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2497</code> (p. 53)</td>
+<td><code>fl-912.txt:8003</code> SC.912.SP.10.2</td>
+<td>Space exploration’s benefits/challenges are assessed later, but the specifically Florida economy-and-culture summary is not explicit in the cited task.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.2</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2516</code> (p. 53)</td>
+<td><code>fl-k5.txt:2043</code> SC.5.FM.1.4; nearby <code>fl-68.txt:2476</code> SC.6.FM.3.1</td>
+<td>Mass/weight comparison appears, with distinction developed across grades; the source’s force-of-gravity definition and proportional relationship are not explicit in the early direct anchor.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.3</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2520</code> (p. 53)</td>
+<td><code>fl-68.txt:1386</code> SC.6.M.2.1</td>
+<td>Density as mass/volume is explicit, but the source’s hands-on measurement of masses and volumes across materials is not stated in the benchmark line.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.4</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2523</code> (p. 53)</td>
+<td><code>fl-68.txt:1519</code> SC.7.M.1.1; <code>1547</code> SC.7.M.1.2; <code>fl-k5.txt:953</code> SC.3.M.1.1</td>
+<td>Physical/chemical properties and size-independent identification are explicit; properties and classification are distributed across grade 3 and grade 7.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.5</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2528</code> (p. 53)</td>
+<td><code>fl-68.txt:1338</code> SC.6.M.1.3; <code>2193</code> SC.8.M.3.4</td>
+<td>Atom–element–molecule–compound relationships and compound formation carry the finite elements/combinations concept.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.6</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2532</code> (p. 53)</td>
+<td><code>fl-68.txt:1855</code> SC.8.M.1.1; <code>1903</code> SC.8.M.1.2</td>
+<td>Atomic structure and element groupings/metals are treated, but the periodic table organization by similarity of properties is not directly stated in these benchmarks.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.7</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2535</code> (p. 53)</td>
+<td><code>fl-68.txt:1259</code> SC.6.M.1.1; <code>1301</code> SC.6.M.1.2; <code>fl-k5.txt:1060</code> SC.4.M.1.1</td>
+<td>Atomic models, atom structure, and subatomic particle charge/location/mass are explicit and shifted to grade 6.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.8</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2540</code> (p. 53)</td>
+<td><code>fl-68.txt:1949</code> SC.8.M.2.1; nearby substance-property tasks</td>
+<td>pH provides an acid/base property task, but examples/classification of compounds including acids, bases, and salts are not fully stated in the linked benchmark.</td>
+</tr>
+<tr>
+<td>SC.8.P.8.9</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2544</code> (p. 53)</td>
+<td><code>fl-68.txt:1681</code> SC.7.M.3.1</td>
+<td>Mixtures and pure substances are explicitly differentiated, retaining the main task.</td>
+</tr>
+<tr>
+<td>SC.8.P.9.1</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2560</code> (p. 54)</td>
+<td><code>fl-68.txt:2141</code> SC.8.M.3.3; <code>2062</code> SC.8.M.3.1; <code>2098</code> SC.8.M.3.2</td>
+<td>Chemical reactions/new substances, reaction evidence, and conservation of matter are addressed across the grade 7–8 sequence.</td>
+</tr>
+<tr>
+<td>SC.8.P.9.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2564</code> (p. 54)</td>
+<td><code>fl-k5.txt:1287</code> SC.5.M.1.3; <code>fl-68.txt:1643</code> SC.7.M.2.1; <code>2062</code> SC.8.M.3.1</td>
+<td>Distinguishing physical and chemical changes is explicit in grade 5 and revisited in grades 7–8.</td>
+</tr>
+<tr>
+<td>SC.8.L.18.1</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2578</code> (p. 54)</td>
+<td><code>fl-68.txt:7763</code> SC.6.P.1.2; <code>7338</code> SC.8.CB.1.2; <code>7483</code> SC.8.CB.2.1; <code>5997</code> SC.8.SL.1.2</td>
+<td>Photosynthesis and respiration reactants/products, energy flow, and carbon cycling are retained across grade 6–8 benchmarks and models.</td>
+</tr>
+<tr>
+<td>SC.8.L.18.2</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2582</code> (p. 54)</td>
+<td><code>fl-68.txt:7292</code> SC.8.CB.1.1; <code>7338</code> SC.8.CB.1.2; <code>7033</code> SC.7.CB.1.2</td>
+<td>Respiration’s reactants/products, energy release, and carbon movement recur explicitly in grades 7–8.</td>
+</tr>
+<tr>
+<td>SC.8.L.18.3</td>
+<td style="text-align: center;">R</td>
+<td><code>…standards.txt:2586</code> (p. 54)</td>
+<td><code>fl-68.txt:5997</code> SC.8.SL.1.2; <code>5836</code> SC.7.SL.1.2; <code>7033</code> SC.7.CB.1.2</td>
+<td>Students model the carbon cycle and matter/energy transfer within and between organisms and systems; this is a close task match.</td>
+</tr>
+<tr>
+<td>SC.8.L.18.4</td>
+<td style="text-align: center;">P</td>
+<td><code>…standards.txt:2590</code> (p. 54)</td>
+<td><code>fl-68.txt:7338</code> SC.8.CB.1.2; <code>7483</code> SC.8.CB.2.1; <code>7537</code> SC.8.CB.2.2</td>
+<td>Conservation links appear through respiration/photosynthesis equations and complementary-process evidence; the general claim that living systems obey conservation of both mass and energy is less explicit.</td>
+</tr>
+</tbody>
+</table></main><footer class="docfooter"><a href="../../../index.html">Review hub</a> · Independent analysis · FDOE source materials are linked, not mirrored</footer></body></html>

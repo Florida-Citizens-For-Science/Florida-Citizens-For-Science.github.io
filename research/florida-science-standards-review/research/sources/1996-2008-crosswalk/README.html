@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FDOE FCAT assessment alignment: 1996 legacy codes to 2008 NGSSS | Florida Science Standards Draft Review</title><link rel="stylesheet" href="/research/florida-science-standards-review/site.css"></head><body class="document"><header class="docbar"><a href="../../../index.html">← Florida Science Standards Draft Review</a><span>Research document · October 22, 2026</span></header><main class="prose"><h1 class="doc-title">FDOE FCAT assessment alignment: 1996 legacy codes to 2008 NGSSS</h1><p>Research added October 22, 2026. This folder preserves the official assessment-alignment evidence located for the 1996-to-2008 transition. The original XLS files are primary evidence; the CSV is a reproducible normalization for comparison and semantic search.</p>
+<h2 id="why-these-files-matter">Why these files matter</h2>
+<p>FDOE&rsquo;s <a href="https://info.fldoe.org/docushare/dsweb/GetRendition/Document-4920/html">Office of Mathematics and Science newsletter, Issue 4 (March 18, 2008)</a> says the department and its Assessment Office would develop a crosswalk comparing the 1996 science content standards with the newly adopted standards. FDOE&rsquo;s <a href="https://info.fldoe.org/docushare/dsweb/Get/Document-5728/dps-2010-50.pdf">DPS-2010-50 memo</a>, p. 3, later states that a similar science crosswalk is given in the 2009 and 2010 Content Focus reports. It cautions that there is generally no one-to-one correlation between the old Sunshine State Standards and the NGSSS in science and mathematics.</p>
+<p>FDOE&rsquo;s <a href="https://www.fldoe.org/accountability/assessments/k-12-student-assessment/archive/fcat/content-focus-reports.stml">Content Focus Reports archive</a> lists the 2009 and 2010 science workbooks. The fileparse URLs on <code>www.fldoe.org</code> returned HTTP 403 during retrieval; the agency&rsquo;s <code>origin.fldoe.org</code> host served the workbook files. The memo, workbook sources, and extracted text are preserved here.</p>
+<h2 id="what-the-workbooks-contain">What the workbooks contain</h2>
+<p>Each report has assessment sections for grades 5, 8, and 11. The 2010 workbook prints those grade titles. The 2009 text export omits them, so its assessment grade is inferred from the legacy code&rsquo;s grade-cluster digit; all 2009 sections are consistent with the explicitly titled 2010 layout.</p>
+<p>The <code>Benchmark</code> field uses legacy codes such as <code>A123</code>. In the recovered 1996 standards, that code identifies area A, Standard 1, grades 3–5 cluster, benchmark 3: <code>SC.A.1.2</code>, benchmark 3. The adjacent 2008 alignment field records one or more new benchmark codes for the assessed content focus. For example, the 2009 row <code>A123 / Conservation of mass / SC.4.P.8.3</code> links that 1996-era benchmark code to a 2008 benchmark alignment. <code>N/A</code> is preserved when a new benchmark alignment was not listed.</p>
+<p>The normalized file contains 276 rows: 130 from 2009 and 146 from 2010, covering 116 legacy benchmark codes across 49 1996 standard/grade-cluster codes. It has 247 rows with a 2008 benchmark alignment and 29 marked <code>N/A</code>. Repeated old or new codes are retained because separate content-focus descriptions and assessment rows are meaningful records.</p>
+<p>This is an <strong>assessment-level crosswalk witness</strong>, not a complete benchmark-by-benchmark equivalence table. It describes tested content-focus rows and explicitly allows non-one-to-one relationships. An unlisted 1996 benchmark cannot be called omitted from the 2008 standards on the basis of this workbook alone. The codes and crosswalk can, however, serve as an additional route for tracing a 1996 benchmark into 2008 and then checking the current 2026 register.</p>
+<h2 id="reproduce-the-csv">Reproduce the CSV</h2>
+<p>Requirements: Python 3 standard library and the <code>xls2csv</code> executable from catdoc.</p>
+<pre><code class="language-bash">python3 ../../tools/extract_fcat_alignment.py
+</code></pre>
+<p>The extractor retains the original workbook files, normalizes each assessment row, decodes the old code into a 1996 standard code plus benchmark number, points to the relevant 1996 source-text file and standard heading line, and preserves each 2008 alignment. For 2009 it derives grade level from the legacy code&rsquo;s cluster digit; for 2010 it reads the printed title and checks it against that digit. The original XLS files remain authoritative if the normalized output differs.</p>
+<h2 id="source-files-and-metadata">Source files and metadata</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Source</th>
+<th>Captured metadata / handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fcat-science-content-focus-2008.xls</code></td>
+<td><a href="https://origin.fldoe.org/core/fileparse.php/3/urlt/08contentfocus_science.xls">FDOE 2008 workbook</a></td>
+<td>The downloaded workbook identifies author <code>Kris Ellington</code>, last saver <code>judy.kent</code>, and Excel; it reports a security setting and <code>xls2csv</code> reports that the file is encrypted. It is retained as an inaccessible source copy, not treated as a crosswalk extraction.</td>
+</tr>
+<tr>
+<td><code>fcat-science-content-focus-2009.xls</code></td>
+<td><a href="https://origin.fldoe.org/core/fileparse.php/3/urlt/09contentfocusscience.xls">FDOE archive 2009 workbook</a></td>
+<td>Author field <code>Kris Ellington</code>; last-saved field <code>judy.kent</code>; last saved March 20, 2009.</td>
+</tr>
+<tr>
+<td><code>fcat-science-content-focus-2010.xls</code></td>
+<td><a href="https://origin.fldoe.org/core/fileparse.php/3/urlt/10contentfocusscience.xls">FDOE archive 2010 workbook</a></td>
+<td>Author field <code>Kris Ellington</code>; last-saved field <code>Judy Kent</code>; last saved March 31, 2010.</td>
+</tr>
+<tr>
+<td><code>fldoe-dps-2010-50-memo.pdf/.txt</code></td>
+<td><a href="https://info.fldoe.org/docushare/dsweb/Get/Document-5728/dps-2010-50.pdf">FDOE DPS-2010-50 memo</a></td>
+<td>Four-page primary record; PDF metadata says author FDOE and creation/modification March 25, 2010. Text extract is a search aid.</td>
+</tr>
+<tr>
+<td><code>fcat-science-content-focus-alignments.csv</code></td>
+<td>Generated by <code>../../tools/extract_fcat_alignment.py</code></td>
+<td>276 normalized assessment rows; hashes and file status are in the parent <code>SHA256SUMS.txt</code> and semantic-search inventory.</td>
+</tr>
+</tbody>
+</table>
+<p>Workbook author/last-saved fields and dates are retained as file-processing metadata. They identify document properties only; they do not establish who drafted the standards, what edits were made, or whether access was authorized.</p></main><footer class="docfooter"><a href="../../../index.html">Review hub</a> · Independent analysis · FDOE source materials are linked, not mirrored</footer></body></html>

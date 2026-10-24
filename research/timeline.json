@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Florida Science Standards Review Work Timeline",
+  "dateModified": "2026-10-24",
+  "about": "Dated public milestones in the independent review of Florida's proposed 2026 science standards.",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"item":{"@type":"Event","name":"Research snapshot and public-record check","startDate":"2026-10-22","description":"The primary comparison and corpus/process reports state an October 22 research cutoff, document checks of the FDOE review portal, and record that preserved 2026 draft PDFs matched the portal copies by SHA-256 on the check date.","url":"/research/florida-science-standards-review/research/corpus-and-process.html"}},
+    {"@type":"ListItem","position":2,"item":{"@type":"Event","name":"Review hub and comparative analyses published","startDate":"2026-10-23","description":"Repository history records publication of the standards review hub, then revisions on predecessor standards, omissions, sectarian framing, provenance, authorship and AI disclosure, public summaries, learning order, and workload methods.","url":"/research/florida-science-standards-review/"}},
+    {"@type":"ListItem","position":3,"item":{"@type":"Event","name":"Interactive graph and source coverage added","startDate":"2026-10-24","description":"Repository history records the first interactive benchmark/source graph, shareable graph items, and source coverage reporting. The viewer now supports selecting a node from search or the graph, refocusing its network, and choosing a recorded-connection depth.","url":"/research/florida-science-standards-review/research/standards-graph.html"}},
+    {"@type":"ListItem","position":4,"item":{"@type":"Event","name":"Organization research site prepared","startDate":"2026-10-24","description":"A public Research landing page and organization-site structure were prepared to host the standards review under Florida Citizens for Science GitHub Pages. Publication awaits repository write access for the welsberr account.","url":"/research/"}}
+  ],
+  "dateBasis": "Report-stated research cutoff and dated repository commit history. This timeline records verifiable artifact milestones; it does not claim that work began on the first listed date or capture all off-repository activity."
+}

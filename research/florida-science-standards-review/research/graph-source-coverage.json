@@ -1,0 +1,16 @@
+{
+  "description": "Counts here describe encoded TextUnit nodes, not the size or importance of original sources. Low counts can indicate incomplete extraction or graph modeling. Consult the cited source or review record before interpreting a gap.",
+  "sources": {
+    "doc:fl-science-2026-draft": {"coverage":"nearly complete benchmark enumeration","note":"The graph contains 1,513 TextUnits, including all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range item (SC.8.PE.1.1-.5; SC.8.PE.2.1-.2). The public packet also includes foreword and table material outside the benchmark enumeration."},
+    "doc:fl-science-2008": {"coverage":"partial; graph extraction gap","note":"Only 32 of the 498 source IDs reviewed in the 2008 comparison are encoded as matching TextUnits, plus one legacy code that is not in the reviewed register. The graph is not a complete representation of the 2008 standards, even though the separate review/register covers all 498 IDs."},
+    "doc:fl-science-1996": {"coverage":"mixed source lines and decomposed items; count is not source count","note":"170 TextUnits are associated with this source node. The separate source-first review enumerates 56 original 1996 standards; the graph’s larger count includes decompositions and must not be read as 170 original standards or a 170-to-2026 coverage denominator."},
+    "doc:fl-science-gle-1999": {"coverage":"reviewed GLE items with one extra placement record","note":"141 TextUnits represent 140 unique GLE codes plus one separate grade-placement record. This is a reviewed comparison set, not all historical GLE artifacts or revision history."},
+    "doc:ngss-all-topic-standards": {"coverage":"selected comparison items","note":"Only 23 NGSS TextUnits are encoded. These are selected performance expectations and concept references, not a complete encoding of NGSS."},
+    "doc:external:8f3e333f4967c18a": {"coverage":"sample only; graph processing incomplete","note":"Only two text items are currently encoded from the 2007 Florida Citizens for Science proposal. The public proposal is substantially larger; this low node count is an extraction/graph-coverage gap, not evidence that the source itself is sparse or unimportant."},
+    "doc:south-carolina-science-2014": {"coverage":"selected comparison items","note":"Only the selected statements used in the external-source comparison are represented."},
+    "doc:external:89574ee13dd2c447": {"coverage":"alias / duplicate source record","note":"This record points to the same South Carolina source file as the named South Carolina source node. It is a data-model duplicate, not another independent source."},
+    "doc:external:9aab810f0e14c6e9": {"coverage":"selected comparison items","note":"Only statements relevant to the bounded external comparison are represented."},
+    "doc:external:a6ff73f1309c8ec5": {"coverage":"selected comparison items","note":"Only statements relevant to the bounded external comparison are represented."},
+    "doc:unassigned-source": {"coverage":"source mapping missing","note":"469 TextUnits in the graph lack a sourceDocument assignment. They are shown under this processing-gap node until their source mapping is resolved."}
+  }
+}
