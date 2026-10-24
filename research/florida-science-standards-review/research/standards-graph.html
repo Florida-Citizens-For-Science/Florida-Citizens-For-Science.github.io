@@ -42,15 +42,26 @@
 
     <section class="graph-controls" aria-labelledby="find-heading">
       <h2 id="find-heading">Find an item</h2>
+      <p>Choose a starting task, or search directly. Selecting any result centers the network on that item.</p>
+      <div class="explorer-start" role="group" aria-label="Common explorer tasks">
+        <button type="button" data-start="benchmark">Find a benchmark</button>
+        <button type="button" data-start="compare">Compare source versions</button>
+        <button type="button" data-start="materials">Find prepared teaching materials</button>
+        <button type="button" data-start="evolution">Explore evolution</button>
+        <button type="button" data-start="climate">Explore climate change</button>
+      </div>
       <label for="graph-search">Search benchmark code, wording, source, or concept</label>
-      <input id="graph-search" type="search" autocomplete="off" placeholder="For example: SC.912.L.15.13 or natural selection">
+      <input id="graph-search" type="search" autocomplete="off" placeholder="For example: SC.912.L.15.13, natural selection, or climate change">
+      <p class="filter-note">This box searches recorded wording, source titles, and review notes. For conceptually related passages with different wording, use the separate <a href="semantic-search.html">semantic-search tool</a>.</p>
       <div class="filter-row">
         <div><label for="version-filter">Source version</label><select id="version-filter"><option value="">All versions</option></select></div>
         <div><label for="grade-filter">Grade/course</label><select id="grade-filter"><option value="">All grades</option></select></div>
         <div><label for="status-filter">Comparison status</label><select id="status-filter"><option value="">All statuses</option></select></div>
+        <div><label for="material-filter">Prepared curriculum materials</label><select id="material-filter"><option value="">Any availability</option><option value="has_resource">Has a linked resource</option><option value="verified">Resource fit reviewed</option><option value="located">Resource located; fit not verified</option><option value="none_found_in_search">None found in a bounded search</option><option value="not_assessed">Not inventoried yet</option></select></div>
       </div>
+      <p class="filter-note">Material filters apply to 2026 draft benchmarks. “Not inventoried” means this review has not yet checked for resources; it does not mean none exist.</p>
       <p id="result-count" class="result-count" aria-live="polite">Loading graph…</p>
-      <div id="result-list" class="result-list" role="list"></div>
+      <ul id="result-list" class="result-list" aria-label="Matching benchmarks, concepts, and source records"></ul>
       <button id="more-results" class="more-button" type="button" hidden>Show more results</button>
     </section>
 
