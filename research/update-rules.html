@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shared update and release rules for the Florida science standards review corpus and analysis.">
+  <meta name="dateModified" content="2026-10-24">
+  <title>Research update rules | Florida Citizens for Science</title>
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">FCS</span><span>Florida Citizens for Science</span></a><nav class="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/research/">Research</a><a href="/research/timeline.html">Timeline</a></nav></div></header>
+  <main class="main content" id="main">
+    <p class="eyebrow">Project maintenance</p>
+    <h1>Shared update rules</h1>
+    <p class="lede">Use these rules whenever research or publication work changes the public standards-review artifacts. They keep dates, evidence, generated data, disclosures, and public pages in sync.</p>
+
+    <section>
+      <h2>1. Record completed milestones in both timelines</h2>
+      <ul>
+        <li>For each substantive research or publication milestone, update <a href="/research/timeline.html">the readable timeline</a> and <a href="/research/timeline.json">timeline.json</a> in the same change set.</li>
+        <li>Keep the event title, date, description, and destination link consistent in both. Add the repository commit identifier when it is known; do not invent dates for off-repository work.</li>
+        <li>Distinguish a research cutoff, a source-check date, a commit date, and a publication date. State the date basis and link the artifact that supports the milestone.</li>
+        <li>Correct stale entries when status changes—for example, “prepared” to “published”—and preserve the historical fact that the status changed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Treat the corpus register as the source record</h2>
+      <ul>
+        <li>For every added or replaced source, record its issuing body, title, edition/date, retrieval or check date, stable public URL or archive location, file hash where available, page/line locator, and redistribution status.</li>
+        <li>Keep source text, extracted text, analysis, and generated outputs distinguishable. Record files excluded from indexing and explain why; exclusion is not a negative finding.</li>
+        <li>When a source changes, preserve the previous file or its hash and note the version difference. Do not silently replace a source that supports an existing claim.</li>
+        <li>Update the corpus inventory and source-coverage notes when files, indexed chunks, extraction status, or rights status change.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Rebuild graph data and its coverage notes together</h2>
+      <ul>
+        <li>Regenerate graph data from its underlying registers and reviewed crosswalks. Avoid hand-editing generated counts or copying stale totals into reports.</li>
+        <li>Update <a href="/research/florida-science-standards-review/research/graph-source-coverage.json">graph-source-coverage.json</a>, the schema, and any affected viewer labels or controls whenever nodes, relations, evidence methods, or extraction scope change.</li>
+        <li>Keep reviewed evidence separate from automated similarity leads. Label each machine-ranked link as unreviewed; similarity alone cannot establish borrowing, continuity, authorship, or omission.</li>
+        <li>When a unit combines evidence from multiple source versions, preserve all locators and do not assign a single source version unless the record supports it.</li>
+        <li>Do not republish a source’s full text or file until redistribution rights are checked. Prefer direct source links and bounded excerpts where the rights are uncertain.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Keep analysis and disclosure aligned with the evidence</h2>
+      <ul>
+        <li>Update every report, summary, social post, and executive finding that relies on changed counts, classifications, or conclusions. Mark interpretations as interpretations and identify unresolved evidence.</li>
+        <li>For generative AI or other software that materially contributes to research or writing, update the authorship and acknowledgements disclosure with the tool or system, its role, and the human review performed. Do not describe detector output as proof of authorship.</li>
+        <li>When a claim changes, preserve the old reasoning in repository history and link the new evidence or correction. Avoid editing the timeline to imply a different past process.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Publish and close the loop</h2>
+      <ul>
+        <li>Update cross-links, metadata dates, and any forwarding or navigation links affected by a page move.</li>
+        <li>Before publishing, check that structured data parses, page links resolve, and the viewer’s counts and labels match the graph and coverage file.</li>
+        <li>After publication, record the commit and build status. If deployment fails, keep the timeline status accurate and add the successful publication milestone after the retry succeeds.</li>
+      </ul>
+    </section>
+
+    <p class="notice"><strong>Close-out check:</strong> timeline HTML and JSON agree; source inventory and hashes are current; generated graph and coverage counts agree; affected reports and disclosures are synchronized; and the published build is confirmed.</p>
+    <p><a href="/research/timeline.html">Return to the review timeline</a> · <a href="/research/florida-science-standards-review/research/standards-graph.html">Open the standards graph</a></p>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><span>Research maintenance · Florida Citizens for Science</span><a href="/research/">Research index</a></div></footer>
+</body>
+</html>
