@@ -50,6 +50,7 @@
 #corpus-map .focus-node.depth-3 circle{fill:#eae4f2;stroke:#6c5485}
 #corpus-map .focus-node.selected circle{fill:#194e47;stroke:#102f2b;stroke-width:2.5}
 #corpus-map .focus-node text{font:12px system-ui,sans-serif;fill:#263d39;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+#corpus-map .focus-node.labels-hidden:not(.selected) text{display:none}
 #corpus-map .focus-node.selected text{font-weight:700;fill:#153e3b}
 #corpus-map .focus-node:focus{outline:none}
 #corpus-map .focus-node:focus circle{stroke:#111;stroke-width:3.5}
@@ -99,6 +100,9 @@
 .relation-meta{font-size:.88rem;color:#485851}
 .more-relations{margin:.6rem 0}
 .more-relations summary{cursor:pointer;font-weight:650;color:#174f48}
+.semantic-leads{margin:.9rem 0;padding:.8rem 1rem;border-left:4px solid #80619a;background:#f7f3fa}
+.semantic-leads h3{margin-top:0}
+.semantic-leads-note{font-size:.9rem;color:#4a4051}
 .neighborhood{width:100%;min-height:260px;margin:.5rem 0 1rem;background:#f7f9f8;border:1px solid #d6ddda;border-radius:.3rem}
 .neighborhood text{font:12px system-ui,sans-serif;fill:#263d39}
 .neighborhood .edge{stroke:#80938d;stroke-width:1.3}
