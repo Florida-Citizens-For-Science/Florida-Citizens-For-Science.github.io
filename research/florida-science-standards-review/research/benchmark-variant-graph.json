@@ -174406,8 +174406,20 @@
       "id": "doc:corpus:fcat-alignment",
       "type": "StandardVersion",
       "title": "Florida Science Content-Focus Alignment (2008–2010)",
-      "status": "Ancillary corpus resource. Extracted text is in the local semantic-search corpus; this source has not been segmented into benchmark-level graph items, and no comparison relation is inferred from its presence.",
+      "status": "Ancillary assessment resource. Three original XLS workbooks are included as source-file records and were excluded from semantic indexing; their extracted alignments are represented in the linked CSV and in the reviewed assessmentCrosswalk assertions. No additional relations are inferred from the source files alone.",
       "sourceFiles": [
+        {
+          "file": "sources/1996-2008-crosswalk/fcat-science-content-focus-2008.xls",
+          "sha256": "1168b9c24cfa12f0ab200ff38e8062570fd576c704e08cc32ff72d8359751044"
+        },
+        {
+          "file": "sources/1996-2008-crosswalk/fcat-science-content-focus-2009.xls",
+          "sha256": "4701d4ee9cdb3ab4d95e7e45c46a48a77ef1c376f50a7126770c2403fefb0457"
+        },
+        {
+          "file": "sources/1996-2008-crosswalk/fcat-science-content-focus-2010.xls",
+          "sha256": "ac3f4a638ccd5ff38bc0f49b7b33a232eb0ab0c5112e7940652a2fc4ec03c17b"
+        },
         {
           "file": "sources/1996-2008-crosswalk/fcat-science-content-focus-alignments.csv",
           "sha256": "339056fdf12ace7e616064256f0d0395343061c19b14078cb39dd0bfa7b76811"

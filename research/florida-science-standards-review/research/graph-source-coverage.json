@@ -71,7 +71,7 @@
     },
     "doc:corpus:fcat-alignment": {
       "coverage": "document-level record only",
-      "note": "Ancillary corpus resource. Extracted text is in the local semantic-search corpus; this source has not been segmented into benchmark-level graph items, and no comparison relation is inferred from its presence. No item-level graph segmentation or comparison relation is implied. Source-file names and SHA-256 values are recorded in the graph; consult primary source host or the local corpus as rights permit."
+      "note": "Ancillary assessment resource. Three original XLS workbooks are recorded in the graph and were excluded from semantic indexing; their extracted alignments are represented in the CSV and reviewed assessmentCrosswalk assertions. No additional relation is inferred from source presence alone."
     },
     "doc:corpus:aaas-2007-presentation": {
       "coverage": "document-level record only",
