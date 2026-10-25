@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Full-viewport interactive graph of Florida science standards, comparison sources, and reviewed relationships.">
-  <meta name="dateModified" content="2026-10-24">
+  <meta name="dateModified" content="2026-10-25">
   <title>Standards graph app | Florida Science Standards Draft Review</title>
   <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
   <link rel="stylesheet" href="graph-viewer.css">
@@ -35,7 +35,7 @@
       <div class="sidebar-section">
         <h3>Start with a question</h3>
         <div class="explorer-start" role="group" aria-label="Common explorer tasks">
-          <button type="button" data-start="benchmark">Find a benchmark</button>
+          <button type="button" data-start="benchmark">Browse 2026 benchmarks</button>
           <button type="button" data-start="compare">Compare sources</button>
           <button type="button" data-start="materials">Find teaching materials</button>
           <button type="button" data-start="evolution">Explore evolution</button>
@@ -84,7 +84,7 @@
           <select id="source-layout" aria-label="Source map layout"><option value="curated">Curated</option><option value="families">Group by source family</option></select>
           <label for="map-zoom">Zoom</label>
           <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
-          <input id="map-zoom" type="range" min="45" max="240" value="100" aria-label="Map zoom">
+          <input id="map-zoom" type="range" min="45" max="400" value="100" aria-label="Map zoom">
           <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
           <span id="zoom-value">100%</span>
           <label for="focus-depth">Connections</label>
@@ -95,13 +95,13 @@
       </div>
       <div class="canvas-caption">
         <h2 id="map-heading">Source-level overview</h2>
-        <p id="map-explanation">Each circle is a source or version; connections summarize recorded benchmark relationships. Counts describe graph coverage.</p>
+        <p id="map-explanation">Each circle is a source or version; solid lines summarize recorded comparisons and dashed amber lines mark sources named in composite-item locators.</p>
       </div>
       <div id="map-scroll" class="map-viewport" tabindex="0" aria-label="Graph canvas. Drag or use arrow keys to pan. Use the mouse wheel to zoom.">
         <svg id="corpus-map" viewBox="0 0 1200 620" role="group" aria-label="Interactive map of source versions and reviewed relationships"></svg>
         <div class="canvas-hint" aria-hidden="true">Drag or arrows to pan · Wheel to zoom · Select a node for details</div>
       </div>
-      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparisons</span><span><i class="legend-line"></i>Recorded links</span><span><i class="legend-line machine"></i>Unreviewed similarity lead</span></div>
+      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparisons</span><span><i class="legend-line"></i>Recorded comparisons</span><span><i class="legend-line locator"></i>Source named in locator</span><span><i class="legend-line machine"></i>Unreviewed similarity lead</span></div>
     </main>
 
     <footer class="graph-statusbar">

@@ -56,7 +56,8 @@
   let results = [], shown = 0, selectedId = null;
   let viewMode = 'sources', sourceLayout = 'curated', mapZoom = 100, mapPanX = 0, mapPanY = 0, sourceMapEdges = [];
   let viewGeometry = {width:1200,height:620,cx:600,cy:310}, dragState = null;
-  const defaultMapSources = new Set(['doc:fl-science-2026-draft','doc:fl-science-2008','doc:fl-science-1996','doc:fl-science-gle-1999','doc:ngss-all-topic-standards']);
+  const defaultMapSources = new Set(['doc:fl-science-2026-draft']);
+  const comparisonMapSources = new Set(['doc:fl-science-2026-draft','doc:fl-science-2008','doc:fl-science-1996','doc:fl-science-gle-1999','doc:ngss-all-topic-standards']);
   const batch = 50;
   function esc(v='') { return String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
   function applyMapViewBox() {
@@ -69,7 +70,7 @@
   }
   function openDetails() { if(!detailDialog.open)detailDialog.showModal(); }
   function setZoom(value) {
-    mapZoom=Math.min(240,Math.max(45,Number(value)||100));
+    mapZoom=Math.min(400,Math.max(45,Number(value)||100));
     $('#map-zoom').value=String(mapZoom);$('#zoom-value').textContent=`${mapZoom}%`;applyMapViewBox();
   }
   function title(id) {
@@ -124,18 +125,43 @@
     return ({'doc:fl-science-2026-draft':'2026 Florida draft','doc:fl-science-2008':'Florida 2008','doc:fl-science-1996':'Florida 1996','doc:fl-science-gle-1999':'Florida GLE 1998/99','doc:ngss-all-topic-standards':'NGSS','doc:external:8f3e333f4967c18a':'FCS proposal 2007','doc:south-carolina-science-2014':'South Carolina 2014','doc:external:89574ee13dd2c447':'South Carolina copy','doc:external:9aab810f0e14c6e9':'Massachusetts 2006','doc:external:a6ff73f1309c8ec5':'California 2006','doc:external:indiana-2000':'Indiana 2000 K–8','doc:corpus:fldoe-workgroup-call':'FLDOE workgroup call','doc:corpus:fldoe-listening-tour':'FLDOE listening tour','doc:corpus:florida-1998-review':'Florida 1998 review report','doc:corpus:florida-1996-fcat':'Florida 1996 assessment','doc:corpus:florida-gle-assessment':'Florida GLE assessment','doc:corpus:fcat-alignment':'FCAT alignment memo','doc:corpus:aaas-2007-presentation':'AAAS 2007 process','doc:corpus:achieve-2007-presentation':'Achieve 2007 process','doc:corpus:naep-2007-presentation':'NAEP 2007 process','doc:corpus:new-standards-2007-presentation':'2007 rationale presentation','doc:corpus:ngss-dci':'NGSS DCI','doc:corpus:ngss-appendix-e':'NGSS Appendix E','doc:corpus:ngss-ms-ls-evidence':'NGSS MS-LS evidence','doc:corpus:nrc-framework-brief':'NRC Framework brief','doc:corpus:massachusetts-2016':'Massachusetts 2016','doc:unassigned-source':'Unassigned source mapping'})[id]||title(id);
   }
   function docClass(id) { return id==='doc:unassigned-source'?'unassigned':id==='doc:fl-science-2026-draft'?'draft':id==='doc:fl-science-2008'||id==='doc:fl-science-1996'||id==='doc:fl-science-gle-1999'?'florida':'external'; }
+  function locatorSourceDocs(unit) {
+    const locator=String(unit?.pageOrAnchor||'').toLowerCase().replace(/\\/g,'/'),found=new Set();
+    if(!locator)return [];
+    docs.forEach(doc=>(doc.sourceFiles||[]).forEach(file=>{
+      const path=String(file.file||'').toLowerCase().replace(/\\/g,'/');if(!path)return;
+      const stem=path.replace(/\.(pdf|txt|md|csv|xls|xlsx|ppt|pptx)$/i,'');
+      const candidates=[path,stem+'.txt',stem+'.pdf',path.split('/').pop(),stem.split('/').pop()];
+      if(candidates.some(value=>value.length>8&&locator.includes(value)))found.add(doc.id);
+    }));
+    return [...found];
+  }
   function buildSourceMapEdges() {
     const agg=new Map();
+    function group(from,to) {
+      if(!from||!to||from===to)return null;
+      const [a,b]=[from,to].sort(),key=`${a}|${b}`;
+      if(!agg.has(key))agg.set(key,{a,b,count:0,referenceCount:0,relations:new Map(),sample:null,referenceSample:null});
+      return agg.get(key);
+    }
     assertions.forEach(a=>{
       if(a.method==='semantic_neighbor_screen')return;
       if(!a.sourceUnit||!a.targetUnit||!byId.has(a.sourceUnit)||!byId.has(a.targetUnit))return;
-      const from=byId.get(a.sourceUnit).sourceDocument,to=byId.get(a.targetUnit).sourceDocument;
-      if(!from||!to||from===to)return;
-      const key=[from,to].sort().join('|');
-      if(!agg.has(key))agg.set(key,{a:[from,to].sort()[0],b:[from,to].sort()[1],count:0,relations:new Map()});
-      const e=agg.get(key);e.count++;e.relations.set(a.relation,(e.relations.get(a.relation)||0)+1);if(!e.sample)e.sample=a;
+      const source=byId.get(a.sourceUnit),target=byId.get(a.targetUnit),from=source.sourceDocument,to=target.sourceDocument;
+      if(from&&!source._sourceMappingMissing&&to&&!target._sourceMappingMissing&&from!==to){
+        const e=group(from,to);e.count++;e.relations.set(a.relation,(e.relations.get(a.relation)||0)+1);if(!e.sample)e.sample=a;
+      }
+      const unmapped=source._sourceMappingMissing?source:target._sourceMappingMissing?target:null;
+      const mapped=unmapped===source?target:source;
+      if(unmapped&&mapped.sourceDocument&&!mapped._sourceMappingMissing){
+        locatorSourceDocs(unmapped).forEach(docId=>{
+          if(docId===mapped.sourceDocument)return;
+          const e=group(docId,mapped.sourceDocument);if(!e)return;
+          e.referenceCount++;if(!e.referenceSample)e.referenceSample={assertion:a,focusUnit:mapped.id};
+        });
+      }
     });
-    sourceMapEdges=[...agg.values()].sort((a,b)=>b.count-a.count);
+    sourceMapEdges=[...agg.values()].sort((a,b)=>(b.count+b.referenceCount)-(a.count+a.referenceCount));
   }
   function renderSourceMap() {
     let width=1700,height=1120, headings='';
@@ -156,41 +182,52 @@
       height=Math.max(height,720+Math.ceil(extra.length/5)*170);
     }
     const counts=new Map();units.forEach(u=>counts.set(u.sourceDocument,(counts.get(u.sourceDocument)||0)+1));
-    const paths=sourceMapEdges.map((e,i)=>{const p=pos[e.a],q=pos[e.b];if(!p||!q)return'';const max=Math.max(1,...sourceMapEdges.map(x=>x.count));const sw=1+3*Math.sqrt(e.count/max);const label=e.count>1?e.count:'';return `<g class="source-edge" data-edge="${i}" tabindex="0" role="button" aria-label="Explore ${e.count} comparison links between ${esc(title(e.a))} and ${esc(title(e.b))}"><line class="map-edge" stroke-width="${sw}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/><title>${esc(title(e.a))} ↔ ${esc(title(e.b))}: ${e.count} recorded comparison links</title>${label?`<text class="map-edge-label" x="${(p[0]+q[0])/2}" y="${(p[1]+q[1])/2-5}" text-anchor="middle">${label}</text>`:''}</g>`;}).join('');
+    const max=Math.max(1,...sourceMapEdges.map(x=>x.count));
+    const paths=sourceMapEdges.map((e,i)=>{const p=pos[e.a],q=pos[e.b];if(!p||!q)return'';const sw=e.count?1.5+4.5*Math.sqrt(e.count/max):0,dx=q[0]-p[0],dy=q[1]-p[1],len=Math.hypot(dx,dy)||1,ox=-dy/len*5,oy=dx/len*5,label=e.count>1?e.count:'',relationCounts=[...e.relations].map(([name,count])=>`${name}: ${count}`).join('; ');return `<g class="source-edge" data-edge="${i}" tabindex="0" role="button" aria-label="Explore ${e.count} recorded comparison links and ${e.referenceCount} source-file mentions in locators between ${esc(title(e.a))} and ${esc(title(e.b))}">${e.count?`<line class="map-edge" stroke-width="${sw}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`:''}${e.referenceCount?`<line class="map-edge locator-reference" x1="${p[0]+ox}" y1="${p[1]+oy}" x2="${q[0]+ox}" y2="${q[1]+oy}"/>`:''}<line class="edge-hit-target" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/><title>${esc(title(e.a))} ↔ ${esc(title(e.b))}: ${e.count} recorded comparison links${relationCounts?` (${esc(relationCounts)})`:''}; ${e.referenceCount} additional source-file mentions in item locators. These citations provide context and do not establish benchmark equivalence.</title>${label?`<text class="map-edge-label" x="${(p[0]+q[0])/2}" y="${(p[1]+q[1])/2-5}" text-anchor="middle">${label}</text>`:''}</g>`;}).join('');
     const nodes=docs.map(d=>{const p=pos[d.id]||[width/2,height/2],count=counts.get(d.id)||0,r=24+Math.min(30,Math.sqrt(count)*.75),coverage=coverageByDoc.get(d.id)||{},cl=docClass(d.id),alias=coverage.coverage?.includes('alias'),note=coverage.note||'',status=coverage.coverage||'coverage not classified';const badge=count===0?'DOC ONLY':status.includes('complete')?'COMPLETE':status.includes('partial')?'PARTIAL':status.includes('sample')?'SAMPLE':status.includes('alias')?'ALIAS':status.includes('missing')?'MAPPING GAP':status.includes('reviewed')?'REVIEWED':'SELECTED';return `<g class="source-group" data-doc="${esc(d.id)}" tabindex="0" role="button" aria-label="Open ${esc(title(d.id))}; ${count} encoded graph items; coverage: ${esc(status)}"><circle class="source-node ${cl} ${alias?'alias':''}" cx="${p[0]}" cy="${p[1]}" r="${r}"/><text class="source-title ${cl==='draft'?'draft-label':''}" x="${p[0]}" y="${p[1]-4}">${esc(shortTitle(d.id))}</text><text class="source-count ${cl==='draft'?'draft-label':''}" x="${p[0]}" y="${p[1]+15}">${count.toLocaleString()} encoded</text><text class="coverage-badge" x="${p[0]}" y="${p[1]+r+14}" text-anchor="middle">${esc(badge)}</text><title>${esc(note)}</title></g>`;}).join('');
     mapEl.innerHTML=`<g class="map-world">${headings}${paths}${nodes}</g>`;setMapGeometry(width,height,width/2,height/2);
     mapEl.querySelectorAll('.source-group').forEach(g=>{const go=()=>{const id=g.dataset.doc;versionFilter.value=id;updateResults();showDoc(id);};g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
-    mapEl.querySelectorAll('.source-edge').forEach(g=>{const go=()=>{const e=sourceMapEdges[Number(g.dataset.edge)];if(!e)return;searchInput.value='';versionFilter.value='';gradeFilter.value='';statusFilter.value='';updateResults();mapChoices.querySelectorAll('input').forEach(c=>c.checked=c.value===e.a||c.value===e.b);setView('benchmarks');if(e.sample?.sourceUnit&&byId.has(e.sample.sourceUnit))showNode(e.sample.sourceUnit);};g.addEventListener('click',go);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go();}});});
-    mapStatus.textContent=`${docs.length} source/version nodes · ${sourceMapEdges.length} source-to-source relationship groups · ${sourceMapEdges.reduce((s,e)=>s+e.count,0).toLocaleString()} recorded item-level links.`;
+    mapEl.querySelectorAll('.source-edge').forEach(g=>{const go=()=>{const e=sourceMapEdges[Number(g.dataset.edge)];if(!e)return;selectedId=null;searchInput.value='';versionFilter.value='';gradeFilter.value='';statusFilter.value='';updateResults();mapChoices.querySelectorAll('input').forEach(c=>c.checked=c.value===e.a||c.value===e.b);setView('benchmarks');const sample=e.sample?.sourceUnit||e.referenceSample?.focusUnit;if(sample&&byId.has(sample))showNode(sample);};g.addEventListener('click',go);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go();}});});
+    mapStatus.textContent=`${docs.length} source/version nodes · ${sourceMapEdges.length} source pairs · ${sourceMapEdges.reduce((s,e)=>s+e.count,0).toLocaleString()} recorded links · ${sourceMapEdges.reduce((s,e)=>s+e.referenceCount,0).toLocaleString()} source-file mentions in locators.`;
   }
   function populateMapSourceChoices() {
-    const counts=new Map();units.forEach(u=>counts.set(u.sourceDocument,(counts.get(u.sourceDocument)||0)+1));
+    const counts=new Map();units.forEach(u=>{if(u.sourceDocument!=='doc:fl-science-2026-draft'||isDraftUnit(u))counts.set(u.sourceDocument,(counts.get(u.sourceDocument)||0)+1);});
     mapChoices.innerHTML=`<span class="source-choice-title">Versions shown in benchmark view</span>`+docs.map(d=>`<label><input type="checkbox" value="${esc(d.id)}" ${defaultMapSources.has(d.id)?'checked':''}>${esc(shortTitle(d.id))} (${(counts.get(d.id)||0).toLocaleString()})</label>`).join('');
     mapChoices.querySelectorAll('input').forEach(x=>x.addEventListener('change',renderBenchmarkMap));
   }
   function renderBenchmarkMap() {
     if(selectedId && ['TextUnit','Concept'].includes(byId.get(selectedId)?.type)) return renderFocusMap(selectedId);
     const active=[...mapChoices.querySelectorAll('input:checked')].map(x=>x.value);
-    const selectedUnits=units.filter(u=>active.includes(u.sourceDocument)&&(!versionFilter.value||u.sourceDocument===versionFilter.value)&&(!gradeFilter.value||u.gradeSpan===gradeFilter.value)&&(!statusFilter.value||statusCategory(u)===statusFilter.value)&&matchesMaterialFilter(u));
-    const width=Math.max(1200,active.length*330),height=850,colW=width/Math.max(1,active.length),positions=new Map();
+    const selectedUnits=units.filter(u=>active.includes(u.sourceDocument)&&(u.sourceDocument!=='doc:fl-science-2026-draft'||isDraftUnit(u))&&(!versionFilter.value||u.sourceDocument===versionFilter.value)&&(!gradeFilter.value||u.gradeSpan===gradeFilter.value)&&(!statusFilter.value||statusCategory(u)===statusFilter.value)&&matchesMaterialFilter(u));
+    const width=2200,colW=width/Math.max(1,active.length),positions=new Map();
     const gradeOrder=['K','K–2','1','2','3','3–5','4','5','6','6–8','7','8','9','9–12','10','11','12','K–5','MS','HS','H','Unspecified'];
     const heading=active.map((doc,i)=>`<text class="map-heading" x="${i*colW+colW/2}" y="27" text-anchor="middle">${esc(shortTitle(doc))}</text>`).join('');
     const groups=new Map();selectedUnits.forEach(u=>{if(!groups.has(u.sourceDocument))groups.set(u.sourceDocument,new Map());const g=groups.get(u.sourceDocument),key=gradeLabel(u.gradeSpan);if(!g.has(key))g.set(key,[]);g.get(key).push(u);});
+    const colsFor=items=>Math.max(1,Math.min(30,Math.ceil(Math.sqrt(items.length*320/29))));
+    const activeGrades=gradeOrder.filter(grade=>active.some(doc=>groups.get(doc)?.has(grade)));
+    const gradeTop=new Map();let nextGradeY=64;
+    activeGrades.forEach(grade=>{
+      gradeTop.set(grade,nextGradeY);
+      const maxRows=Math.max(1,...active.map(doc=>{const items=groups.get(doc)?.get(grade)||[];return items.length?Math.ceil(items.length/colsFor(items)):0;}));
+      nextGradeY+=maxRows*12+34;
+    });
+    const height=Math.max(420,nextGradeY+40);
     active.forEach((doc,di)=>{
       const gs=groups.get(doc)||new Map();
-      [...gs.keys()].sort((a,b)=>gradeOrder.indexOf(a)-gradeOrder.indexOf(b)).forEach(grade=>{
-        const gi=gradeOrder.indexOf(grade), items=gs.get(grade).sort((a,b)=>(a.code||'').localeCompare(b.code||'')), cols=Math.max(1,Math.min(30,Math.ceil(Math.sqrt(items.length*320/29)))), rows=Math.ceil(items.length/cols), dx=320/cols, dy=Math.min(3,25/Math.max(1,rows));
-        items.forEach((u,i)=>positions.set(u.id,[di*colW+5+(i%cols)*dx,65+gi*34+Math.floor(i/cols)*dy]));
+      activeGrades.forEach(grade=>{
+        const items=(gs.get(grade)||[]).sort((a,b)=>(a.code||'').localeCompare(b.code||''));if(!items.length)return;
+        const cols=colsFor(items),rows=Math.ceil(items.length/cols),dx=(colW-32)/cols,dy=12,top=gradeTop.get(grade);
+        items.forEach((u,i)=>positions.set(u.id,[di*colW+16+(i%cols)*dx,top+Math.floor(i/cols)*dy]));
       });
     });
-    const guides=gradeOrder.map((_,i)=>`<line class="grade-guide" x1="0" y1="${56+i*34}" x2="${width}" y2="${56+i*34}"/>`).join('');
-    const labels=active.map((doc,di)=>gradeOrder.map((grade,gi)=>groups.get(doc)?.has(grade)?`<text class="map-text" x="${di*colW+6}" y="${62+gi*34}">${esc(grade)}</text>`:'').join('')).join('');
+    const guides=activeGrades.map(grade=>`<line class="grade-guide" x1="0" y1="${gradeTop.get(grade)-14}" x2="${width}" y2="${gradeTop.get(grade)-14}"/>`).join('');
+    const labels=active.map((doc,di)=>activeGrades.map(grade=>groups.get(doc)?.has(grade)?`<text class="map-text" x="${di*colW+6}" y="${gradeTop.get(grade)-2}">${esc(grade)}</text>`:'').join('')).join('');
     const selectedNeighbors=new Map();if(selectedId)(adj.get(selectedId)||[]).forEach(e=>{const other=e.a===selectedId?e.b:e.a;if(positions.has(other)){if(!selectedNeighbors.has(other))selectedNeighbors.set(other,[]);selectedNeighbors.get(other).push(e.assertion);}});
     let edges='';if(selectedId&&positions.has(selectedId))selectedNeighbors.forEach((assertions,nid)=>{const a=positions.get(selectedId),b=positions.get(nid),machineOnly=assertions.every(x=>x?.method==='semantic_neighbor_screen'),mixed=assertions.some(x=>x?.method==='semantic_neighbor_screen')&&!machineOnly,relations=[...new Set(assertions.map(x=>x?.relation||'related'))];edges+=`<line class="map-edge active ${machineOnly?'machine-candidate':''}${mixed?' mixed-evidence':''}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/><title>${assertions.length} assertion(s) · ${esc(relations.join(', '))}${machineOnly?' · unreviewed machine-ranked lead':''}</title>`;});
-    const dots=selectedUnits.map(u=>{const p=positions.get(u.id),isSel=u.id===selectedId,isNeighbor=selectedNeighbors.has(u.id),cls=`benchmark-dot ${docClass(u.sourceDocument)}${isSel?' selected':''}${isNeighbor?' neighbor':''}`;return `<circle class="${cls}" cx="${p[0]}" cy="${p[1]}" r="${isSel?7:isNeighbor?5:2.6}" data-node="${esc(u.id)}" tabindex="0" role="button" aria-label="Open ${esc(u.code)} from ${esc(title(u.sourceDocument))}; Grade ${esc(u.gradeSpan||'unspecified')}; ${esc(itemStatus(u)||'status unclassified')}"><title>${esc(u.code)} · ${esc(shortTitle(u.sourceDocument))} · ${esc(itemStatus(u)||'status unclassified')} · ${esc((u.text||'').slice(0,180))}</title></circle>`;}).join('');
+    const dots=selectedUnits.map(u=>{const p=positions.get(u.id),isSel=u.id===selectedId,isNeighbor=selectedNeighbors.has(u.id),cls=`benchmark-dot ${docClass(u.sourceDocument)}${isSel?' selected':''}${isNeighbor?' neighbor':''}`;return `<circle class="${cls}" cx="${p[0]}" cy="${p[1]}" r="${isSel?8:isNeighbor?6:4}" data-node="${esc(u.id)}" tabindex="0" role="button" aria-label="Open ${esc(u.code)} from ${esc(title(u.sourceDocument))}; Grade ${esc(u.gradeSpan||'unspecified')}; ${esc(itemStatus(u)||'status unclassified')}"><title>${esc(u.code)} · ${esc(shortTitle(u.sourceDocument))} · ${esc(itemStatus(u)||'status unclassified')} · ${esc((u.text||'').slice(0,180))}</title></circle>`;}).join('');
     mapEl.innerHTML=`<g class="map-world">${guides}${heading}${labels}${edges}${dots}</g>`;setMapGeometry(width,height,width/2,height/2);
     mapEl.querySelectorAll('[data-node]').forEach(c=>{const go=()=>showNode(c.dataset.node);c.addEventListener('click',go);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
-    mapStatus.textContent=`${selectedUnits.length.toLocaleString()} benchmark/source items shown across ${active.length} selected versions. ${selectedId?`${selectedNeighbors.size} linked neighbor(s) highlighted; select a dot or use the searchable list.`:'Select an item from search to reveal its recorded cross-version connections.'} Grade labels group items for navigation only; they do not indicate a within-year teaching sequence.`;
+    mapStatus.textContent=`${selectedUnits.length.toLocaleString()} benchmark/source items shown across ${active.length} selected versions. Nodes are spaced within grade/course bands; hover or focus a point for its exact code, or select it or a result for details. ${selectedId?`${selectedNeighbors.size} linked neighbor(s) highlighted.`:'Search by benchmark code or filter by source and grade to narrow the map.'} Grade labels group items for navigation only; they do not indicate a within-year teaching sequence.`;
   }
   function passesFocusFilters(id) {
     const n=byId.get(id);
@@ -259,7 +296,7 @@
     mapChoices.hidden=mode!=='benchmarks';
     $('#source-layout').disabled=mode!=='sources';
     $('#map-heading').textContent=mode==='sources'?'Source-level overview':'Benchmark network';
-    $('#map-explanation').textContent=mode==='sources'?'Each circle represents a source/version node; size reflects encoded items. Links summarize recorded benchmark relationships. Counts describe graph coverage, not source size or importance.':'Columns group items by source version and rows by grade/course. Select a dot or search result to reveal recorded links. Connections focus on the selected item to keep the view readable.';
+    $('#map-explanation').textContent=mode==='sources'?'Each circle represents a source/version; solid links are recorded comparison assertions, while dashed amber links mark source files named in composite-item locators. Locator citations add context, not a claim of equivalence.':'Each point is a benchmark item, grouped by source and grade/course. This view starts with the 2026 draft; use source and grade filters or search by code. Hover or focus points to identify them; select a point or result for details.';
     if(mode==='sources')renderSourceMap();else renderBenchmarkMap();
   }
   function updateMap() { if(viewMode==='sources')renderSourceMap();else renderBenchmarkMap(); }
@@ -319,6 +356,8 @@
   function runStartAction(action) {
     mapPanX=0;mapPanY=0;
     selectedId=null;gradeFilter.value='';statusFilter.value='';materialFilter.value='';versionFilter.value='';searchInput.value='';
+    mapChoices.querySelectorAll('input').forEach(x=>{x.checked=(action==='compare'?comparisonMapSources:defaultMapSources).has(x.value);});
+    if(action==='benchmark')versionFilter.value='doc:fl-science-2026-draft';
     if(action==='materials'){versionFilter.value='doc:fl-science-2026-draft';materialFilter.value='has_resource';}
     if(action==='evolution'){versionFilter.value='doc:fl-science-2026-draft';searchInput.value='evolution';}
     if(action==='climate'){versionFilter.value='doc:fl-science-2026-draft';searchInput.value='climate change';}
@@ -430,7 +469,7 @@
     });
     mapViewport.addEventListener('wheel',e=>{
       e.preventDefault();const rect=mapViewport.getBoundingClientRect(),old=mapEl.viewBox.baseVal,fx=(e.clientX-rect.left)/rect.width,fy=(e.clientY-rect.top)/rect.height;
-      const worldX=old.x+fx*old.width,worldY=old.y+fy*old.height,next=Math.round(Math.min(240,Math.max(45,mapZoom*(e.deltaY<0?1.12:.89))));
+      const worldX=old.x+fx*old.width,worldY=old.y+fy*old.height,next=Math.round(Math.min(400,Math.max(45,mapZoom*(e.deltaY<0?1.12:.89))));
       const width=viewGeometry.width*(100/next),height=viewGeometry.height*(100/next);
       mapZoom=next;mapPanX=worldX-fx*width-(viewGeometry.cx-width/2);mapPanY=worldY-fy*height-(viewGeometry.cy-height/2);
       $('#map-zoom').value=String(mapZoom);$('#zoom-value').textContent=`${mapZoom}%`;applyMapViewBox();

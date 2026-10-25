@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Introduction and full-screen interactive app for exploring Florida science standards and their reviewed source relationships.">
-  <meta name="dateModified" content="2026-10-24">
+  <meta name="dateModified" content="2026-10-25">
   <title>Standards and source graph | Florida Science Standards Draft Review</title>
   <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
 </head>
@@ -36,7 +36,7 @@
 
     <section class="section">
       <h2>How to read the graph</h2>
-      <p>Solid connections represent recorded comparison assertions. Dashed purple connections in a focused view are machine-ranked similarity leads and remain unreviewed. They are discovery aids, not evidence of copying, authorship, or access. The graph’s source map excludes those leads. Each item detail identifies the relationship label, evidence note, and confidence where recorded.</p>
+      <p>Solid connections represent recorded comparison assertions. Dashed amber connections mark standards files named in locators for composite crosswalk items that have no single source assignment; these citations add context but do not claim benchmark equivalence. Dashed purple connections in a focused view are machine-ranked similarity leads and remain unreviewed. They are discovery aids, not evidence of copying, authorship, or access. Each item detail identifies the relationship label, evidence note, and confidence where recorded.</p>
       <p>The graph contains benchmark items from the 1996 Florida standards, 1998/99 grade-level elaborations, adopted 2008 Florida standards, proposed 2026 draft, NGSS, Indiana 2000, and the 2007 Florida Citizens for Science proposal, plus document-level process and framework records. Source files remain at their public hosts unless redistribution has been checked.</p>
       <p><strong>Coverage limits:</strong> all 1,512 current draft leaf benchmarks and 498 Florida 2008 benchmark IDs are represented. Coverage for older and external sources varies. The graph also contains 3,354 machine-ranked leads. Some derived crosswalk items cite multiple source files without a single source-version assignment. Read the <a href="graph-source-coverage.json">source-coverage notes</a> before drawing conclusions from the map.</p>
       <p>Curriculum-material inventory is a focused first pass: 19 OpenSciEd matches have been verified. Other benchmarks remain not inventoried; a missing entry is not evidence that no material exists.</p>
@@ -45,7 +45,7 @@
 
     <section class="section">
       <h2>Controls and accessibility</h2>
-      <p>The app keeps its canvas within the viewport. Use the sidebar to search and filter, then choose the source map or benchmark network. The source map has a curated layout and an option to group records by source family. Drag the map or focus the canvas and use arrow keys to pan; use the wheel or zoom controls to enlarge or reduce it. The Center button preserves filters and zoom; Reset view clears them. Keyboard users can tab to map nodes and activate them with Enter or Space. Item details appear in a dialog, and source links open separately.</p>
+      <p>The app keeps its canvas within the viewport. The benchmark network opens with the 2026 draft selected, and its nodes are spaced within grade/course bands. Use source and grade filters or search for an exact benchmark code; the results list offers an individually labeled route to every encoded item. Hover or focus a map point for its code, then select it for details. Compare older and external versions with the source checkboxes. The source map has a curated layout and an option to group records by source family. Drag the map or focus the canvas and use arrow keys to pan; use the wheel or zoom controls for up to 400% magnification. The Center button preserves filters and zoom; Reset view clears them. Item details appear in a dialog, and source links open separately.</p>
       <p>Download the <a href="benchmark-variant-graph.json">complete graph JSON</a>, <a href="knowledge-graph-schema.json">graph schema</a>, <a href="graph-source-coverage.json">coverage notes</a>, or <a href="curriculum-materials.json">curriculum-material inventory</a>. For the underlying analysis, see the <a href="full-draft-comparison.html">full comparison</a>, <a href="sources/alt-ngss/omission-crosswalk.html">omission crosswalk</a>, and <a href="alternative-source-analysis.html">text-lineage analysis</a>.</p>
       <p>Design references: <a href="https://www.cs.umd.edu/~ben/Shneiderman2013Interactive.pdf">Shneiderman and Dunne on interactive network exploration</a>; <a href="https://doi.org/10.1177/14738716241270341">Cerioli et al. on network wayfinding</a>; and the <a href="https://w3c.github.io/svg-aam/">W3C SVG Accessibility API Mappings</a>.</p>
     </section>
