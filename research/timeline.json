@@ -139,10 +139,11 @@
       "position": 12,
       "item": {
         "@type": "Event",
-        "name": "Benchmark map spacing and source locator links improved",
+        "name": "Benchmark map spacing and source locator links improved and published",
         "startDate": "2026-10-25",
-        "description": "The benchmark network now opens focused on the full 2026 draft and spaces nodes dynamically within grade/course bands, with a 400% zoom ceiling. Source-map lines distinguish recorded comparison assertions from additional source files explicitly named in composite-item locators. Locator-derived connections are labeled as source context, not benchmark-equivalence claims. Prepared locally; not yet published.",
-        "url": "/research/florida-science-standards-review/research/standards-graph.html"
+        "description": "The benchmark network now opens focused on the full 2026 draft and spaces nodes dynamically within grade/course bands, with a 400% zoom ceiling. Source-map lines distinguish recorded comparison assertions from additional source files explicitly named in composite-item locators. Locator-derived connections are labeled as source context, not benchmark-equivalence claims. Published in commit de83b9e; the GitHub Pages build succeeded.",
+        "url": "/research/florida-science-standards-review/research/standards-graph.html",
+        "identifier": "de83b9e"
       }
     }
   ],
