@@ -50,14 +50,28 @@
   const $ = s => document.querySelector(s);
   const materialsByCode = new Map();
   const coverageByDoc = new Map();
-  const mapEl = $('#corpus-map'), mapStatus = $('#map-status'), mapChoices = $('#map-source-choices');
+  const mapEl = $('#corpus-map'), mapStatus = $('#map-status'), mapChoices = $('#map-source-choices'), mapViewport = $('#map-scroll');
   const searchInput = $('#graph-search'), versionFilter = $('#version-filter'), gradeFilter = $('#grade-filter'), statusFilter = $('#status-filter'), materialFilter = $('#material-filter');
-  const resultsEl = $('#result-list'), countEl = $('#result-count'), moreBtn = $('#more-results'), detailEl = $('#item-detail');
+  const resultsEl = $('#result-list'), countEl = $('#result-count'), moreBtn = $('#more-results'), detailDialog = $('#item-detail'), detailEl = $('#item-detail-body');
   let results = [], shown = 0, selectedId = null;
-  let viewMode = 'sources', mapZoom = 100, sourceMapEdges = [];
+  let viewMode = 'sources', sourceLayout = 'curated', mapZoom = 100, mapPanX = 0, mapPanY = 0, sourceMapEdges = [];
+  let viewGeometry = {width:1200,height:620,cx:600,cy:310}, dragState = null;
   const defaultMapSources = new Set(['doc:fl-science-2026-draft','doc:fl-science-2008','doc:fl-science-1996','doc:fl-science-gle-1999','doc:ngss-all-topic-standards']);
   const batch = 50;
   function esc(v='') { return String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function applyMapViewBox() {
+    const width=viewGeometry.width*(100/mapZoom),height=viewGeometry.height*(100/mapZoom);
+    const x=viewGeometry.cx-width/2+mapPanX,y=viewGeometry.cy-height/2+mapPanY;
+    mapEl.setAttribute('viewBox',`${x} ${y} ${width} ${height}`);
+  }
+  function setMapGeometry(width,height,cx=width/2,cy=height/2) {
+    viewGeometry={width,height,cx,cy}; applyMapViewBox();
+  }
+  function openDetails() { if(!detailDialog.open)detailDialog.showModal(); }
+  function setZoom(value) {
+    mapZoom=Math.min(240,Math.max(45,Number(value)||100));
+    $('#map-zoom').value=String(mapZoom);$('#zoom-value').textContent=`${mapZoom}%`;applyMapViewBox();
+  }
   function title(id) {
     if (!id) return 'Unspecified source';
     if (labelMap[id]) return labelMap[id];
@@ -124,23 +138,34 @@
     sourceMapEdges=[...agg.values()].sort((a,b)=>b.count-a.count);
   }
   function renderSourceMap() {
-    const width=1700,height=1120, pos={
+    let width=1700,height=1120, headings='';
+    const pos={
       'doc:fl-science-2026-draft':[600,300], 'doc:fl-science-2008':[330,300], 'doc:fl-science-1996':[130,210], 'doc:fl-science-gle-1999':[150,435],
       'doc:ngss-all-topic-standards':[930,155], 'doc:external:8f3e333f4967c18a':[970,435], 'doc:south-carolina-science-2014':[890,535],
       'doc:external:89574ee13dd2c447':[1060,525], 'doc:external:9aab810f0e14c6e9':[1060,280], 'doc:external:a6ff73f1309c8ec5':[880,300], 'doc:external:indiana-2000':[620,540], 'doc:unassigned-source':[380,520]
     };
-    docs.filter(d=>!pos[d.id]).forEach((d,i)=>{pos[d.id]=[170+(i%5)*340,720+Math.floor(i/5)*170];});
+    if(sourceLayout==='families'){
+      const family=id=>id==='doc:unassigned-source'?0:(id.startsWith('doc:fl-science')||id==='doc:external:8f3e333f4967c18a'||id.startsWith('doc:corpus:florida')||id.startsWith('doc:corpus:fcat')||id.startsWith('doc:corpus:aaas')||id.startsWith('doc:corpus:achieve')||id.startsWith('doc:corpus:naep')||id.startsWith('doc:corpus:new-standards'))?0:id.startsWith('doc:corpus:')?2:1;
+      const labels=['Florida standards and proposals','External standards comparisons','Process and framework records'],xs=[360,1080,1800],groups=[[],[],[]];
+      docs.forEach(d=>groups[family(d.id)].push(d));width=2160;height=Math.max(760,...groups.map(g=>150+g.length*155));
+      headings=labels.map((label,i)=>`<text class="source-group-heading" x="${xs[i]}" y="45" text-anchor="middle">${esc(label)}</text>`).join('');
+      groups.forEach((group,gi)=>group.forEach((d,i)=>{pos[d.id]=[xs[gi],130+i*155];}));
+    }else{
+      const extra=docs.filter(d=>!pos[d.id]);
+      extra.forEach((d,i)=>{pos[d.id]=[170+(i%5)*340,720+Math.floor(i/5)*170];});
+      height=Math.max(height,720+Math.ceil(extra.length/5)*170);
+    }
     const counts=new Map();units.forEach(u=>counts.set(u.sourceDocument,(counts.get(u.sourceDocument)||0)+1));
     const paths=sourceMapEdges.map((e,i)=>{const p=pos[e.a],q=pos[e.b];if(!p||!q)return'';const max=Math.max(1,...sourceMapEdges.map(x=>x.count));const sw=1+3*Math.sqrt(e.count/max);const label=e.count>1?e.count:'';return `<g class="source-edge" data-edge="${i}" tabindex="0" role="button" aria-label="Explore ${e.count} comparison links between ${esc(title(e.a))} and ${esc(title(e.b))}"><line class="map-edge" stroke-width="${sw}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/><title>${esc(title(e.a))} ↔ ${esc(title(e.b))}: ${e.count} recorded comparison links</title>${label?`<text class="map-edge-label" x="${(p[0]+q[0])/2}" y="${(p[1]+q[1])/2-5}" text-anchor="middle">${label}</text>`:''}</g>`;}).join('');
     const nodes=docs.map(d=>{const p=pos[d.id]||[width/2,height/2],count=counts.get(d.id)||0,r=24+Math.min(30,Math.sqrt(count)*.75),coverage=coverageByDoc.get(d.id)||{},cl=docClass(d.id),alias=coverage.coverage?.includes('alias'),note=coverage.note||'',status=coverage.coverage||'coverage not classified';const badge=count===0?'DOC ONLY':status.includes('complete')?'COMPLETE':status.includes('partial')?'PARTIAL':status.includes('sample')?'SAMPLE':status.includes('alias')?'ALIAS':status.includes('missing')?'MAPPING GAP':status.includes('reviewed')?'REVIEWED':'SELECTED';return `<g class="source-group" data-doc="${esc(d.id)}" tabindex="0" role="button" aria-label="Open ${esc(title(d.id))}; ${count} encoded graph items; coverage: ${esc(status)}"><circle class="source-node ${cl} ${alias?'alias':''}" cx="${p[0]}" cy="${p[1]}" r="${r}"/><text class="source-title ${cl==='draft'?'draft-label':''}" x="${p[0]}" y="${p[1]-4}">${esc(shortTitle(d.id))}</text><text class="source-count ${cl==='draft'?'draft-label':''}" x="${p[0]}" y="${p[1]+15}">${count.toLocaleString()} encoded</text><text class="coverage-badge" x="${p[0]}" y="${p[1]+r+14}" text-anchor="middle">${esc(badge)}</text><title>${esc(note)}</title></g>`;}).join('');
-    mapEl.setAttribute('viewBox',`0 0 ${width*(100/mapZoom)} ${height*(100/mapZoom)}`);mapEl.innerHTML=`<g class="map-world">${paths}${nodes}</g>`;
+    mapEl.innerHTML=`<g class="map-world">${headings}${paths}${nodes}</g>`;setMapGeometry(width,height,width/2,height/2);
     mapEl.querySelectorAll('.source-group').forEach(g=>{const go=()=>{const id=g.dataset.doc;versionFilter.value=id;updateResults();showDoc(id);};g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
     mapEl.querySelectorAll('.source-edge').forEach(g=>{const go=()=>{const e=sourceMapEdges[Number(g.dataset.edge)];if(!e)return;searchInput.value='';versionFilter.value='';gradeFilter.value='';statusFilter.value='';updateResults();mapChoices.querySelectorAll('input').forEach(c=>c.checked=c.value===e.a||c.value===e.b);setView('benchmarks');if(e.sample?.sourceUnit&&byId.has(e.sample.sourceUnit))showNode(e.sample.sourceUnit);};g.addEventListener('click',go);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go();}});});
     mapStatus.textContent=`${docs.length} source/version nodes · ${sourceMapEdges.length} source-to-source relationship groups · ${sourceMapEdges.reduce((s,e)=>s+e.count,0).toLocaleString()} recorded item-level links.`;
   }
   function populateMapSourceChoices() {
     const counts=new Map();units.forEach(u=>counts.set(u.sourceDocument,(counts.get(u.sourceDocument)||0)+1));
-    mapChoices.innerHTML=docs.map(d=>`<label><input type="checkbox" value="${esc(d.id)}" ${defaultMapSources.has(d.id)?'checked':''}>${esc(shortTitle(d.id))} (${(counts.get(d.id)||0).toLocaleString()})</label>`).join('');
+    mapChoices.innerHTML=`<span class="source-choice-title">Versions shown in benchmark view</span>`+docs.map(d=>`<label><input type="checkbox" value="${esc(d.id)}" ${defaultMapSources.has(d.id)?'checked':''}>${esc(shortTitle(d.id))} (${(counts.get(d.id)||0).toLocaleString()})</label>`).join('');
     mapChoices.querySelectorAll('input').forEach(x=>x.addEventListener('change',renderBenchmarkMap));
   }
   function renderBenchmarkMap() {
@@ -163,7 +188,7 @@
     const selectedNeighbors=new Map();if(selectedId)(adj.get(selectedId)||[]).forEach(e=>{const other=e.a===selectedId?e.b:e.a;if(positions.has(other)){if(!selectedNeighbors.has(other))selectedNeighbors.set(other,[]);selectedNeighbors.get(other).push(e.assertion);}});
     let edges='';if(selectedId&&positions.has(selectedId))selectedNeighbors.forEach((assertions,nid)=>{const a=positions.get(selectedId),b=positions.get(nid),machineOnly=assertions.every(x=>x?.method==='semantic_neighbor_screen'),mixed=assertions.some(x=>x?.method==='semantic_neighbor_screen')&&!machineOnly,relations=[...new Set(assertions.map(x=>x?.relation||'related'))];edges+=`<line class="map-edge active ${machineOnly?'machine-candidate':''}${mixed?' mixed-evidence':''}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/><title>${assertions.length} assertion(s) · ${esc(relations.join(', '))}${machineOnly?' · unreviewed machine-ranked lead':''}</title>`;});
     const dots=selectedUnits.map(u=>{const p=positions.get(u.id),isSel=u.id===selectedId,isNeighbor=selectedNeighbors.has(u.id),cls=`benchmark-dot ${docClass(u.sourceDocument)}${isSel?' selected':''}${isNeighbor?' neighbor':''}`;return `<circle class="${cls}" cx="${p[0]}" cy="${p[1]}" r="${isSel?7:isNeighbor?5:2.6}" data-node="${esc(u.id)}" tabindex="0" role="button" aria-label="Open ${esc(u.code)} from ${esc(title(u.sourceDocument))}; Grade ${esc(u.gradeSpan||'unspecified')}; ${esc(itemStatus(u)||'status unclassified')}"><title>${esc(u.code)} · ${esc(shortTitle(u.sourceDocument))} · ${esc(itemStatus(u)||'status unclassified')} · ${esc((u.text||'').slice(0,180))}</title></circle>`;}).join('');
-    mapEl.setAttribute('viewBox',`0 0 ${width*(100/mapZoom)} ${height*(100/mapZoom)}`);mapEl.innerHTML=`<g class="map-world">${guides}${heading}${labels}${edges}${dots}</g>`;
+    mapEl.innerHTML=`<g class="map-world">${guides}${heading}${labels}${edges}${dots}</g>`;setMapGeometry(width,height,width/2,height/2);
     mapEl.querySelectorAll('[data-node]').forEach(c=>{const go=()=>showNode(c.dataset.node);c.addEventListener('click',go);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
     mapStatus.textContent=`${selectedUnits.length.toLocaleString()} benchmark/source items shown across ${active.length} selected versions. ${selectedId?`${selectedNeighbors.size} linked neighbor(s) highlighted; select a dot or use the searchable list.`:'Select an item from search to reveal its recorded cross-version connections.'} Grade labels group items for navigation only; they do not indicate a within-year teaching sequence.`;
   }
@@ -224,15 +249,17 @@
     const visibleEdges=edges.filter(e=>positions.has(e.a)&&positions.has(e.b));
     const lines=visibleEdges.map(e=>{const p=positions.get(e.a),q=positions.get(e.b),assertions=e.assertions||[],machineOnly=assertions.length>0&&assertions.every(a=>a?.method==='semantic_neighbor_screen'),mixed=assertions.some(a=>a?.method==='semantic_neighbor_screen')&&!machineOnly,relations=[...new Set(assertions.map(a=>a?.relation||'related'))],note=assertions.slice(0,3).map(a=>`${a?.relation||'related'}: ${a?.evidence||a?.status||'No evidence note'}`).join(' | ');return `<line class="focus-edge ${machineOnly?'machine-candidate':''}${mixed?' mixed-evidence':''}" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"><title>${assertions.length} assertion(s) · ${esc(mixed?'Includes reviewed and machine-ranked evidence':machineOnly?'Unreviewed machine-ranked lead':'Recorded reviewed/other relation')} · ${esc(relations.join(', '))} · ${esc(note)}</title></line>`;}).join('');
     const circles=[...positions].map(([id,p])=>{const n=byId.get(id),d=depthById.get(id)||0,label=n.code||n.conceptId||title(id),selected=id===root,hideLabel=!selected&&(levels.get(d)||[]).length>24;return `<g class="focus-node depth-${d}${selected?' selected':''}${hideLabel?' labels-hidden':''}" data-node="${esc(id)}" tabindex="0" role="button" aria-label="Focus on ${esc(label)}; ${d===0?'selected item':`${d} connection${d===1?'':'s'} away`}"><circle cx="${p[0]}" cy="${p[1]}" r="${selected?19:12}"/><text x="${p[0]}" y="${p[1]+(selected?36:29)}" text-anchor="middle">${esc(label.length>34?label.slice(0,31)+'…':label)}</text><title>${esc(label)} · ${esc(n.text||'')}</title></g>`;}).join('');
-    mapEl.setAttribute('viewBox',`${cx-width*(100/mapZoom)/2} ${cy-height*(100/mapZoom)/2} ${width*(100/mapZoom)} ${height*(100/mapZoom)}`);
-    mapEl.innerHTML=`<g class="map-world">${[...Array(maxDepth)].map((_,i)=>`<circle class="focus-ring" cx="${cx}" cy="${cy}" r="${(i+1)*ringGap}"/>`).join('')}${lines}${circles}</g>`;
+    mapEl.innerHTML=`<g class="map-world">${[...Array(maxDepth)].map((_,i)=>`<circle class="focus-ring" cx="${cx}" cy="${cy}" r="${(i+1)*ringGap}"/>`).join('')}${lines}${circles}</g>`;setMapGeometry(width,height,cx,cy);
     mapEl.querySelectorAll('[data-node]').forEach(g=>{const go=()=>showNode(g.dataset.node,{scroll:false});g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
     mapStatus.textContent=`Focused on ${title(root)} · ${depthById.size.toLocaleString()} item(s) through ${depthLimit} connection(s) · ${visibleEdges.length.toLocaleString()} connection pair(s) representing ${visibleEdges.reduce((s,e)=>s+(e.assertions||[]).length,0).toLocaleString()} assertions. Source, grade, comparison-status, and curriculum filters constrain connected items; the selected item stays visible. ${widestLayer>24?'Labels are hidden on dense layers; focus or select a node to identify it, or use the relationship list below. ':''}${hitNodeCap?'The neighborhood reached its 250-item display cap. ':moreBeyondDepth?'Additional filtered connections exist beyond the selected depth. ':''}Select any node to refocus.`;
   }
   function setView(mode) {
+    if(mode!==viewMode){mapPanX=0;mapPanY=0;}
     viewMode=mode;$('#view-sources').setAttribute('aria-pressed',String(mode==='sources'));$('#view-benchmarks').setAttribute('aria-pressed',String(mode==='benchmarks'));
     mapChoices.hidden=mode!=='benchmarks';
-    $('#map-explanation').textContent=mode==='sources'?'Source-level overview. Each circle represents a source/version node; size reflects how many items are encoded for comparison. Links summarize recorded benchmark relationships across sources. Counts describe graph coverage, not the full size or importance of the source.':'Benchmark-level map. Columns group items by source version and rows by grade/course. Select a dot, or search below, to reveal its recorded links. Connections are drawn for the selected benchmark so the map stays readable; the searchable relationship list retains the evidence notes.';
+    $('#source-layout').disabled=mode!=='sources';
+    $('#map-heading').textContent=mode==='sources'?'Source-level overview':'Benchmark network';
+    $('#map-explanation').textContent=mode==='sources'?'Each circle represents a source/version node; size reflects encoded items. Links summarize recorded benchmark relationships. Counts describe graph coverage, not source size or importance.':'Columns group items by source version and rows by grade/course. Select a dot or search result to reveal recorded links. Connections focus on the selected item to keep the view readable.';
     if(mode==='sources')renderSourceMap();else renderBenchmarkMap();
   }
   function updateMap() { if(viewMode==='sources')renderSourceMap();else renderBenchmarkMap(); }
@@ -290,12 +317,13 @@
   }
   function isDraftUnit(n) { return n.type==='TextUnit'&&n.sourceDocument==='doc:fl-science-2026-draft'&&n.code&&!/[;,]/.test(n.code); }
   function runStartAction(action) {
+    mapPanX=0;mapPanY=0;
     selectedId=null;gradeFilter.value='';statusFilter.value='';materialFilter.value='';versionFilter.value='';searchInput.value='';
     if(action==='materials'){versionFilter.value='doc:fl-science-2026-draft';materialFilter.value='has_resource';}
     if(action==='evolution'){versionFilter.value='doc:fl-science-2026-draft';searchInput.value='evolution';}
     if(action==='climate'){versionFilter.value='doc:fl-science-2026-draft';searchInput.value='climate change';}
     updateResults();setView('benchmarks');updateSelectionStyle();
-    searchInput.focus({preventScroll:true});$('#find-heading').scrollIntoView({behavior:'smooth',block:'start'});
+    searchInput.focus({preventScroll:true});
   }
   function linkList(urls) { return urls.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(' · '); }
   function makeNeighborhood(id) {
@@ -321,15 +349,15 @@
     const files=(d.sourceFiles||[]).map(f=>`<li><code>${esc(f.file)}</code>${f.sha256?` · SHA-256 <code>${esc(f.sha256)}</code>`:''}</li>`).join('');
     const coverage=coverageByDoc.get(id);
     detailEl.innerHTML=`<p class="item-kicker">Source record · ${esc(coverage?.coverage||'coverage not assessed')}</p><h2 id="detail-title">${esc(title(id))}</h2><p>${esc(d.status||'')}</p><p><strong>${nodeCount.toLocaleString()}</strong> text items are assigned to this source node in the graph.${nodeCount===0?' This is a document-level record; item text has not been separately encoded here.':''}</p>${coverage?.note?`<p class="coverage-warning"><strong>Coverage note:</strong> ${esc(coverage.note)}</p>`:''}<h3>Open source or related review</h3>${showDocumentLinks(id)}<h3>Source files recorded in the graph</h3><ul>${files||'<li>No source file names recorded.</li>'}</ul><p>Source links open the original host. Text reproduced in this graph is the item-level content available in the published research data. Graph node counts are not source document size or evidence that unrepresented material is absent.</p>`;
-    updateSelectionStyle();
+    updateSelectionStyle();openDetails();
   }
   function showNode(id,options={}) {
     const n=byId.get(id); if(!n)return;
     if(n.type==='StandardVersion')return showDoc(id);
+    mapPanX=0;mapPanY=0;
     selectedId=id; history.replaceState(null,'',`#${encodeURIComponent(id)}`); updateSelectionStyle();
     if(n.sourceDocument){const choice=mapChoices.querySelector(`input[value="${CSS.escape(n.sourceDocument)}"]`);if(choice)choice.checked=true;}
     if(viewMode!=='benchmarks')setView('benchmarks');else renderBenchmarkMap();
-    if(options.scroll!==false)$('#map-heading').scrollIntoView({behavior:'smooth',block:'start'});
     const isUnit=n.type==='TextUnit', doc=byId.get(n.sourceDocument), rels=adj.get(id)||[], isDraftBenchmark=isDraftUnit(n);
     const directAll=rels.map(e=>({e,other:e.a===id?e.b:e.a})).filter(x=>byId.has(x.other)&&x.e.assertion?.relation!=='sourceDocumentOf'&&['TextUnit','Concept'].includes(byId.get(x.other)?.type));
     const semanticDirect=directAll.filter(x=>x.e.assertion?.method==='semantic_neighbor_screen').sort((a,b)=>(b.e.assertion.similarityScore||0)-(a.e.assertion.similarityScore||0));
@@ -348,8 +376,86 @@
     const mappingNote=n._sourceMappingMissing?(sourcefiles.length>1?'This is a composite crosswalk item citing multiple source files; assigning it to one standard version would be misleading. See the individual file references below.':'No single source-version assignment is recorded for this derived item. See its source locator and file reference below.'):'';
     detailEl.innerHTML=`<p class="item-kicker">${isUnit?'Benchmark / source text':'Concept'}</p><h2 id="detail-title">${esc(n.code||n.conceptId||n.id)}</h2><div class="item-content">${esc(textPreview(n)||'This graph node points to a source item, but does not include its complete text. Use the source locator and links below.')}</div>${mappingNote?`<p class="coverage-warning"><strong>Composite source mapping:</strong> ${esc(mappingNote)}</p>`:''}${isUnit&&n.sourceDocument==='doc:fl-science-2026-draft'&&!isDraftBenchmark?'<p class="coverage-warning"><strong>Aggregate source row:</strong> this is not one of the 1,512 leaf benchmark IDs; material availability is not applicable at this row level.</p>':''}<div class="detail-grid"><p><strong>Source:</strong> <button type="button" class="text-link" data-open-node="${esc(n.sourceDocument||'')}">${esc(title(n.sourceDocument))}</button></p><p><strong>Grade/course:</strong> ${esc(n.gradeSpan||'Not specified')}</p><p><strong>Comparison status:</strong> ${esc(itemStatus(n)||'Not classified in this node')}</p><p><strong>Source locator:</strong> ${esc(n.pageOrAnchor||'Not recorded')}</p></div>${isDraftBenchmark?`<div class="material-flag ${materialStatus==='verified'?'available':''}"><strong>Prepared curriculum material: ${esc(materialLabel)}</strong>${materialRecord?.checkedOn?`<p>Checked: ${esc(materialRecord.checkedOn)}${materialRecord.searchScope?` · Search scope: ${esc(materialRecord.searchScope)}`:''}</p>`:''}<ul>${material}</ul><p>Inventory details and redistribution fields: <a href="curriculum-materials.json">curriculum-materials.json</a>. Content is shown locally only when the recorded rights allow; otherwise, follow the source link.</p></div>`:''}${n.crosswalkNote?`<h3>Comparison note</h3><p>${esc(n.crosswalkNote)}</p>`:''}${n.provenanceStatus?`<h3>Provenance status</h3><p>${esc(n.provenanceStatus)}</p>`:''}${n.provenanceFollowup?`<p><strong>Follow-up:</strong> ${esc(n.provenanceFollowup)}</p>`:''}<h3>Source access</h3>${showDocumentLinks(n.sourceDocument)}${sourcefiles.length?`<p><strong>File references:</strong> ${sourcefiles.map(f=>`<code>${esc(f.file)}</code>${f.sha256?` <span class="relation-meta">(SHA-256 ${esc(f.sha256)})</span>`:''}`).join(' · ')}</p>`:''}<p class="semantic-leads-note"><a href="${esc(semanticUrl)}">Prepare a corpus semantic-search query from this item</a>. The public site shows recorded candidate links below; full-corpus semantic queries run through the documented local search workflow.</p>${semanticDirect.length?`<section class="semantic-leads" aria-labelledby="semantic-leads-heading"><h3 id="semantic-leads-heading">Machine-ranked similarity candidates (${semanticDirect.length})</h3><p class="semantic-leads-note">These are unreviewed discovery leads, sorted by recorded similarity score. Similarity does not establish shared source, borrowing, or conceptual equivalence.</p><ul class="relation-list">${leadRows}</ul>${semanticDirect.length>15?`<details class="more-relations"><summary>Show ${semanticDirect.length-15} more similarity candidates</summary><ul class="relation-list">${remainingLeadRows}</ul></details>`:''}</section>`:''}<p>The map above highlights recorded cross-version neighbors. The list below preserves relationship labels, evidence notes, and confidence values for reviewed or otherwise recorded links.</p><h3>Recorded relationships (${reviewedDirect.length})</h3>${reviewedDirect.length?`<ul class="relation-list">${relationRows}</ul>${remainingDirect.length?`<details class="more-relations"><summary>Show ${remainingDirect.length} additional recorded relationships</summary><ul class="relation-list">${remainingRows}</ul></details>`:''}`:'<p>No reviewed or otherwise recorded relationship is present for this item.</p>'}`;
     detailEl.querySelectorAll('[data-open-node]').forEach(b=>b.addEventListener('click',()=>showNode(b.dataset.openNode)));
+    openDetails();
   }
   function updateSelectionStyle(){resultsEl.querySelectorAll('.result-card').forEach(b=>b.setAttribute('aria-current',String(b.dataset.id===selectedId)));}
+  function saveBlob(blob,filename) {
+    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  async function currentSvgText() {
+    const rect=mapViewport.getBoundingClientRect(),svg=mapEl.cloneNode(true),view=mapEl.viewBox.baseVal;
+    svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+    svg.setAttribute('width',String(Math.max(900,Math.round(rect.width*2))));
+    svg.setAttribute('height',String(Math.max(600,Math.round(rect.height*2))));
+    const style=document.createElementNS('http://www.w3.org/2000/svg','style');
+    const response=await fetch('graph-viewer.css');style.textContent=response.ok?await response.text():'';
+    svg.insertBefore(style,svg.firstChild);
+    const bg=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    bg.setAttribute('x',String(view.x));bg.setAttribute('y',String(view.y));bg.setAttribute('width',String(view.width));bg.setAttribute('height',String(view.height));bg.setAttribute('fill','#fbfcfb');
+    svg.insertBefore(bg,style);
+    return new XMLSerializer().serializeToString(svg);
+  }
+  async function exportSvg() {
+    const source=await currentSvgText();
+    saveBlob(new Blob([source],{type:'image/svg+xml;charset=utf-8'}),`florida-standards-graph-${viewMode}.svg`);
+    mapStatus.textContent='Current graph view exported as SVG.';
+  }
+  async function exportPng() {
+    const source=await currentSvgText(),svgBlob=new Blob([source],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(svgBlob),img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement('canvas'),rect=mapViewport.getBoundingClientRect();
+      canvas.width=Math.max(900,Math.round(rect.width*2));canvas.height=Math.max(600,Math.round(rect.height*2));
+      const ctx=canvas.getContext('2d');ctx.fillStyle='#fbfcfb';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      canvas.toBlob(blob=>{if(blob){saveBlob(blob,`florida-standards-graph-${viewMode}.png`);mapStatus.textContent='Current graph view exported as PNG.';}else mapStatus.textContent='PNG export failed; try SVG export.';},'image/png');
+      URL.revokeObjectURL(url);
+    };
+    img.onerror=()=>{URL.revokeObjectURL(url);mapStatus.textContent='PNG export failed; try SVG export.';};
+    img.src=url;
+  }
+  function exportFilteredData() {
+    const filters={query:searchInput.value,sourceVersion:versionFilter.value,grade:gradeFilter.value,status:statusFilter.value,curriculumMaterial:materialFilter.value};
+    const items=results.map(n=>({id:n.id,type:n.type,title:title(n.id),code:n.code||null,conceptId:n.conceptId||null,sourceDocument:n.sourceDocument||null,sourceTitle:n.sourceDocument?title(n.sourceDocument):null,gradeSpan:n.gradeSpan||null,text:textPreview(n)||null,status:itemStatus(n)||null,sourceLocator:n.pageOrAnchor||null,relationships:(adj.get(n.id)||[]).filter(e=>e.assertion?.relation!=='sourceDocumentOf').map(e=>({targetId:e.a===n.id?e.b:e.a,relation:e.assertion?.relation||null,evidence:e.assertion?.evidence||null,method:e.assertion?.method||null,confidence:e.assertion?.confidence??null}))}));
+    const payload={title:'Filtered Florida science standards graph records',exportedAt:new Date().toISOString(),view:viewMode,filters,matchCount:items.length,items};
+    saveBlob(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),`florida-standards-graph-filtered-${new Date().toISOString().slice(0,10)}.json`);
+    mapStatus.textContent=`Exported ${items.length.toLocaleString()} filtered graph records as JSON.`;
+  }
+  function setupCanvasNavigation() {
+    mapViewport.addEventListener('keydown',e=>{
+      const direction={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];
+      if(!direction)return;
+      e.preventDefault();
+      const view=mapEl.viewBox.baseVal,step=e.shiftKey?.18:.08;
+      mapPanX+=direction[0]*view.width*step;mapPanY+=direction[1]*view.height*step;applyMapViewBox();
+      mapStatus.textContent=`Graph panned ${e.key.replace('Arrow','').toLowerCase()}.`;
+    });
+    mapViewport.addEventListener('wheel',e=>{
+      e.preventDefault();const rect=mapViewport.getBoundingClientRect(),old=mapEl.viewBox.baseVal,fx=(e.clientX-rect.left)/rect.width,fy=(e.clientY-rect.top)/rect.height;
+      const worldX=old.x+fx*old.width,worldY=old.y+fy*old.height,next=Math.round(Math.min(240,Math.max(45,mapZoom*(e.deltaY<0?1.12:.89))));
+      const width=viewGeometry.width*(100/next),height=viewGeometry.height*(100/next);
+      mapZoom=next;mapPanX=worldX-fx*width-(viewGeometry.cx-width/2);mapPanY=worldY-fy*height-(viewGeometry.cy-height/2);
+      $('#map-zoom').value=String(mapZoom);$('#zoom-value').textContent=`${mapZoom}%`;applyMapViewBox();
+    },{passive:false});
+    mapViewport.addEventListener('pointerdown',e=>{
+      if(e.button!==0||e.target.closest('[data-node],[data-doc],[data-edge]'))return;
+      dragState={id:e.pointerId,x:e.clientX,y:e.clientY,panX:mapPanX,panY:mapPanY,moved:false};mapViewport.setPointerCapture(e.pointerId);
+    });
+    mapViewport.addEventListener('pointermove',e=>{
+      if(!dragState||e.pointerId!==dragState.id)return;
+      const dx=e.clientX-dragState.x,dy=e.clientY-dragState.y,rect=mapViewport.getBoundingClientRect(),view=mapEl.viewBox.baseVal;
+      if(Math.abs(dx)+Math.abs(dy)>3)dragState.moved=true;
+      if(!dragState.moved)return;
+      mapPanX=dragState.panX-dx*view.width/rect.width;mapPanY=dragState.panY-dy*view.height/rect.height;applyMapViewBox();
+    });
+    const endDrag=e=>{if(dragState?.id===e.pointerId){if(dragState.moved)mapViewport.dataset.dragged='true';dragState=null;}};
+    mapViewport.addEventListener('pointerup',endDrag);mapViewport.addEventListener('pointercancel',endDrag);
+    mapViewport.addEventListener('click',e=>{if(mapViewport.dataset.dragged==='true'){e.preventDefault();e.stopPropagation();mapViewport.dataset.dragged='';}},true);
+  }
+  function setupSidebar() {
+    const shell=$('.graph-shell'),sidebar=$('#graph-sidebar'),toggle=$('#sidebar-toggle'),mobile=()=>matchMedia('(max-width: 760px)').matches;
+    function sync(){const open=mobile()?sidebar.classList.contains('is-open'):!shell.classList.contains('sidebar-collapsed');sidebar.inert=!open;toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Hide controls':'Controls';}
+    toggle.addEventListener('click',()=>{if(mobile())sidebar.classList.toggle('is-open');else shell.classList.toggle('sidebar-collapsed');sync();});
+    window.addEventListener('resize',sync);sync();
+  }
   async function init(){
     try{
       const [a,b,c,d]=await Promise.all([fetch(graphURL),fetch(addendumURL),fetch(materialsURL),fetch(coverageURL)]);
@@ -373,10 +479,18 @@
   [versionFilter,gradeFilter,statusFilter,materialFilter].forEach(el=>el.addEventListener('change',()=>{updateResults();updateMap();}));
   $('#view-sources').addEventListener('click',()=>setView('sources'));
   $('#view-benchmarks').addEventListener('click',()=>setView('benchmarks'));
-  $('#map-reset').addEventListener('click',()=>{mapZoom=100;selectedId=null;searchInput.value='';versionFilter.value='';gradeFilter.value='';statusFilter.value='';materialFilter.value='';mapChoices.querySelectorAll('input').forEach(x=>x.checked=defaultMapSources.has(x.value));$('#map-zoom').value='100';$('#zoom-value').textContent='100%';updateResults();updateMap();});
-  $('#map-zoom').addEventListener('input',e=>{mapZoom=Number(e.target.value)||100;$('#zoom-value').textContent=`${mapZoom}%`;updateMap();});
+  $('#map-reset').addEventListener('click',()=>{mapPanX=0;mapPanY=0;sourceLayout='curated';$('#source-layout').value='curated';setZoom(100);selectedId=null;searchInput.value='';versionFilter.value='';gradeFilter.value='';statusFilter.value='';materialFilter.value='';mapChoices.querySelectorAll('input').forEach(x=>x.checked=defaultMapSources.has(x.value));updateResults();updateMap();});
+  $('#center-map').addEventListener('click',()=>{mapPanX=0;mapPanY=0;applyMapViewBox();mapStatus.textContent='Centered the current graph view; filters and zoom are unchanged.';});
+  $('#source-layout').addEventListener('change',e=>{sourceLayout=e.target.value;mapPanX=0;mapPanY=0;if(viewMode==='sources')renderSourceMap();});
+  $('#map-zoom').addEventListener('input',e=>setZoom(e.target.value));
+  $('#zoom-in').addEventListener('click',()=>setZoom(mapZoom+15));
+  $('#zoom-out').addEventListener('click',()=>setZoom(mapZoom-15));
   $('#focus-depth').addEventListener('change',()=>updateMap());
   moreBtn.addEventListener('click',renderMore);
   document.querySelectorAll('[data-start]').forEach(b=>b.addEventListener('click',()=>runStartAction(b.dataset.start)));
+  $('#export-svg').addEventListener('click',()=>exportSvg().catch(()=>{mapStatus.textContent='SVG export failed; try reloading the graph.';}));
+  $('#export-png').addEventListener('click',()=>exportPng().catch(()=>{mapStatus.textContent='PNG export failed; try SVG export.';}));
+  $('#export-filtered').addEventListener('click',exportFilteredData);
+  setupCanvasNavigation();setupSidebar();
   init();
 })();

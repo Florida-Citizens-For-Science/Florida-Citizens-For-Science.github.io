@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Full-viewport interactive graph of Florida science standards, comparison sources, and reviewed relationships.">
+  <meta name="dateModified" content="2026-10-24">
+  <title>Standards graph app | Florida Science Standards Draft Review</title>
+  <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
+  <link rel="stylesheet" href="graph-viewer.css">
+  <link rel="stylesheet" href="graph-app.css">
+  <script src="graph-viewer.js" defer></script>
+</head>
+<body class="graph-app">
+  <div class="graph-shell">
+    <header class="graph-menubar">
+      <div class="menu-brand">
+        <button id="sidebar-toggle" class="menu-button" type="button" aria-controls="graph-sidebar" aria-expanded="true">Controls</button>
+        <a class="guide-link" href="standards-graph.html">Graph guide</a>
+        <h1>Florida science standards graph</h1>
+      </div>
+      <nav class="menu-actions" aria-label="Graph data and export">
+        <button id="export-svg" class="menu-button" type="button" title="Download the current view as SVG">Export SVG</button>
+        <button id="export-png" class="menu-button" type="button" title="Download the current view as a PNG image">Export PNG</button>
+        <button id="export-filtered" class="menu-button" type="button" title="Download all records matching the current filters">Filtered data</button>
+        <a class="menu-button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Full graph JSON</a>
+      </nav>
+    </header>
+
+    <aside id="graph-sidebar" class="graph-sidebar" aria-label="Graph controls">
+      <div class="sidebar-heading">
+        <h2 id="find-heading">Find and filter</h2>
+        <p>Search the represented source records, then select a result or map node to inspect its recorded relationships.</p>
+      </div>
+      <div class="sidebar-section">
+        <h3>Start with a question</h3>
+        <div class="explorer-start" role="group" aria-label="Common explorer tasks">
+          <button type="button" data-start="benchmark">Find a benchmark</button>
+          <button type="button" data-start="compare">Compare sources</button>
+          <button type="button" data-start="materials">Find teaching materials</button>
+          <button type="button" data-start="evolution">Explore evolution</button>
+          <button type="button" data-start="climate">Explore climate change</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <label for="graph-search">Search benchmark code, wording, source, or concept</label>
+        <input id="graph-search" type="search" autocomplete="off" placeholder="SC.912.L.15.13, natural selection, climate change">
+        <p class="filter-note">Searches recorded wording, source titles, and review notes. Similarity candidates are unreviewed leads. <a href="semantic-search.html">Full-corpus search instructions</a>.</p>
+      </div>
+
+      <div class="sidebar-section filter-row">
+        <div><label for="version-filter">Source version</label><select id="version-filter"><option value="">All versions</option></select></div>
+        <div><label for="grade-filter">Grade/course</label><select id="grade-filter"><option value="">All grades</option></select></div>
+        <div><label for="status-filter">Comparison status</label><select id="status-filter"><option value="">All statuses</option></select></div>
+        <div><label for="material-filter">Prepared curriculum materials</label><select id="material-filter"><option value="">Any availability</option><option value="has_resource">Has a linked resource</option><option value="verified">Resource fit reviewed</option><option value="located">Resource located; fit not verified</option><option value="none_found_in_search">None found in a bounded search</option><option value="not_assessed">Not inventoried yet</option></select></div>
+        <p class="filter-note">Material filters apply to 2026 draft benchmarks. “Not inventoried” means the project has not checked yet.</p>
+      </div>
+
+      <div id="map-source-choices" class="map-source-choices" role="group" aria-label="Versions shown in benchmark view" hidden></div>
+
+      <div class="sidebar-section results-section">
+        <div class="results-heading"><h3>Matching records</h3><span id="result-count" aria-live="polite">Loading graph…</span></div>
+        <ul id="result-list" class="result-list" aria-label="Matching benchmarks, concepts, and source records"></ul>
+        <button id="more-results" class="more-button" type="button" hidden>Show more results</button>
+      </div>
+
+      <details class="sidebar-section source-browser">
+        <summary>Browse source versions</summary>
+        <p>Counts are items represented in this graph, not the total source contents.</p>
+        <div id="source-cards" class="source-cards"><p>Loading sources…</p></div>
+      </details>
+      <p class="sidebar-footnote">Recorded links do not by themselves establish borrowing, authorship, or access. <a href="graph-source-coverage.json" target="_blank" rel="noopener">Review source coverage and limits</a>.</p>
+    </aside>
+
+    <main class="graph-stage" aria-label="Interactive standards and source graph">
+      <div class="canvas-toolbar">
+        <div class="view-switch" role="group" aria-label="Graph view">
+          <button id="view-sources" type="button" aria-pressed="true">Source map</button>
+          <button id="view-benchmarks" type="button" aria-pressed="false">Benchmark network</button>
+        </div>
+        <div class="canvas-tools">
+          <label for="source-layout">Layout</label>
+          <select id="source-layout" aria-label="Source map layout"><option value="curated">Curated</option><option value="families">Group by source family</option></select>
+          <label for="map-zoom">Zoom</label>
+          <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+          <input id="map-zoom" type="range" min="45" max="240" value="100" aria-label="Map zoom">
+          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          <span id="zoom-value">100%</span>
+          <label for="focus-depth">Connections</label>
+          <select id="focus-depth" aria-label="Selected item connection depth"><option value="0">Item only</option><option value="1" selected>1 step</option><option value="2">2 steps</option><option value="3">3 steps</option></select>
+          <button id="map-reset" type="button" title="Reset filters, view, zoom, and pan">Reset view</button>
+          <button id="center-map" type="button" title="Center the current graph without changing filters">Center</button>
+        </div>
+      </div>
+      <div class="canvas-caption">
+        <h2 id="map-heading">Source-level overview</h2>
+        <p id="map-explanation">Each circle is a source or version; connections summarize recorded benchmark relationships. Counts describe graph coverage.</p>
+      </div>
+      <div id="map-scroll" class="map-viewport" tabindex="0" aria-label="Graph canvas. Drag or use arrow keys to pan. Use the mouse wheel to zoom.">
+        <svg id="corpus-map" viewBox="0 0 1200 620" role="group" aria-label="Interactive map of source versions and reviewed relationships"></svg>
+        <div class="canvas-hint" aria-hidden="true">Drag or arrows to pan · Wheel to zoom · Select a node for details</div>
+      </div>
+      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparisons</span><span><i class="legend-line"></i>Recorded links</span><span><i class="legend-line machine"></i>Unreviewed similarity lead</span></div>
+    </main>
+
+    <footer class="graph-statusbar">
+      <span class="status-label">Graph status</span>
+      <p id="map-status" aria-live="polite">Loading graph data…</p>
+      <span class="status-note">Canvas navigation stays within this window</span>
+    </footer>
+  </div>
+
+  <dialog id="item-detail" class="item-detail" aria-labelledby="detail-title">
+    <div id="item-detail-body">
+      <p class="item-kicker">Item details</p>
+      <h2 id="detail-title">Select a benchmark, concept, or source item</h2>
+      <p>Choose a map node or search result to see available source text, its source locator, and recorded relationships.</p>
+    </div>
+    <form method="dialog" class="dialog-actions"><button class="more-button">Close details</button></form>
+  </dialog>
+
+  <noscript><p class="noscript-warning">This graph app requires JavaScript. Use the <a href="standards-graph.html">graph guide</a> and its data links without JavaScript.</p></noscript>
+</body>
+</html>

@@ -3,86 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An accessible, source-linked viewer for Florida science standards, comparison sources, and reviewed relationships.">
+  <meta name="description" content="Introduction and full-screen interactive app for exploring Florida science standards and their reviewed source relationships.">
+  <meta name="dateModified" content="2026-10-24">
   <title>Standards and source graph | Florida Science Standards Draft Review</title>
   <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
-  <link rel="stylesheet" href="graph-viewer.css">
-  <script src="graph-viewer.js" defer></script>
 </head>
-<body class="document">
-  <header class="docbar"><a href="../index.html">← Florida Science Standards Draft Review</a><span>Interactive research tool · source-linked graph</span></header>
-  <main class="prose graph-page">
-    <h1 class="doc-title">Explore the standards and source graph</h1>
-    <p class="lede">Search benchmark text, move between related items, and open the source or review record. Similarity and a graph connection indicate a documented comparison; they do not establish copying, authorship, or access.</p>
-    <section class="graph-intro" aria-label="Graph contents and limitations">
-      <p><strong>What is included:</strong> benchmark items from the 1996 Florida standards, 1998/99 grade-level elaborations, 2008 adopted standards, the 2026 proposed draft, NGSS, Indiana 2000, and the 2007 Florida Citizens for Science proposal, plus 15 document-level records for ancillary process and framework sources. Related concepts and comparison assertions are shown where recorded. Items are served from the reviewed public graph; source files remain at their host unless redistribution has been checked.</p>
-      <p class="coverage-warning"><strong>Graph coverage has expanded; review links are not all equally supported.</strong> The graph now includes all 498 Florida 2008 benchmark IDs, all 208 NGSS Performance Expectations, 10 complete grade-level blocks from the 2007 Florida Citizens for Science proposal, and all 412 Indiana K–8 statements. It also contains 3,354 machine-ranked similarity leads. Those are unreviewed discovery aids, not evidence of borrowing, continuity, or omission. A set of 157 derived legacy crosswalk items cite multiple source files and have no single source-document assignment. See the <a href="graph-source-coverage.json">source-coverage notes</a> before drawing conclusions from the map.</p>
-      <p><strong>Curriculum materials:</strong> a focused first pass has verified 19 OpenSciEd resource matches. Other draft benchmarks remain “Not inventoried”; the search has not covered all publishers or all 1,512 benchmarks. A missing entry is not evidence that no material exists. Source standards themselves are not counted as curriculum materials.</p>
-    </section>
-
-    <section class="visual-explorer" aria-labelledby="map-heading">
-      <h2 id="map-heading">Interactive corpus map</h2>
-      <p id="map-explanation">Source-level overview. Each circle represents a source/version node; size reflects how many items are encoded for comparison. Links summarize recorded benchmark relationships across sources. Counts describe graph coverage, not the full size or importance of the source.</p>
-      <div class="map-toolbar" role="group" aria-label="Graph view controls">
-        <button id="view-sources" type="button" aria-pressed="true">Source map</button>
-        <button id="view-benchmarks" type="button" aria-pressed="false">Benchmark network</button>
-        <button id="map-reset" type="button">Reset map</button>
-        <label for="map-zoom">Zoom</label><input id="map-zoom" type="range" min="70" max="180" value="100"><span id="zoom-value">100%</span>
-        <label for="focus-depth">Connection depth</label><select id="focus-depth" aria-label="Selected node connection depth"><option value="0">Selected item only</option><option value="1" selected>1 connection</option><option value="2">2 connections</option><option value="3">3 connections</option></select>
+<body>
+  <header class="topbar">
+    <a href="../index.html">Florida Science Standards Draft Review</a>
+    <span>Interactive research tool</span>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Explore the research graph</p>
+      <h1>Standards, sources, and reviewed connections</h1>
+      <p class="lede">The graph links Florida science benchmarks to earlier Florida standards, national and state frameworks, and reviewed comparison records. Search for a topic or benchmark, focus on its recorded neighborhood, and open its source and evidence notes in a detail window.</p>
+      <div class="actions">
+        <a class="button primary" href="standards-graph-app.html">Start the graph app</a>
+        <a class="button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Open graph data (JSON)</a>
       </div>
-      <div id="map-source-choices" class="map-source-choices" hidden></div>
-      <div class="map-scroll" tabindex="0" aria-label="Scrollable graph visualization">
-        <svg id="corpus-map" viewBox="0 0 1200 620" role="group" aria-label="Interactive map of source versions and reviewed relationships"></svg>
+    </section>
+
+    <section class="section">
+      <h2>What you can explore</h2>
+      <div class="cards">
+        <article class="card"><span>Source map</span><strong>Compare source families</strong><small>See which standards versions are represented and where reviewed item-level links connect them.</small></article>
+        <article class="card"><span>Benchmark network</span><strong>Trace one item at a time</strong><small>Search by code or wording, then expand a selected benchmark’s filtered neighborhood by connection depth.</small></article>
+        <article class="card"><span>Evidence</span><strong>Open details on demand</strong><small>Inspect source locators, evidence notes, confidence, and linked reports without sending the graph page into a long scroll.</small></article>
+        <article class="card"><span>Export</span><strong>Save a view or data</strong><small>Download the current map as SVG or PNG, export filtered records, or open the complete graph JSON.</small></article>
       </div>
-      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparison sources</span><span><i class="legend-line"></i>Reviewed/recorded links</span><span><i class="legend-line machine"></i>Unreviewed machine-ranked lead</span></div>
-      <p id="map-status" class="map-status" aria-live="polite">Loading graph map…</p>
-      <p class="map-access-note">Select a node in either the map or search results to center the network on that item. Choose a connection depth to expand or narrow its recorded neighborhood. “Connection” follows the graph’s undirected recorded assertions; source-document bookkeeping links are excluded. Use the relationship details for direction, evidence notes, and confidence values.</p>
-      <p class="map-access-note"><strong>Design basis:</strong> graph-exploration research recommends meaningful grouping, filtering, and linked overview/detail views to manage visual complexity; recent network-design work frames exploration as map-like wayfinding with search, filters, and selectable neighborhoods. The source map, benchmark view, filters, edge selection, and item detail apply those ideas. Interactive SVG keyboard semantics follow the <a href="https://w3c.github.io/svg-aam/">W3C SVG Accessibility API Mappings</a>. See <a href="https://www.cs.umd.edu/~ben/Shneiderman2013Interactive.pdf">Shneiderman &amp; Dunne on interactive network exploration</a> and <a href="https://doi.org/10.1177/14738716241270341">Cerioli et al. on network wayfinding</a>.</p>
     </section>
 
-    <section class="graph-controls" aria-labelledby="find-heading">
-      <h2 id="find-heading">Find an item</h2>
-      <p>Choose a starting task, or search directly. Selecting any result centers the network on that item.</p>
-      <div class="explorer-start" role="group" aria-label="Common explorer tasks">
-        <button type="button" data-start="benchmark">Find a benchmark</button>
-        <button type="button" data-start="compare">Compare source versions</button>
-        <button type="button" data-start="materials">Find prepared teaching materials</button>
-        <button type="button" data-start="evolution">Explore evolution</button>
-        <button type="button" data-start="climate">Explore climate change</button>
-      </div>
-      <label for="graph-search">Search benchmark code, wording, source, or concept</label>
-      <input id="graph-search" type="search" autocomplete="off" placeholder="For example: SC.912.L.15.13, natural selection, or climate change">
-      <p class="filter-note">This box searches recorded wording, source titles, and review notes. Selecting an item reveals any recorded machine-ranked similarity candidates, clearly separated from reviewed relationships. Use the <a href="semantic-search.html">semantic-search workflow</a> to prepare a full-corpus local query from an item&rsquo;s wording; the public page does not run that local index.</p>
-      <div class="filter-row">
-        <div><label for="version-filter">Source version</label><select id="version-filter"><option value="">All versions</option></select></div>
-        <div><label for="grade-filter">Grade/course</label><select id="grade-filter"><option value="">All grades</option></select></div>
-        <div><label for="status-filter">Comparison status</label><select id="status-filter"><option value="">All statuses</option></select></div>
-        <div><label for="material-filter">Prepared curriculum materials</label><select id="material-filter"><option value="">Any availability</option><option value="has_resource">Has a linked resource</option><option value="verified">Resource fit reviewed</option><option value="located">Resource located; fit not verified</option><option value="none_found_in_search">None found in a bounded search</option><option value="not_assessed">Not inventoried yet</option></select></div>
-      </div>
-      <p class="filter-note">Material filters apply to 2026 draft benchmarks. “Not inventoried” means this review has not yet checked for resources; it does not mean none exist.</p>
-      <p id="result-count" class="result-count" aria-live="polite">Loading graph…</p>
-      <ul id="result-list" class="result-list" aria-label="Matching benchmarks, concepts, and source records"></ul>
-      <button id="more-results" class="more-button" type="button" hidden>Show more results</button>
+    <section class="section">
+      <h2>How to read the graph</h2>
+      <p>Solid connections represent recorded comparison assertions. Dashed purple connections in a focused view are machine-ranked similarity leads and remain unreviewed. They are discovery aids, not evidence of copying, authorship, or access. The graph’s source map excludes those leads. Each item detail identifies the relationship label, evidence note, and confidence where recorded.</p>
+      <p>The graph contains benchmark items from the 1996 Florida standards, 1998/99 grade-level elaborations, adopted 2008 Florida standards, proposed 2026 draft, NGSS, Indiana 2000, and the 2007 Florida Citizens for Science proposal, plus document-level process and framework records. Source files remain at their public hosts unless redistribution has been checked.</p>
+      <p><strong>Coverage limits:</strong> all 1,512 current draft leaf benchmarks and 498 Florida 2008 benchmark IDs are represented. Coverage for older and external sources varies. The graph also contains 3,354 machine-ranked leads. Some derived crosswalk items cite multiple source files without a single source-version assignment. Read the <a href="graph-source-coverage.json">source-coverage notes</a> before drawing conclusions from the map.</p>
+      <p>Curriculum-material inventory is a focused first pass: 19 OpenSciEd matches have been verified. Other benchmarks remain not inventoried; a missing entry is not evidence that no material exists.</p>
+      <p class="actions"><a class="button primary" href="standards-graph-app.html">Open the full-screen graph app</a> <a class="button" href="graph-source-coverage.json" target="_blank" rel="noopener">Source coverage</a> <a class="button" href="corpus-and-process.html">Corpus and process notes</a></p>
     </section>
 
-    <section id="item-detail" class="item-detail" aria-labelledby="detail-title" aria-live="polite">
-      <h2 id="detail-title">Select a benchmark, concept, or source item</h2>
-      <p>Search above, or browse the source versions below. The item view includes available text, its location in the original source, related graph items, and a curriculum-material status.</p>
+    <section class="section">
+      <h2>Controls and accessibility</h2>
+      <p>The app keeps its canvas within the viewport. Use the sidebar to search and filter, then choose the source map or benchmark network. The source map has a curated layout and an option to group records by source family. Drag the map or focus the canvas and use arrow keys to pan; use the wheel or zoom controls to enlarge or reduce it. The Center button preserves filters and zoom; Reset view clears them. Keyboard users can tab to map nodes and activate them with Enter or Space. Item details appear in a dialog, and source links open separately.</p>
+      <p>Download the <a href="benchmark-variant-graph.json">complete graph JSON</a>, <a href="knowledge-graph-schema.json">graph schema</a>, <a href="graph-source-coverage.json">coverage notes</a>, or <a href="curriculum-materials.json">curriculum-material inventory</a>. For the underlying analysis, see the <a href="full-draft-comparison.html">full comparison</a>, <a href="sources/alt-ngss/omission-crosswalk.html">omission crosswalk</a>, and <a href="alternative-source-analysis.html">text-lineage analysis</a>.</p>
+      <p>Design references: <a href="https://www.cs.umd.edu/~ben/Shneiderman2013Interactive.pdf">Shneiderman and Dunne on interactive network exploration</a>; <a href="https://doi.org/10.1177/14738716241270341">Cerioli et al. on network wayfinding</a>; and the <a href="https://w3c.github.io/svg-aam/">W3C SVG Accessibility API Mappings</a>.</p>
     </section>
-
-    <section class="source-browser" aria-labelledby="sources-heading">
-      <h2 id="sources-heading">Browse source versions</h2>
-      <p>Counts are the items represented in this graph, not the total content of each source. Select a source to filter the item list.</p>
-      <div id="source-cards" class="source-cards"><p>Loading sources…</p></div>
-    </section>
-
-    <section class="graph-method" aria-labelledby="method-heading">
-      <h2 id="method-heading">Reading the connections</h2>
-      <p>Connections retain the graph’s relationship label, evidence note, confidence where recorded, and method. “Candidate predecessor” and “possible omission” are review judgments, not established text transmission. Dashed purple links in the focused network are machine-ranked similarity leads; the source map excludes them from counts so they cannot appear as reviewed source relationships. Fifteen ancillary records identify corpus sources that still need item-level graph processing. Open the linked crosswalk or provenance report for the complete context.</p>
-      <p><a href="benchmark-variant-graph.json">Download the benchmark graph (JSON)</a> · <a href="knowledge-graph-schema.json">Read the graph schema</a> · <a href="graph-source-coverage.json">Read source-coverage notes</a> · <a href="curriculum-materials.json">View the curriculum-material inventory and record format</a> · <a href="corpus-and-process.html">Corpus and process report</a> · <a href="/research/florida-science-standards-review/research/sources/alt-ngss/omission-crosswalk.html">Omission crosswalk</a> · <a href="alternative-source-analysis.html">Text-lineage analysis</a></p>
-    </section>
-    <noscript><p>This interactive graph requires JavaScript. The source reports and machine-readable graph linked above remain available without it.</p></noscript>
   </main>
-  <footer class="docfooter"><a href="../index.html">Review hub</a> · Public source and comparison browser</footer>
+  <footer><a href="../index.html">Review hub</a> · Standards graph guide</footer>
 </body>
 </html>
