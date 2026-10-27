@@ -153,7 +153,7 @@
         "@type": "Event",
         "name": "Review landing page reorganized as a visual walkthrough",
         "startDate": "2026-10-27",
-        "description": "The review overview guides readers through the draft, evolution and climate omissions, benchmark coverage, relationships among topics, Florida’s adoption history, and evidence limits. A chapter navigator tracks the current section, and detail pages open separately so readers can return to the same point. The page adds a benchmark-coverage chart and an explanatory concept map.",
+        "description": "The review landing page was reorganized as a six-chapter visual walkthrough covering the draft, evolution and climate omissions, benchmark coverage, an explanatory topic map, Florida’s adoption history, and evidence limits. A chapter navigator marks the current section; detailed pages open in new tabs so readers can return to their place. Published in commit b6cf66b; the GitHub Pages build succeeded.",
         "url": "/research/florida-science-standards-review/"
       }
     }
