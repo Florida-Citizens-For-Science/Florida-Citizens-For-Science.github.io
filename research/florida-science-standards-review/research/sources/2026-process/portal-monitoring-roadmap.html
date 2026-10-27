@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="dateModified" content="2026-10-27">
+  <title>FDOE portal monitoring roadmap | Florida Science Standards Draft Review</title>
+  <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
+</head>
+<body class="document">
+  <header class="docbar"><a href="../../../index.html">← Florida Science Standards Draft Review</a><span>Research plan · October 27, 2026</span></header>
+  <main class="prose">
+    <h1 class="doc-title">FDOE portal monitoring roadmap</h1>
+    <p>Purpose: preserve a dated record of the materials on the <a href="https://www.fldoe.org/standardsreview/">FDOE Standards Review page</a>, track changes, and make sure analysis covers the standards and their supporting materials as distinct parts of the review packet. Source files and full captured form text belong in the private research corpus; this page reports scope, status, and method.</p>
+
+    <h2>What is in scope</h2>
+    <ul>
+      <li><strong>Coded standards text:</strong> count parent-level standard descriptions and numbered leaf benchmarks as separate but formal text layers. The main comparison must include both layers on both sides; the narrow leaf-only count may also be shown if explicitly labeled.</li>
+      <li><strong>Proposed standards:</strong> the three grade-band PDFs, K–5, grades 6–8, and grades 9–12. Do not treat the entire extracted PDF word count as standards text.</li>
+      <li><strong>Supporting material:</strong> the foreword and K–12 tables PDF, including clarifications, examples, instructional notes, and other explanatory text embedded with the standards. Report these separately from numbered benchmark text.</li>
+      <li><strong>Online review forms:</strong> the captured HTML contains 35 Forms anchor placements to 26 unique Microsoft Forms. The inventory records each anchor label and shared form ID. Form prompts, answer choices, and guidance may add text that does not occur in the PDFs.</li>
+      <li><strong>Other portal links:</strong> keep an inventory of every link with its heading context. Classify linked resources as current standards, supporting materials, review forms, or unrelated/historical resources before deciding whether to archive them. The page also contains older standards-review records; those are tracked separately from the current science packet.</li>
+    </ul>
+    <p class="notice"><strong>Reconciled portal finding:</strong> 26 of 26 online forms now have nonempty visible-text captures across dated runs; 25 reached their final page without submission, while K–5 Part 3 remains a partial capture at the 60-page limit. The STARS form contains 11 numbered <code>SC.K12.STR.*.1</code> standards absent from the three grade-band PDFs and the 1,512-row leaf-benchmark register. Keep them as a separate standard set pending taxonomy review. Text is preserved in the private local corpus; form redistribution rights have not been assessed.</p>
+
+    <h2>Roadmap and current status</h2>
+    <ol>
+      <li><strong>Establish the portal inventory — complete for the current HTML snapshot.</strong> The captured HTML contains 35 Forms anchor placements and 26 unique form URLs. The K–5 Part 3 URL appears under six labels, including one labeled “K–5 Part 4”; this link-label/target mismatch is preserved for review. See <a href="fldoe-2026-science-review-forms-inventory.json">the Forms inventory</a>. Capture status is updated from the private snapshot reconciliation.</li>
+      <li><strong>Make dated private snapshots — first capture and targeted retries complete.</strong> The monitor captured portal HTML/text, response headers, all 211 portal link placements, heading context, hashes, and the five active PDFs with searchable extracts. Visible form text was captured page by page by advancing only with the exact “Next” control. No answer was selected and Submit was never pressed. One form remains partial at the 60-page limit; see the <a href="fldoe-2026-science-review-forms-inventory.json">dated Forms inventory</a>.</li>
+      <li><strong>Reconcile the portal with the existing corpus — first pass complete.</strong> All five active PDFs match the existing corpus by SHA-256. The 26 form captures yield text for all forms; 25 are complete and one is partial. Across the captured form text, 11 STARS IDs are absent from the grade-band PDFs/register and form a separate K–12 set. The extracted register is preserved privately for review; form response UI text is excluded from standard counts.</li>
+      <li><strong>Compare equivalent text layers — first-pass counts complete; scope corrected.</strong> Leaf-benchmark wording is about 16,403 words in 2026 versus 15,675 in 2008 (+4.6%). Adding parent standard descriptions on both sides gives about 23,712 versus 18,875 words (+25.6%): 336 2026 parent descriptions/7,309 words and 169 lettered 2008 parent clauses/3,200 words, alongside 1,512 versus 498 leaf benchmarks. This is a word-volume comparison of coded standards text, not a direct count of distinct targets or workload; structures differ. The three 2026 grade-band PDFs total about 216,632 extracted words, including clarifications, examples, tasks, notes, and layout text; foreword/tables add about 23,039. Keep these packet totals separate from formal coded text. Detailed definitions and limitations are in <a href="../../source-layers-and-legal-status.html">the source-layer analysis</a>.
+        <ul>
+          <li>Draft benchmark register: 1,512 unique leaf IDs across K–5, grades 6–8, and grades 9–12.</li>
+          <li>2008 register: 498 benchmark IDs.</li>
+          <li>Keep the 11 STARS standards as a separate denominator: they are not additional grade-band leaf benchmarks. Revisit that classification if FDOE publishes a formal crosswalk or revised packet.</li>
+        </ul>
+      </li>
+      <li><strong>Re-examine analysis and graph coverage — first review complete; follow-up pending.</strong> The overview, comparison, brief, op-ed, social posts, and graph coverage now state that the 1,512 count covers only three grade-band PDFs and that 11 separate STARS standards are also in the online review packet. Public volume language now distinguishes the leaf-only +4.6% result, the parent-plus-leaf +25.6% coded-text result, and the much larger review packet. It flags third-party supplement adoption as an unmeasured implementation risk. The graph does not yet model those form-only items; add them only after item-level source review and a rights check. Revisit affected analyses if the remaining partial form or future portal snapshots change the evidence.</li>
+      <li><strong>Track the incorporation boundary through adoption — scheduled.</strong> At each milestone preserve and diff the exact rule text, reference list, and referenced standards files. Record filenames, dates, and hashes before comparing parent/leaf standards text with clarifications, examples, tasks, and tables. Flag whether any material is added to or removed from the final incorporated document. Also reconcile the record with §1003.41(3), which sets a July 1, 2026 submission date: verify any dated Commissioner/State Board submission or later schedule action before drawing conclusions. Report text changes and effective dates; do not infer legal noncompliance or intent from the current public timeline alone.</li>
+      <li><strong>Track changes through adoption — scheduled.</strong> The local user timer is installed and active: daily at 8 a.m. October 28–31, 2026, then every Sunday at 8 a.m. while the review/adoption process is active. After the State Board&rsquo;s expected December 2026 action, change the cadence to monthly until final standards are published. Each run creates a dated snapshot and change report; review detected changes before revising claims.</li>
+    </ol>
+
+    <h2>Public-comment close</h2>
+    <p>As checked October 27, the FDOE page labels the period “September–October 2026” but does not state an exact online-form closing date or time. The <a href="https://www.ncse.ngo/florida-education-association-criticizes-proposed-state-science-standards">National Center for Science Education reports that comments are accepted through the end of October</a>, but that does not establish a specific final day or time. Do not assume a precise October 31 deadline. For confirmation, contact the Bureau of Standards and Instructional Support at <a href="tel:+18502450423">850-245-0423</a> or use the current portal. Treat the comment window as imminent until FDOE confirms otherwise.</p>
+
+    <h2>Preservation and reporting rules</h2>
+    <ul>
+      <li>Keep dated source bytes, text extracts, form captures, manifests, and checksums in the local private corpus. Do not publish full PDFs or form text without a rights review.</li>
+      <li>Publish a source inventory and change summary only after checking that they expose no response data, credentials, session values, or restricted material. The monitor does not enter or submit responses.</li>
+      <li>Label portal changes as changes to source material, not evidence of authorship, policy intent, or adoption status.</li>
+      <li>Update the corpus/process report, benchmark register, graph coverage, affected analyses, and both project timelines together when a research milestone is complete.</li>
+    </ul>
+
+    <p><a href="../../corpus-and-process.html">Read the corpus and process report</a> · <a href="/research/timeline.html">Project timeline</a></p>
+  </main>
+</body>
+</html>

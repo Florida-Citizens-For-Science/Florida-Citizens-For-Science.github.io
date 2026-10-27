@@ -1,0 +1,666 @@
+{
+  "schema_version": "fdoe_science_review_forms_inventory.v1",
+  "checked_date": "2026-10-27",
+  "source_page": "https://www.fldoe.org/standardsreview/",
+  "source_page_mirror": "https://cdn.fldoe.org/standardsreview/",
+  "portal_placement_count": 35,
+  "unique_form_count": 26,
+  "capture_status": "26/26 forms have nonempty visible text across dated captures; 25 complete through the final page without submission; 1 partial capture at the 60-page limit.",
+  "forms": [
+    {
+      "form_id": "k12-stars",
+      "title": "K-12 Scientific Thinking and Reasoning Standards (STARS)",
+      "url": "https://forms.cloud.microsoft/r/xUCtKULzSa",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": true,
+      "repeated_in_portal": true,
+      "portal_placement_count": 3,
+      "placements": [
+        {
+          "portal_order": 1,
+          "grade_band": "K-5",
+          "part": "K-12 STARS",
+          "portal_anchor_label": "K-12 Scientific Thinking and Reasoning Standards (STARS)",
+          "anchor_role": "shared_standards_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 12,
+          "grade_band": "6-8",
+          "part": "K-12 STARS",
+          "portal_anchor_label": "K-12 Scientific Thinking and Reasoning Standards (STARS)",
+          "anchor_role": "shared_standards_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 18,
+          "grade_band": "9-12",
+          "part": "K-12 STARS",
+          "portal_anchor_label": "K-12 Scientific Thinking and Reasoning Standards (STARS)",
+          "anchor_role": "shared_standards_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 12,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "k5-part-1",
+      "title": "K-5 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/bTE3VQHbpY",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 2,
+          "grade_band": "K-5",
+          "part": "Part 1",
+          "portal_anchor_label": "K-5 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 63,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "k5-part-2",
+      "title": "K-5 PART 2: Planet Earth and Space Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/sfc764sVYv",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 3,
+          "grade_band": "K-5",
+          "part": "Part 2",
+          "portal_anchor_label": "K-5 PART 2: Planet Earth and Space Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 73,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "k5-part-3",
+      "title": "K-5 PART 3: Life Standards and Benchmarks (part 1 of 2)",
+      "url": "https://forms.cloud.microsoft/r/m4g9HbwwV2",
+      "capture_status": "partial text capture; page limit reached; no responses selected or submitted",
+      "shared": false,
+      "repeated_in_portal": true,
+      "portal_placement_count": 6,
+      "placements": [
+        {
+          "portal_order": 4,
+          "grade_band": "K-5",
+          "part": "Part 3",
+          "portal_anchor_label": "K-5 PART 3: Life Standards and Benchmarks (part 1 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 5,
+          "grade_band": "K-5",
+          "part": "Part 3 topic",
+          "portal_anchor_label": "The Science of Life",
+          "anchor_role": "topic_anchor_to_part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 6,
+          "grade_band": "K-5",
+          "part": "Part 3 topic",
+          "portal_anchor_label": "The Science of Cell Biology",
+          "anchor_role": "topic_anchor_to_part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 7,
+          "grade_band": "K-5",
+          "part": "Part 3 topic",
+          "portal_anchor_label": "The Science of Plants",
+          "anchor_role": "topic_anchor_to_part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 8,
+          "grade_band": "K-5",
+          "part": "Part 3 topic",
+          "portal_anchor_label": "The Science of Animals",
+          "anchor_role": "topic_anchor_to_part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 9,
+          "grade_band": "K-5",
+          "part": "Part 4 (anchor resolves to Part 3 form)",
+          "portal_anchor_label": "K-5 Part 4: Life Standards and Benchmarks (part 2 of 2)",
+          "anchor_role": "part_anchor_to_different_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 60,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "k5-part-4",
+      "title": "K-5 PART 4: Life Standards and Benchmarks (part 2 of 2)",
+      "url": "https://forms.cloud.microsoft/r/fN5uCihkqy",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 10,
+          "grade_band": "K-5",
+          "part": "Part 4",
+          "portal_anchor_label": "K-5 PART 4: Life Standards and Benchmarks (part 2 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 57,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "k12-tables",
+      "title": "K-12 TABLES: Mathematics Skills, Modeling Skills, Laboratory Practices, and a Timeline",
+      "url": "https://forms.cloud.microsoft/r/8nhJYfd21d",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": true,
+      "repeated_in_portal": true,
+      "portal_placement_count": 3,
+      "placements": [
+        {
+          "portal_order": 11,
+          "grade_band": "K-5",
+          "part": "K-12 TABLES",
+          "portal_anchor_label": "K-12 TABLES: Mathematics Skills, Modeling Skills, Laboratory Practices, and a Timeline",
+          "anchor_role": "shared_tables_form",
+          "portal_section": "Kindergarten – Grade 5 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 17,
+          "grade_band": "6-8",
+          "part": "K-12 TABLES",
+          "portal_anchor_label": "K-12 TABLES: Mathematics Skills, Modeling Skills, Laboratory Practices, and a Timeline",
+          "anchor_role": "shared_tables_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        },
+        {
+          "portal_order": 35,
+          "grade_band": "9-12",
+          "part": "K-12 TABLES",
+          "portal_anchor_label": "K-12 TABLES: Mathematics Skills, Modeling Skills, Laboratory Practices, and a Timeline",
+          "anchor_role": "shared_tables_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 5,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "6-8-part-1",
+      "title": "6-8 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/CETqrPRVNi",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 13,
+          "grade_band": "6-8",
+          "part": "Part 1",
+          "portal_anchor_label": "6-8 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 74,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "6-8-part-2",
+      "title": "6-8 PART 2: Planet Earth and Space Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/4sFYYrdfGR",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 14,
+          "grade_band": "6-8",
+          "part": "Part 2",
+          "portal_anchor_label": "6-8 PART 2: Planet Earth and Space Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 48,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "6-8-part-3",
+      "title": "6-8 PART 3: Life Standards and Benchmarks (part 1 of 2)",
+      "url": "https://forms.cloud.microsoft/r/L3wQwaVsia",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 15,
+          "grade_band": "6-8",
+          "part": "Part 3",
+          "portal_anchor_label": "6-8 PART 3: Life Standards and Benchmarks (part 1 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 64,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "6-8-part-4",
+      "title": "6-8 PART 4: Life Standards and Benchmarks (part 2 of 2)",
+      "url": "https://forms.cloud.microsoft/r/qRhG6rW5kD",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 16,
+          "grade_band": "6-8",
+          "part": "Part 4",
+          "portal_anchor_label": "6-8 PART 4: Life Standards and Benchmarks (part 2 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 6–8 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 53,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "9-12-part-1",
+      "title": "9-12 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/Pgkvw8dBsg",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 19,
+          "grade_band": "9-12",
+          "part": "Part 1",
+          "portal_anchor_label": "9-12 PART 1: Energy, Matter, and Force and Motion Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 99,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "retry-20261027T193225Z"
+    },
+    {
+      "form_id": "9-12-part-2",
+      "title": "9-12 PART 2: Energy, Matter, and Force and Motion Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/LebcEvv0us",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 20,
+          "grade_band": "9-12",
+          "part": "Part 2",
+          "portal_anchor_label": "9-12 PART 2: Energy, Matter, and Force and Motion Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 78,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "9-12-part-3",
+      "title": "9-12 PART 3: Energy, Matter, and Force and Motion Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/Q9ch2ikfTB",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 21,
+          "grade_band": "9-12",
+          "part": "Part 3",
+          "portal_anchor_label": "9-12 PART 3: Energy, Matter, and Force and Motion Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 36,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "9-12-part-4",
+      "title": "9-12 PART 4: Planet Earth and Space Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/zjLDzqZ1xW",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 22,
+          "grade_band": "9-12",
+          "part": "Part 4",
+          "portal_anchor_label": "9-12 PART 4: Planet Earth and Space Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 87,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T185142Z"
+    },
+    {
+      "form_id": "9-12-part-5",
+      "title": "9-12 PART 5: Planet Earth and Space Standards and Benchmarks",
+      "url": "https://forms.cloud.microsoft/r/g28N3Mrgdm",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 23,
+          "grade_band": "9-12",
+          "part": "Part 5",
+          "portal_anchor_label": "9-12 PART 5: Planet Earth and Space Standards and Benchmarks",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 26,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-6",
+      "title": "9-12 PART 6: Life Standards and Benchmarks, The Science of Life",
+      "url": "https://forms.cloud.microsoft/r/ychQ7jDMmd",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 24,
+          "grade_band": "9-12",
+          "part": "Part 6",
+          "portal_anchor_label": "9-12 PART 6: Life Standards and Benchmarks, The Science of Life",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 56,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "retry-20261027T193225Z"
+    },
+    {
+      "form_id": "9-12-part-7",
+      "title": "9-12 PART 7: Life Standards and Benchmarks, The Science of Cell Biology",
+      "url": "https://forms.cloud.microsoft/r/SCDiHZ6fE8",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 25,
+          "grade_band": "9-12",
+          "part": "Part 7",
+          "portal_anchor_label": "9-12 PART 7: Life Standards and Benchmarks, The Science of Cell Biology",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 97,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-8",
+      "title": "9-12 PART 8: Life Standards and Benchmarks, The Science of Plants (part 1 of 2)",
+      "url": "https://forms.cloud.microsoft/r/EwjXq1r2YU",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 26,
+          "grade_band": "9-12",
+          "part": "Part 8",
+          "portal_anchor_label": "9-12 PART 8: Life Standards and Benchmarks, The Science of Plants (part 1 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 59,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "9-12-part-9",
+      "title": "9-12 PART 9: Life Standards and Benchmarks, The Science of Plants (part 2 of 2)",
+      "url": "https://forms.cloud.microsoft/r/yiGQdGwkwC",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 27,
+          "grade_band": "9-12",
+          "part": "Part 9",
+          "portal_anchor_label": "9-12 PART 9: Life Standards and Benchmarks, The Science of Plants (part 2 of 2)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 57,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    },
+    {
+      "form_id": "9-12-part-10",
+      "title": "9-12 PART 10: Life Standards and Benchmarks, The Science of Animals (part 1 of 3)",
+      "url": "https://forms.cloud.microsoft/r/Z4MZmUyZKj",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 28,
+          "grade_band": "9-12",
+          "part": "Part 10",
+          "portal_anchor_label": "9-12 PART 10: Life Standards and Benchmarks, The Science of Animals (part 1 of 3)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 99,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-11",
+      "title": "9-12 PART 11: Life Standards and Benchmarks, The Science of Animals (part 2 of 3)",
+      "url": "https://forms.cloud.microsoft/r/ht3YxPn0zb",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 29,
+          "grade_band": "9-12",
+          "part": "Part 11",
+          "portal_anchor_label": "9-12 PART 11: Life Standards and Benchmarks, The Science of Animals (part 2 of 3)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 97,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-12",
+      "title": "9-12 PART 12: Life Standards and Benchmarks, The Science of Animals (part 3 of 3)",
+      "url": "https://forms.cloud.microsoft/r/k8f8pHyqzv",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 30,
+          "grade_band": "9-12",
+          "part": "Part 12",
+          "portal_anchor_label": "9-12 PART 12: Life Standards and Benchmarks, The Science of Animals (part 3 of 3)",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 28,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "retry-20261027T193225Z"
+    },
+    {
+      "form_id": "9-12-part-13",
+      "title": "9-12 PART 13: Life Standards and Benchmarks, The Science of Human Body and the Science of Nutrition",
+      "url": "https://forms.cloud.microsoft/r/g2Q8v0bfh5",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 31,
+          "grade_band": "9-12",
+          "part": "Part 13",
+          "portal_anchor_label": "9-12 PART 13: Life Standards and Benchmarks, The Science of Human Body and the Science of Nutrition",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 79,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-14",
+      "title": "9-12 PART 14: Life Standards and Benchmarks, The Science of Fungi",
+      "url": "https://forms.cloud.microsoft/r/NL8Aqk96NK",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 32,
+          "grade_band": "9-12",
+          "part": "Part 14",
+          "portal_anchor_label": "9-12 PART 14: Life Standards and Benchmarks, The Science of Fungi",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 53,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-15",
+      "title": "9-12 PART 15: Life Standards and Benchmarks, The Science of Microorganisms",
+      "url": "https://forms.cloud.microsoft/r/2iSPvCqbZi",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 33,
+          "grade_band": "9-12",
+          "part": "Part 15",
+          "portal_anchor_label": "9-12 PART 15: Life Standards and Benchmarks, The Science of Microorganisms",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 51,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T183434Z"
+    },
+    {
+      "form_id": "9-12-part-16",
+      "title": "9-12 PART 16: Life Standards and Benchmarks, Applying the Science of Life",
+      "url": "https://forms.cloud.microsoft/r/jfBQA1UAvC",
+      "capture_status": "text captured; complete through final page, Submit not pressed",
+      "shared": false,
+      "repeated_in_portal": false,
+      "portal_placement_count": 1,
+      "placements": [
+        {
+          "portal_order": 34,
+          "grade_band": "9-12",
+          "part": "Part 16",
+          "portal_anchor_label": "9-12 PART 16: Life Standards and Benchmarks, Applying the Science of Life",
+          "anchor_role": "part_form",
+          "portal_section": "Grade 9–12 B.E.S.T. Standards and Benchmarks for Science"
+        }
+      ],
+      "captured_pages": 11,
+      "best_capture_date": "2026-10-27",
+      "best_capture_id": "20261027T181539Z"
+    }
+  ],
+  "verification_snapshot_id": "multiple dated captures; latest full snapshot 20261027T185142Z; targeted retry 20261027T193225Z",
+  "capture_notes": [
+    "Visible form text is preserved in the private local corpus; this public inventory does not redistribute form text.",
+    "No answer choices were changed and Submit was never pressed.",
+    "K-5 Part 3 remains a partial 60-page capture; a targeted retry returned an empty/loading state.",
+    "The 11 SC.K12.STR.*.1 STARS statements are tracked separately from grade-band benchmark counts."
+  ],
+  "forms_with_text": 26,
+  "forms_complete_without_submission": 25,
+  "forms_partial": 1,
+  "forms_no_text": 0
+}

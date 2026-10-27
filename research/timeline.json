@@ -156,6 +156,39 @@
         "description": "The review landing page was reorganized as a six-chapter visual walkthrough covering the draft, evolution and climate omissions, benchmark coverage, an explanatory topic map, Florida’s adoption history, and evidence limits. A chapter navigator marks the current section; detailed pages open in new tabs so readers can return to their place. Published in commit b6cf66b; the GitHub Pages build succeeded.",
         "url": "/research/florida-science-standards-review/"
       }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Event",
+        "name": "Portal mirror, form reconciliation, and omission map expanded",
+        "startDate": "2026-10-27",
+        "description": "A dated local monitor now preserves the FDOE review page, link inventory, and five active PDFs; every PDF SHA-256 matches the existing corpus. Visible text was captured from all 26 online forms across dated runs and targeted retries, with 25 complete captures and one K–5 Part 3 capture partial at the 60-page limit. The review found 11 K–12 STARS standards absent from the grade-band PDFs and tracks them separately from the 1,512 leaf benchmarks. The overview and crosswalk now also identify Earth’s age and universe age/origin as notable omissions while distinguishing omitted conclusions from retained dating methods and cosmological evidence. A local timer is active for daily checks through October 31, then weekly.",
+        "url": "/research/florida-science-standards-review/research/sources/2026-process/portal-monitoring-roadmap.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Event",
+        "name": "Coded-text comparison corrected; adoption boundary clarified",
+        "startDate": "2026-10-27",
+        "description": "The comparison now distinguishes leaf benchmarks from coded parent-standard descriptions and separates both from review-packet guidance. Leaf wording is about 16,403 words in 2026 versus 15,675 in 2008 (+4.6%); parent-plus-leaf coded text is about 23,712 versus 18,875 (+25.6%). Counts are descriptive text volume, not target count or workload. The review adds Florida Statutes §1003.41, current Rule 6A-1.09401, and the October 14 rule-development notice to its source listing. It treats embedded clarifications conditionally because final legal status depends on the exact science rule and incorporated version, and adds a version-monitoring test for whether support text changes at adoption. No intent is inferred from a possible change.",
+        "url": "/research/florida-science-standards-review/research/source-layers-and-legal-status.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Event",
+        "name": "Draft workload claim examined against foreword and statutes",
+        "startDate": "2026-10-27",
+        "description": "The review added Dr. Victor Sampson’s instructional-time analysis to the bibliography and checked its central claims against the proposed foreword and Florida graduation-credit statutes. The foreword confirms that clarifications and examples are part of the draft’s intended outcomes, while also calling for integrated instruction. The article’s fixed-period-per-clarification and all-benchmarks-in-three-credits calculations are retained as scenarios, not findings of a measured statewide workload shortfall.",
+        "url": "/research/florida-science-standards-review/research/project-bibliography.html#instructional-burden"
+      }
     }
   ],
   "dateBasis": "The project author confirms that work began on 2026-10-22. Subsequent research and publication milestones are based on report-stated cutoffs, explicit source-check dates, and dated repository commit history. The timeline does not capture every off-repository activity."

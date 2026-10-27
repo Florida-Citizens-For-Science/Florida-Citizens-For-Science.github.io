@@ -1,0 +1,57 @@
+{
+  "dateChecked": "2026-10-27",
+  "tokenization": "Unicode-aware regex equivalent to \\b\\w+\\b; exclude IDs, titles/headings, and supporting clarifications/examples/tasks from coded-text counts.",
+  "formalCodedText": {
+    "leafBenchmarks": {
+      "2026Draft": {
+        "items": 1512,
+        "words": 16403
+      },
+      "Florida2008": {
+        "items": 498,
+        "words": 15675
+      },
+      "wordDifference": 728,
+      "percentDifference": 4.6407,
+      "scope": "Numbered leaf benchmark statement text only."
+    },
+    "parentDescriptions": {
+      "2026Draft": {
+        "items": 336,
+        "words": 7309
+      },
+      "Florida2008": {
+        "items": 169,
+        "words": 3200
+      },
+      "scope": "2026 descriptions grouped by parent-level standard code; 2008 lettered A–D parent clauses under Big Idea/Standard headings. The frameworks have different structures."
+    },
+    "parentPlusLeaf": {
+      "2026Draft": {
+        "items": 1848,
+        "words": 23712
+      },
+      "Florida2008": {
+        "items": 667,
+        "words": 18875
+      },
+      "wordDifference": 4837,
+      "percentDifference": 25.6252,
+      "scope": "Descriptive text-volume comparison, not a count of distinct teachable targets or workload."
+    }
+  },
+  "2026ReviewPacketOnly": {
+    "threeGradeBandPdfsExtractedWords": 216632,
+    "outsideCodedParentAndLeafTextWords": 192920,
+    "forewordAndTablesExtractedWords": 23039,
+    "fivePdfPacketExtractedWords": 239671,
+    "includes": "Clarifications, examples, student tasks, instructional notes, headings, repeated labels, and layout text.",
+    "comparisonWarning": "Do not compare this packet total directly with the 2008 standards PDF or describe it as coded standards text."
+  },
+  "limitations": [
+    "The 2008 and 2026 documents organize and bundle expectations differently.",
+    "Word totals describe text volume, not target count, instructional hours, or student workload.",
+    "2026 is a non-final review draft; the final rule and incorporated reference determine adopted status.",
+    "Source PDFs and extracts are preserved in the private project corpus; this file exposes only aggregate counts and method."
+  ]
+}

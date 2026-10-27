@@ -3,7 +3,7 @@
   "sources": {
     "doc:fl-science-2026-draft": {
       "coverage": "complete draft benchmark enumeration",
-      "note": "The graph contains all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range row; foreword and tables are separately cited in the corpus inventory."
+      "note": "The graph contains all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range row; foreword and tables are separately cited in the corpus inventory. The counts above cover the three grade-band PDFs only. The October 27, 2026 FDOE Forms inventory records 35 anchor placements to 26 unique forms; an initial STARS capture includes 11 numbered SC.K12.STR.*.1 standards absent from the PDFs and this graph. Form text is being reconciled and these items are not yet represented."
     },
     "doc:fl-science-2008": {
       "coverage": "complete benchmark-item extraction",
@@ -130,5 +130,13 @@
     "reviewedEvidenceAssertions": 3491,
     "unreviewedMachineRankedCandidateLinks": 3354,
     "concepts": 7
+  },
+  "portalForms": {
+    "checkedDate": "2026-10-27",
+    "anchorPlacementsInCapturedHtml": 35,
+    "uniqueForms": 26,
+    "capturedInGraph": false,
+    "initialFormOnlyStandardsDiscovered": 11,
+    "status": "partial capture and source-first reconciliation underway; do not count these in grade-band PDF coverage yet"
   }
 }
