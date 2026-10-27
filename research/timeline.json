@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Florida Science Standards Review Work Timeline",
-  "dateModified": "2026-10-25",
+  "dateModified": "2026-10-27",
   "about": "Dated public milestones in the independent review of Florida's proposed 2026 science standards.",
   "itemListElement": [
     {
@@ -144,6 +144,17 @@
         "description": "The benchmark network now opens focused on the full 2026 draft and spaces nodes dynamically within grade/course bands, with a 400% zoom ceiling. Source-map lines distinguish recorded comparison assertions from additional source files explicitly named in composite-item locators. Locator-derived connections are labeled as source context, not benchmark-equivalence claims. Published in commit de83b9e; the GitHub Pages build succeeded.",
         "url": "/research/florida-science-standards-review/research/standards-graph.html",
         "identifier": "de83b9e"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Event",
+        "name": "Review landing page reorganized as a visual walkthrough",
+        "startDate": "2026-10-27",
+        "description": "The review overview guides readers through the draft, evolution and climate omissions, benchmark coverage, relationships among topics, Florida’s adoption history, and evidence limits. A chapter navigator tracks the current section, and detail pages open separately so readers can return to the same point. The page adds a benchmark-coverage chart and an explanatory concept map.",
+        "url": "/research/florida-science-standards-review/"
       }
     }
   ],
