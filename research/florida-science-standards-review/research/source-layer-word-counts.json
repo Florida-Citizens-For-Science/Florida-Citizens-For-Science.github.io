@@ -1,5 +1,5 @@
 {
-  "dateChecked": "2026-10-27",
+  "dateChecked": "2026-10-29",
   "tokenization": "Unicode-aware regex equivalent to \\b\\w+\\b; exclude IDs, titles/headings, and supporting clarifications/examples/tasks from coded-text counts.",
   "formalCodedText": {
     "leafBenchmarks": {
@@ -53,5 +53,60 @@
     "Word totals describe text volume, not target count, instructional hours, or student workload.",
     "2026 is a non-final review draft; the final rule and incorporated reference determine adopted status.",
     "Source PDFs and extracts are preserved in the private project corpus; this file exposes only aggregate counts and method."
-  ]
+  ],
+  "wholeSourceDocuments": {
+    "method": "Whitespace-separated token count (len(text.split())) on the retained PyMuPDF text extraction for every listed source; pages are summed from the preserved PDFs.",
+    "warning": "This is whole-file text volume, not a common standards-content layer. Sources vary in grade coverage and amount of explanatory/supporting text. The 2026 row combines five review PDFs, while Indiana covers K–8 only. Do not interpret as comparable requirement counts or workload.",
+    "sources": [
+      {
+        "label": "Florida 2026 review packet",
+        "pdfs": 5,
+        "pages": 1084,
+        "tokens": 239671,
+        "coverage": "K–12 grade-band drafts, foreword, and tables; review-only packet."
+      },
+      {
+        "label": "Indiana 2000 science standards",
+        "pdfs": 9,
+        "pages": 399,
+        "tokens": 113198,
+        "coverage": "K–8 corpus only; nine grade booklets."
+      },
+      {
+        "label": "Next Generation Science Standards DCI arrangements",
+        "pdfs": 1,
+        "pages": 103,
+        "tokens": 74965,
+        "coverage": "K–12 standards arranged by Disciplinary Core Ideas."
+      },
+      {
+        "label": "Massachusetts 2016 Science and Technology/Engineering framework",
+        "pdfs": 1,
+        "pages": 197,
+        "tokens": 70098,
+        "coverage": "PreK–12 framework."
+      },
+      {
+        "label": "Franklin Standards (NAS/Freedom in Education, 2024; current NAS PDF version)",
+        "pdfs": 1,
+        "pages": 133,
+        "tokens": 42027,
+        "coverage": "K–12 model standards; full copyrighted PDF is retained privately and linked from NAS."
+      },
+      {
+        "label": "South Carolina 2014 Academic Standards and Performance Indicators for Science",
+        "pdfs": 1,
+        "pages": 115,
+        "tokens": 32180,
+        "coverage": "K–12 standards and performance indicators."
+      },
+      {
+        "label": "Florida 2008 Next Generation Sunshine State Standards: Science",
+        "pdfs": 1,
+        "pages": 74,
+        "tokens": 24217,
+        "coverage": "K–12 adopted science standards PDF."
+      }
+    ]
+  }
 }

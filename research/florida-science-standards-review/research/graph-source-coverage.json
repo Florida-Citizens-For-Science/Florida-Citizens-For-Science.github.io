@@ -108,26 +108,30 @@
     "doc:corpus:massachusetts-2016": {
       "coverage": "document-level record only",
       "note": "Ancillary corpus resource. Extracted text is in the local semantic-search corpus; this source has not been segmented into benchmark-level graph items, and no comparison relation is inferred from its presence. No item-level graph segmentation or comparison relation is implied. Source-file names and SHA-256 values are recorded in the graph; consult primary source host or the local corpus as rights permit."
+    },
+    "doc:external:franklin-standards-2024": {
+      "coverage": "rights-limited topic-comparison extraction",
+      "note": "Five original paraphrase TextUnits and five human-reviewed topicComparison assertions connect selected Franklin topics to Florida 2026 units. The complete 133-page source is preserved and page-indexed only in the private corpus; the public graph does not reproduce its text. Content comparison does not establish drafting influence, borrowing, or adoption."
     }
   },
   "corpusInventory": {
     "localInventoryPath": ".semantic-search/inventory.json",
-    "inventoryFileCount": 162,
-    "indexedFiles": 132,
+    "inventoryFileCount": 481,
+    "indexedFiles": 442,
     "indexedViaCatpptFiles": 4,
-    "excludedFiles": 26,
-    "semanticChunkCount": 36568,
-    "semanticSourceFileCount": 136,
-    "semanticIndexedBytes": 53881935,
+    "excludedFiles": 35,
+    "semanticChunkCount": 128331,
+    "semanticSourceFileCount": 446,
+    "semanticIndexedBytes": 290907157,
     "documentLevelAncillaryNodes": 15,
-    "note": "Inventory describes the local research corpus as of the graph build. It includes source documents, extracted text, research notes, and generated artifacts; counts do not imply every file is represented as a benchmark-level TextUnit. Copyright-sensitive external sources are linked or cited rather than reproduced wholesale."
+    "note": "Counts describe the current private research corpus and its offline LSI index. Copyright-sensitive external source text is retained locally; public graph nodes use citations and short original paraphrases."
   },
   "graphCounts": {
-    "nodes": 10025,
-    "textUnits": 3147,
-    "standardVersionDocuments": 26,
-    "evidenceAssertionsTotal": 6845,
-    "reviewedEvidenceAssertions": 3491,
+    "nodes": 10036,
+    "textUnits": 3152,
+    "standardVersionDocuments": 27,
+    "evidenceAssertionsTotal": 6850,
+    "reviewedEvidenceAssertions": 3496,
     "unreviewedMachineRankedCandidateLinks": 3354,
     "concepts": 7
   },

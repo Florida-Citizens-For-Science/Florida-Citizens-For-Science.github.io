@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Florida Science Standards Review Work Timeline",
-  "dateModified": "2026-10-27",
+  "dateModified": "2026-10-29",
   "about": "Dated public milestones in the independent review of Florida's proposed 2026 science standards.",
   "itemListElement": [
     {
@@ -188,6 +188,28 @@
         "startDate": "2026-10-27",
         "description": "The review added Dr. Victor Sampson’s instructional-time analysis to the bibliography and checked its central claims against the proposed foreword and Florida graduation-credit statutes. The foreword confirms that clarifications and examples are part of the draft’s intended outcomes, while also calling for integrated instruction. The article’s fixed-period-per-clarification and all-benchmarks-in-three-credits calculations are retained as scenarios, not findings of a measured statewide workload shortfall.",
         "url": "/research/florida-science-standards-review/research/project-bibliography.html#instructional-burden"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": "Event",
+        "name": "Landing page adds standards and source-document size graphics",
+        "startDate": "2026-10-27",
+        "description": "The walkthrough now explains that the proposed foreword treats benchmarks, clarifications, and examples as expected outcomes carrying the full weight of the draft. It separates a like-for-like coded-text comparison (23,712 words for 2026 versus 18,875 for 2008) from the whole 2026 packet and a comparative chart of selected source documents. The chart labels document scope, tokenization, and limitations; it does not present file size as target count or teaching time.",
+        "url": "/research/florida-science-standards-review/#scale"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Event",
+        "name": "Franklin Standards obtained, indexed, and compared as a candidate source",
+        "startDate": "2026-10-29",
+        "description": "The NAS-hosted 133-page Franklin Standards PDF and extracted text were preserved privately with hashes, fully indexed in the offline corpus, and added page by page to the private graph. Five reviewed topic comparisons now cover evolution, climate change, Earth age, and universe age; a normalized eight-word scan found no distinctive extended match. Public materials cite and summarize the copyrighted source without redistributing its text. Related site revisions are prepared locally and have not been published.",
+        "url": "/research/florida-science-standards-review/research/sources/franklin-standards-comparison.html"
       }
     }
   ],

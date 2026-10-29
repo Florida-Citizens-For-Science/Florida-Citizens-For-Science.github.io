@@ -50,7 +50,8 @@
     "possibleOmission",
     "textualLineage",
     "assessmentCrosswalk",
-    "semanticNeighborCandidate"
+    "semanticNeighborCandidate",
+    "topicComparison"
   ],
   "crossVersionStatus": [
     "retained",
@@ -80,6 +81,7 @@
     "provenanceStatus records the evidence state for the drafting source; identified wording lineage does not identify an author, intermediary, or access path.",
     "Use unresolved when matching evidence is insufficient; absence of a match is not proof of deletion.",
     "An assessmentCrosswalk relation records an assessment/report alignment only; it does not assert one-to-one standard equivalence or source authorship.",
-    "A semanticNeighborCandidate is a machine-ranked discovery lead only; similarity scores do not establish borrowing, continuity, or omission and require human review."
+    "A semanticNeighborCandidate is a machine-ranked discovery lead only; similarity scores do not establish borrowing, continuity, or omission and require human review.",
+    "A topicComparison records a reviewed content comparison; it does not establish that the source informed drafting or that text was copied."
   ]
 }

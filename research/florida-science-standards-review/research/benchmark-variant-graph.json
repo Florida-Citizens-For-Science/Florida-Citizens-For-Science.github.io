@@ -4,7 +4,7 @@
     "draftBenchmarkUnits": 1512,
     "explicitlyReviewedDraftRows": 1468,
     "unresolvedDraftRows": 44,
-    "evidenceAssertionCount": 6845,
+    "evidenceAssertionCount": 6850,
     "assessmentAlignmentRows": 247,
     "assessmentCrosswalkAssertions": 247,
     "assessmentBridge2008BenchmarkCodes": 130,
@@ -26,7 +26,7 @@
       "Distinctive ordered-phrase lineage to Florida 2008 is identified; the specific intermediary and drafting source remain unresolved.": 1,
       "Distinctive wording lineage to the NGSS/NRC source family is identified; the specific file or intermediary used in drafting remains unresolved.": 1
     },
-    "note": "All 1,512 leaf benchmarks found in the three grade-band PDFs are represented; the graph does not yet include text from FDOE online review forms. An initial STARS form capture found 11 numbered SC.K12.STR.*.1 items absent from those PDFs and this graph, pending source-register reconciliation. Reviewed register edges, row-level 1996/GLE task-equivalence assertions, and explicit 1996-to-2008 assessmentCrosswalk evidence are distinct. Assessment edges record reported alignment, not one-to-one standard equivalence. The 1996-to-2008-to-2026 paths combine an assessment link with a separately reviewed register edge. Unresolved draft units have no inferred predecessor edge. Complete source text is now encoded for all 498 Florida 2008 benchmark IDs, all 208 NGSS Performance Expectations, all parsed grade-level sections of the 2007 FCS proposal, and all 412 Indiana 2000 K–8 science statements. Machine-ranked semantic-neighbor edges are separately labeled, unreviewed discovery leads and are not evidence of borrowing or omission. Fifteen ancillary process/framework documents are included as document-level source nodes; they have not been segmented into benchmark items or given inferred comparison links.",
+    "note": "All draft leaf benchmarks are represented. Reviewed register edges, row-level 1996/GLE task-equivalence assertions, and explicit 1996-to-2008 assessmentCrosswalk evidence are distinct. Assessment edges record reported alignment, not one-to-one standard equivalence. The 1996-to-2008-to-2026 paths combine an assessment link with a separately reviewed register edge. Unresolved draft units have no inferred predecessor edge. Complete source text is now encoded for all 498 Florida 2008 benchmark IDs, all 208 NGSS Performance Expectations, all parsed grade-level sections of the 2007 FCS proposal, and all 412 Indiana 2000 K–8 science statements. Machine-ranked semantic-neighbor edges are separately labeled, unreviewed discovery leads and are not evidence of borrowing or omission. Fifteen ancillary process/framework documents are included as document-level source nodes; they have not been segmented into benchmark items or given inferred comparison links. The copyrighted Franklin Standards are separately represented in the private graph as complete page-indexed source text, with five reviewed topic-comparison assertions and no copying or drafting-influence claim. Public Franklin graph content is limited to five original paraphrases and five reviewed topic comparisons; the complete copyrighted source text remains in the private corpus.",
     "completeExternalSourceItems": {
       "florida2008": 498,
       "ngssPerformanceExpectations": 208,
@@ -35,13 +35,14 @@
     },
     "unreviewedSemanticNeighborEdges": 3354,
     "ancillaryCorpusDocuments": 15,
-    "reviewedEvidenceAssertionCount": 3491,
+    "reviewedEvidenceAssertionCount": 3496,
     "textUnitsBySourceDocument": {
       "null": 157,
       "doc:external:89574ee13dd2c447": 10,
       "doc:external:8f3e333f4967c18a": 12,
       "doc:external:9aab810f0e14c6e9": 2,
       "doc:external:a6ff73f1309c8ec5": 9,
+      "doc:external:franklin-standards-2024": 5,
       "doc:external:indiana-2000": 412,
       "doc:fl-science-1996": 170,
       "doc:fl-science-2008": 499,
@@ -49,6 +50,17 @@
       "doc:fl-science-gle-1999": 141,
       "doc:ngss-all-topic-standards": 208,
       "doc:south-carolina-science-2014": 14
+    },
+    "publicRightsLimitedSourceItems": {
+      "franklinStandards": {
+        "publicSummaryUnits": 5,
+        "privateCompletePageUnits": 133,
+        "reviewedTopicComparisons": 5,
+        "note": "The private corpus graph contains page-indexed text for the complete 133-page source. The public graph contains paraphrases only; see NAS for the full copyrighted document."
+      }
+    },
+    "privateCompleteExternalSourceItems": {
+      "franklinStandardsPages": 133
     }
   },
   "@graph": [
@@ -174341,6 +174353,180 @@
       "candidateRank": 3,
       "similarityScore": 0.25089,
       "sourceFamily": "Indiana 2000 semantic screen"
+    },
+    {
+      "id": "doc:external:franklin-standards-2024",
+      "type": "StandardVersion",
+      "title": "The Franklin Standards: Model K–12 State Science Standards (NAS, 2024)",
+      "status": "Complete 133-page text extraction is retained privately. Public graph contains five original paraphrase units and reviewed content comparisons; no source lineage is inferred.",
+      "sourceFiles": [
+        {
+          "file": "https://www.nas.org/report/the-franklin-standards/",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        }
+      ],
+      "sourceDocument": "https://www.nas.org/report/the-franklin-standards/",
+      "redistributionStatus": "Copyrighted NAS source; public graph does not reproduce the source text."
+    },
+    {
+      "id": "unit:source:franklin2024:page:043",
+      "type": "TextUnit",
+      "code": "Franklin Standards PDF p. 43",
+      "gradeSpan": null,
+      "text": "Franklin grade 3 standards explicitly introduce biological evolution as change in life over time.",
+      "sourceDocument": "doc:external:franklin-standards-2024",
+      "sourceFiles": [
+        {
+          "file": "sources/franklin-standards-2024.pdf",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        },
+        {
+          "file": "sources/franklin-standards-2024.txt",
+          "sha256": "f59454ad0ad6b78a8ab60244d4c62128545e9eb6b2239d90ca6ce93db2b4749d"
+        }
+      ],
+      "pageOrAnchor": "sources/franklin-standards-2024.pdf, PDF page 43",
+      "reviewStatus": "Reviewed topic comparison; full page text retained privately.",
+      "status": "Original summary only; see NAS source page for the copyrighted document."
+    },
+    {
+      "id": "unit:source:franklin2024:page:065",
+      "type": "TextUnit",
+      "code": "Franklin Standards PDF p. 65",
+      "gradeSpan": null,
+      "text": "Franklin high-school biology explicitly covers biological evolution and evolutionary mechanisms.",
+      "sourceDocument": "doc:external:franklin-standards-2024",
+      "sourceFiles": [
+        {
+          "file": "sources/franklin-standards-2024.pdf",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        },
+        {
+          "file": "sources/franklin-standards-2024.txt",
+          "sha256": "f59454ad0ad6b78a8ab60244d4c62128545e9eb6b2239d90ca6ce93db2b4749d"
+        }
+      ],
+      "pageOrAnchor": "sources/franklin-standards-2024.pdf, PDF page 65",
+      "reviewStatus": "Reviewed topic comparison; full page text retained privately.",
+      "status": "Original summary only; see NAS source page for the copyrighted document."
+    },
+    {
+      "id": "unit:source:franklin2024:page:066",
+      "type": "TextUnit",
+      "code": "Franklin Standards PDF p. 66",
+      "gradeSpan": null,
+      "text": "Franklin grade 7 standards give an approximate age for the formation of Earth and the Moon.",
+      "sourceDocument": "doc:external:franklin-standards-2024",
+      "sourceFiles": [
+        {
+          "file": "sources/franklin-standards-2024.pdf",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        },
+        {
+          "file": "sources/franklin-standards-2024.txt",
+          "sha256": "f59454ad0ad6b78a8ab60244d4c62128545e9eb6b2239d90ca6ce93db2b4749d"
+        }
+      ],
+      "pageOrAnchor": "sources/franklin-standards-2024.pdf, PDF page 66",
+      "reviewStatus": "Reviewed topic comparison; full page text retained privately.",
+      "status": "Original summary only; see NAS source page for the copyrighted document."
+    },
+    {
+      "id": "unit:source:franklin2024:page:115",
+      "type": "TextUnit",
+      "code": "Franklin Standards PDF p. 115",
+      "gradeSpan": null,
+      "text": "Franklin high-school astronomy gives an approximate age for the universe and presents evidence associated with the Big Bang.",
+      "sourceDocument": "doc:external:franklin-standards-2024",
+      "sourceFiles": [
+        {
+          "file": "sources/franklin-standards-2024.pdf",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        },
+        {
+          "file": "sources/franklin-standards-2024.txt",
+          "sha256": "f59454ad0ad6b78a8ab60244d4c62128545e9eb6b2239d90ca6ce93db2b4749d"
+        }
+      ],
+      "pageOrAnchor": "sources/franklin-standards-2024.pdf, PDF page 115",
+      "reviewStatus": "Reviewed topic comparison; full page text retained privately.",
+      "status": "Original summary only; see NAS source page for the copyrighted document."
+    },
+    {
+      "id": "unit:source:franklin2024:page:123",
+      "type": "TextUnit",
+      "code": "Franklin Standards PDF p. 123",
+      "gradeSpan": null,
+      "text": "Franklin Earth-science standards explicitly ask students to explain how and why Earth's climate changes, including natural and human influences.",
+      "sourceDocument": "doc:external:franklin-standards-2024",
+      "sourceFiles": [
+        {
+          "file": "sources/franklin-standards-2024.pdf",
+          "sha256": "dae43489d544d920715609b396921f108b826d8f14c10530c5da8c272da69562"
+        },
+        {
+          "file": "sources/franklin-standards-2024.txt",
+          "sha256": "f59454ad0ad6b78a8ab60244d4c62128545e9eb6b2239d90ca6ce93db2b4749d"
+        }
+      ],
+      "pageOrAnchor": "sources/franklin-standards-2024.pdf, PDF page 123",
+      "reviewStatus": "Reviewed topic comparison; full page text retained privately.",
+      "status": "Original summary only; see NAS source page for the copyrighted document."
+    },
+    {
+      "id": "assertion:topic-comparison:franklin2024:043:SC.8.SL.2.1",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:source:franklin2024:page:043",
+      "targetUnit": "unit:2026:SC.8.SL.2.1",
+      "relation": "topicComparison",
+      "evidence": "The Franklin grade 3 standards explicitly describe evolution as change in life over time; Florida 2026 grade 8 benchmarks cover natural-selection mechanisms. Shared topic, with a difference in explicit naming and placement. No drafting-source inference.",
+      "method": "human_review",
+      "status": "reviewed content comparison; source lineage unresolved",
+      "sourceFamily": "Franklin Standards"
+    },
+    {
+      "id": "assertion:topic-comparison:franklin2024:065:SC.912.SL.6.5",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:source:franklin2024:page:065",
+      "targetUnit": "unit:2026:SC.912.SL.6.5",
+      "relation": "topicComparison",
+      "evidence": "The Franklin high-school life-science standards explicitly address biological evolution and mechanisms; Florida 2026 asks students to analyze survival, reproduction, and population change. Shared topic, not distinctive wording or evidence of derivation.",
+      "method": "human_review",
+      "status": "reviewed content comparison; source lineage unresolved",
+      "sourceFamily": "Franklin Standards"
+    },
+    {
+      "id": "assertion:topic-comparison:franklin2024:123:SC.912.PE.13.6",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:source:franklin2024:page:123",
+      "targetUnit": "unit:2026:SC.912.PE.13.6",
+      "relation": "topicComparison",
+      "evidence": "The Franklin Earth-science standards explicitly ask how and why Earth's climate changes and discuss natural and human influences; Florida 2026 integrates climate mechanisms but does not clearly require the same explicit climate-change attribution synthesis. Content comparison only.",
+      "method": "human_review",
+      "status": "reviewed content comparison; source lineage unresolved",
+      "sourceFamily": "Franklin Standards"
+    },
+    {
+      "id": "assertion:topic-comparison:franklin2024:066:SC.912.PE.7.3",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:source:franklin2024:page:066",
+      "targetUnit": "unit:2026:SC.912.PE.7.3",
+      "relation": "topicComparison",
+      "evidence": "Franklin grade 7 states that Earth and the Moon formed about 4.6 billion years ago; Florida 2026 covers radiometric dating of rocks and events but no explicit Earth-age requirement was located. Content comparison only.",
+      "method": "human_review",
+      "status": "reviewed content comparison; source lineage unresolved",
+      "sourceFamily": "Franklin Standards"
+    },
+    {
+      "id": "assertion:topic-comparison:franklin2024:115:SC.912.SP.7.2",
+      "type": "EvidenceAssertion",
+      "sourceUnit": "unit:source:franklin2024:page:115",
+      "targetUnit": "unit:2026:SC.912.SP.7.2",
+      "relation": "topicComparison",
+      "evidence": "Franklin high-school astronomy states an approximate age for the universe and names Big Bang evidence; Florida 2026 requires evidence for an expanding universe but does not explicitly state a universe age or name the Big Bang. Content comparison only.",
+      "method": "human_review",
+      "status": "reviewed content comparison; source lineage unresolved",
+      "sourceFamily": "Franklin Standards"
     },
     {
       "id": "doc:corpus:fldoe-workgroup-call",
