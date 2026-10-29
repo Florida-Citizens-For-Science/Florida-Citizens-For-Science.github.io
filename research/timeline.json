@@ -243,8 +243,9 @@
         "@type": "Event",
         "name": "College-preparation argument anchored to FDOE’s stated goal and review window",
         "startDate": "2026-10-29",
-        "description": "The admissions analysis now cites FDOE’s September 25 launch statement that the rewrite should prepare students for college-level science, making alignment with that stated goal the central question. It also states that the draft had been in public review for only about five weeks as of October 29. No located university or accreditor statement in that interval is treated as an early search snapshot, not assent, lack of concern, or a settled response. The UC precedent remains limited to one system’s review of specific courses for freshman-admission eligibility.",
-        "url": "/research/florida-science-standards-review/research/postsecondary-preparation.html"
+        "description": "The admissions analysis now cites FDOE’s September 25 launch statement that the rewrite should prepare students for college-level science, making alignment with that stated goal the central question. It also states that the draft had been in public review for only about five weeks as of October 29. No located university or accreditor statement in that interval is treated as an early search snapshot, not assent, lack of concern, or a settled response. The UC precedent remains limited to one system’s review of specific courses for freshman-admission eligibility. Revision recorded in commit 4788ac8.",
+        "url": "/research/florida-science-standards-review/research/postsecondary-preparation.html",
+        "identifier": "4788ac8"
       }
     }
   ],
