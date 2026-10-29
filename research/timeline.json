@@ -231,8 +231,9 @@
         "@type": "Event",
         "name": "Postsecondary preparation and admissions implications assessed",
         "startDate": "2026-10-29",
-        "description": "The review added a sourced analysis distinguishing high-school graduation credit, freshman-admission course eligibility, college-earned credit, and accreditation. It treats uneven college preparation as a conditional risk, documents the University of California course-approval litigation as a narrow comparison, and does not claim that several colleges threatened to reject Florida credits or that accreditors will act. Five references were added to the project bibliography; four public source pages were preserved privately with SHA-256 checksums. The U.S. Department of Education source is linked and summarized; direct capture returned HTTP 403.",
-        "url": "/research/florida-science-standards-review/research/postsecondary-preparation.html"
+        "description": "The review added a sourced analysis distinguishing high-school graduation credit, freshman-admission course eligibility, college-earned credit, and accreditation. It treats uneven college preparation as a conditional risk, documents the University of California course-approval litigation as a narrow comparison, and does not claim that several colleges threatened to reject Florida credits or that accreditors will act. Five references were added to the project bibliography; four public source pages were preserved privately with SHA-256 checksums. The U.S. Department of Education source is linked and summarized; direct capture returned HTTP 403. Site changes are recorded in commit c67ff7b.",
+        "url": "/research/florida-science-standards-review/research/postsecondary-preparation.html",
+        "identifier": "c67ff7b"
       }
     }
   ],
