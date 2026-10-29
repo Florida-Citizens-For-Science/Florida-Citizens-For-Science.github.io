@@ -1,9 +1,9 @@
 {
-  "description": "Counts here describe encoded TextUnit nodes, not the size or importance of original sources. Low counts can indicate incomplete extraction or graph modeling. Consult the cited source or review record before interpreting a gap.",
+  "description": "Counts here describe encoded TextUnit nodes from the first-round 2026 draft graph, not current second-round coverage, nor the size or importance of original sources. The October 26, 2026 PDFs contain 1,572 leaf IDs and have not been fully ingested or crosswalked; low counts can also indicate incomplete extraction or graph modeling.",
   "sources": {
     "doc:fl-science-2026-draft": {
-      "coverage": "complete draft benchmark enumeration",
-      "note": "The graph contains all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range row; foreword and tables are separately cited in the corpus inventory. The counts above cover the three grade-band PDFs only. The October 27, 2026 FDOE Forms inventory records 35 anchor placements to 26 unique forms; an initial STARS capture includes 11 numbered SC.K12.STR.*.1 standards absent from the PDFs and this graph. Form text is being reconciled and these items are not yet represented."
+      "coverage": "complete first-round draft benchmark enumeration only",
+      "note": "The graph contains all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range row; foreword and tables are separately cited in the corpus inventory. The counts above cover the three grade-band PDFs only. The October 27, 2026 FDOE Forms inventory records 35 anchor placements to 26 unique forms; an initial STARS capture includes 11 numbered SC.K12.STR.*.1 standards absent from the PDFs and this graph. Form text is being reconciled and these items are not yet represented. The October 26 second-round PDF set has 1,572 leaf IDs; this graph remains first-round and has not been text-diffed or crosswalked to that version."
     },
     "doc:fl-science-2008": {
       "coverage": "complete benchmark-item extraction",
@@ -142,5 +142,6 @@
     "capturedInGraph": false,
     "initialFormOnlyStandardsDiscovered": 11,
     "status": "partial capture and source-first reconciliation underway; do not count these in grade-band PDF coverage yet"
-  }
+  },
+  "graphVersionScope": "First-round 2026 draft only; October 26 second-round PDFs not ingested."
 }

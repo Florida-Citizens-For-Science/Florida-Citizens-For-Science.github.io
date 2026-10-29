@@ -1,48 +1,8 @@
 {
   "dateChecked": "2026-10-29",
-  "tokenization": "Unicode-aware regex equivalent to \\b\\w+\\b; exclude IDs, titles/headings, and supporting clarifications/examples/tasks from coded-text counts.",
-  "formalCodedText": {
-    "leafBenchmarks": {
-      "2026Draft": {
-        "items": 1512,
-        "words": 16403
-      },
-      "Florida2008": {
-        "items": 498,
-        "words": 15675
-      },
-      "wordDifference": 728,
-      "percentDifference": 4.6407,
-      "scope": "Numbered leaf benchmark statement text only."
-    },
-    "parentDescriptions": {
-      "2026Draft": {
-        "items": 336,
-        "words": 7309
-      },
-      "Florida2008": {
-        "items": 169,
-        "words": 3200
-      },
-      "scope": "2026 descriptions grouped by parent-level standard code; 2008 lettered A–D parent clauses under Big Idea/Standard headings. The frameworks have different structures."
-    },
-    "parentPlusLeaf": {
-      "2026Draft": {
-        "items": 1848,
-        "words": 23712
-      },
-      "Florida2008": {
-        "items": 667,
-        "words": 18875
-      },
-      "wordDifference": 4837,
-      "percentDifference": 25.6252,
-      "scope": "Descriptive text-volume comparison, not a count of distinct teachable targets or workload."
-    }
-  },
+  "tokenization": "Earlier reported formal-text regex counts are withdrawn. First-round whole-packet counts below use whitespace-separated tokens on saved PyMuPDF extracts; second-round grade-band packet counts, where separately reported in the audit CSV, use pdftotext -layout and are not directly comparable.",
   "2026ReviewPacketOnly": {
     "threeGradeBandPdfsExtractedWords": 216632,
-    "outsideCodedParentAndLeafTextWords": 192920,
     "forewordAndTablesExtractedWords": 23039,
     "fivePdfPacketExtractedWords": 239671,
     "includes": "Clarifications, examples, student tasks, instructional notes, headings, repeated labels, and layout text.",
@@ -108,5 +68,25 @@
         "coverage": "K–12 adopted science standards PDF."
       }
     ]
+  },
+  "versionScope": "All formal coded-text and full-packet word counts in this file describe the first-round 2026 draft PDFs. They are not current October 26 second-round counts.",
+  "currentSecondRoundSnapshot": {
+    "version": "FDOE second-round grade-band PDFs as of 2026-10-26",
+    "leafBenchmarkIds": 1572,
+    "leafIdsByGradeBand": {
+      "K-5": 279,
+      "6-8": 235,
+      "9-12": 1058
+    },
+    "parentStandardIds": 339,
+    "firstRoundRegisterIdsShared": 1511,
+    "newLeafIds": 61,
+    "textDiffStatus": "Full wording changes among shared IDs have not yet been audited; do not infer the old crosswalk or word totals apply.",
+    "firstRoundIdsNotInSecondRound": 1
+  },
+  "formalCodedTextStatus": {
+    "status": "Withdrawn pending reproducible extraction; all previous formal coded-text word totals and derived percentages are retained only in the verification audit CSV with limitations.",
+    "reason": "Independent recheck found a two-word heading artifact in one first-round leaf-register row and could not reproduce the parent-description total.",
+    "nextStep": "Document segmentation rules, reproduce counts from preserved source PDFs, then rerun against the October 26 second-round PDFs before publishing any comparison."
   }
 }

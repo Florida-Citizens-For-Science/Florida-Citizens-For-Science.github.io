@@ -105,7 +105,7 @@
         "@type": "Event",
         "name": "Placement crosswalk updated with omissions and teaching consequences",
         "startDate": "2026-10-24",
-        "description": "The evolution/climate placement page now identifies specific omitted evolution expectations and climate-attribution/forecasting tasks in its normalized takeaways, explains possible consequences for coherent and accurate teaching, and corrects stale 2026 register totals to the current 1,512-item inventory. Changes are recorded in commit 7a56ebb.",
+        "description": "At that date, the evolution/climate placement page described omissions and climate-attribution/forecasting tasks against the then-current first-round register of 1,512 items. A later version audit found that the October 26 second-round PDFs changed key placements; this milestone records the historical first-round analysis, not current-draft findings. Changes were recorded in commit 7a56ebb.",
         "url": "/research/florida-science-standards-review/research/sources/alt-ngss/evolution-climate-placement.html",
         "identifier": "7a56ebb"
       }
@@ -117,7 +117,7 @@
         "@type": "Event",
         "name": "Political-history evidence and project bibliography published",
         "startDate": "2026-10-24",
-        "description": "The review foregrounds the history while naming the substantive omissions in the overview, comparison, subject analyses, plain-language brief, commentary, and shareable posts: no numbered evolution benchmark or common-ancestry synthesis; no equivalent human-evolution expectations; and no numbered climate-change benchmark or explicit climate-attribution/forecasting tasks. A project-wide bibliography includes publisher and DOI links, expandable source notes and BibTeX records, and a consolidated download. Local source copies and hashes are preserved in the research corpus. These records make the omissions politically salient but do not establish the 2026 workgroup's motive. Published in commit 91a7b7e; the GitHub Pages build succeeded.",
+        "description": "The review foregrounded historical context and first-round findings across its overview, subject analyses, public summaries, and shareable posts. The October 26 second-round recheck later corrected several headline placements: evolutionary processes and common ancestry appear in the current packet, as do Earth and universe ages in supporting text; the full cross-version comparison remains pending. Historical records provide context but do not establish the 2026 workgroup's motive. A project-wide bibliography with source notes and consolidated BibTeX was published in commit 91a7b7e; the GitHub Pages build succeeded.",
         "url": "/research/florida-science-standards-review/research/sources/political-context.html",
         "identifier": "91a7b7e"
       }
@@ -164,7 +164,7 @@
         "@type": "Event",
         "name": "Portal mirror, form reconciliation, and omission map expanded",
         "startDate": "2026-10-27",
-        "description": "A dated local monitor now preserves the FDOE review page, link inventory, and five active PDFs; every PDF SHA-256 matches the existing corpus. Visible text was captured from all 26 online forms across dated runs and targeted retries, with 25 complete captures and one K–5 Part 3 capture partial at the 60-page limit. The review found 11 K–12 STARS standards absent from the grade-band PDFs and tracks them separately from the 1,512 leaf benchmarks. The overview and crosswalk now also identify Earth’s age and universe age/origin as notable omissions while distinguishing omitted conclusions from retained dating methods and cosmological evidence. A local timer is active for daily checks through October 31, then weekly.",
+        "description": "A dated local monitor preserves the FDOE review page, link inventory, five first-round PDFs, and form captures; 25 of 26 forms reached the final page and one K–5 Part 3 capture remains partial at the 60-page limit. The forms identify 11 K–12 STARS standards as a separate set from grade-band benchmarks. The omission map published at this milestone was based on the first-round PDFs. The October 26 second-round recheck later found Earth’s and the universe’s approximate ages in supporting text. The local monitoring timer continues through the stated schedule.",
         "url": "/research/florida-science-standards-review/research/sources/2026-process/portal-monitoring-roadmap.html"
       }
     },
@@ -175,7 +175,7 @@
         "@type": "Event",
         "name": "Coded-text comparison corrected; adoption boundary clarified",
         "startDate": "2026-10-27",
-        "description": "The comparison now distinguishes leaf benchmarks from coded parent-standard descriptions and separates both from review-packet guidance. Leaf wording is about 16,403 words in 2026 versus 15,675 in 2008 (+4.6%); parent-plus-leaf coded text is about 23,712 versus 18,875 (+25.6%). Counts are descriptive text volume, not target count or workload. The review adds Florida Statutes §1003.41, current Rule 6A-1.09401, and the October 14 rule-development notice to its source listing. It treats embedded clarifications conditionally because final legal status depends on the exact science rule and incorporated version, and adds a version-monitoring test for whether support text changes at adoption. No intent is inferred from a possible change.",
+        "description": "The comparison distinguished leaf benchmarks, coded parent descriptions, and review-packet guidance, and initially published formal-text counts. The October 29 verification audit found a two-token boundary artifact and could not reproduce the parent-description total, so those figures and derived percentages were withdrawn pending a reproducible extraction. The page now treats packet totals as historical whole-file counts and does not claim a current coded-text size comparison. It also links the current adopted rule record and October 14 rule-development notice.",
         "url": "/research/florida-science-standards-review/research/source-layers-and-legal-status.html"
       }
     },
@@ -197,7 +197,7 @@
         "@type": "Event",
         "name": "Landing page adds standards and source-document size graphics",
         "startDate": "2026-10-27",
-        "description": "The walkthrough now explains that the proposed foreword treats benchmarks, clarifications, and examples as expected outcomes carrying the full weight of the draft. It separates a like-for-like coded-text comparison (23,712 words for 2026 versus 18,875 for 2008) from the whole 2026 packet and a comparative chart of selected source documents. The chart labels document scope, tokenization, and limitations; it does not present file size as target count or teaching time.",
+        "description": "The walkthrough added a size graphic based on first-round text extractions and explained that the proposed foreword treats benchmarks, clarifications, and examples as expected outcomes. A later audit found the coded-text extraction was not reproducible; the coded-size figures and graphic were withdrawn on October 29 while methods and the October 26 text are rechecked.",
         "url": "/research/florida-science-standards-review/#scale"
       }
     },
@@ -246,6 +246,17 @@
         "description": "The admissions analysis now cites FDOE’s September 25 launch statement that the rewrite should prepare students for college-level science, making alignment with that stated goal the central question. It also states that the draft had been in public review for only about five weeks as of October 29. No located university or accreditor statement in that interval is treated as an early search snapshot, not assent, lack of concern, or a settled response. The UC precedent remains limited to one system’s review of specific courses for freshman-admission eligibility. Revision recorded in commit 4788ac8.",
         "url": "/research/florida-science-standards-review/research/postsecondary-preparation.html",
         "identifier": "4788ac8"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": "Event",
+        "name": "Site-wide provenance and verification audit; second-round findings corrected",
+        "startDate": "2026-10-29",
+        "description": "The audit checked all 37 bibliography records and 82 additional external links, reproduced current October 26 inventory counts, and checked high-interest wording against preserved PDFs. It corrected evolution/common-ancestry and age-of-Earth/universe claims, narrowed climate findings, corrected 2008 lexical counts, and withdrew unreproduced coded-text word totals. First-round crosswalks and graph data are labeled historical. The full second-round predecessor crosswalk and matched-layer size comparison remain open. Registers and methods are published in the provenance and verification report.",
+        "url": "/research/florida-science-standards-review/research/verification/provenance-and-verification.html"
       }
     }
   ],

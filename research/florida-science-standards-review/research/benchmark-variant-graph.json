@@ -26,7 +26,7 @@
       "Distinctive ordered-phrase lineage to Florida 2008 is identified; the specific intermediary and drafting source remain unresolved.": 1,
       "Distinctive wording lineage to the NGSS/NRC source family is identified; the specific file or intermediary used in drafting remains unresolved.": 1
     },
-    "note": "All draft leaf benchmarks are represented. Reviewed register edges, row-level 1996/GLE task-equivalence assertions, and explicit 1996-to-2008 assessmentCrosswalk evidence are distinct. Assessment edges record reported alignment, not one-to-one standard equivalence. The 1996-to-2008-to-2026 paths combine an assessment link with a separately reviewed register edge. Unresolved draft units have no inferred predecessor edge. Complete source text is now encoded for all 498 Florida 2008 benchmark IDs, all 208 NGSS Performance Expectations, all parsed grade-level sections of the 2007 FCS proposal, and all 412 Indiana 2000 K–8 science statements. Machine-ranked semantic-neighbor edges are separately labeled, unreviewed discovery leads and are not evidence of borrowing or omission. Fifteen ancillary process/framework documents are included as document-level source nodes; they have not been segmented into benchmark items or given inferred comparison links. The copyrighted Franklin Standards are separately represented in the private graph as complete page-indexed source text, with five reviewed topic-comparison assertions and no copying or drafting-influence claim. Public Franklin graph content is limited to five original paraphrases and five reviewed topic comparisons; the complete copyrighted source text remains in the private corpus.",
+    "note": "All draft leaf benchmarks are represented. Reviewed register edges, row-level 1996/GLE task-equivalence assertions, and explicit 1996-to-2008 assessmentCrosswalk evidence are distinct. Assessment edges record reported alignment, not one-to-one standard equivalence. The 1996-to-2008-to-2026 paths combine an assessment link with a separately reviewed register edge. Unresolved draft units have no inferred predecessor edge. Complete source text is now encoded for all 498 Florida 2008 benchmark IDs, all 208 NGSS Performance Expectations, all parsed grade-level sections of the 2007 FCS proposal, and all 412 Indiana 2000 K–8 science statements. Machine-ranked semantic-neighbor edges are separately labeled, unreviewed discovery leads and are not evidence of borrowing or omission. Fifteen ancillary process/framework documents are included as document-level source nodes; they have not been segmented into benchmark items or given inferred comparison links. The copyrighted Franklin Standards are separately represented in the private graph as complete page-indexed source text, with five reviewed topic-comparison assertions and no copying or drafting-influence claim. Public Franklin graph content is limited to five original paraphrases and five reviewed topic comparisons; the complete copyrighted source text remains in the private corpus. First-round-only limitation: the October 26 second-round PDFs contain 1,572 unique leaf IDs (1,511 overlap the first-round register, one first-round ID is absent, 61 IDs are new); shared-ID text changes remain unaudited and current graph coverage is not established.",
     "completeExternalSourceItems": {
       "florida2008": 498,
       "ngssPerformanceExpectations": 208,
@@ -61,7 +61,8 @@
     },
     "privateCompleteExternalSourceItems": {
       "franklinStandardsPages": 133
-    }
+    },
+    "versionScope": "First-round 2026 draft only; current FDOE second-round PDFs dated 2026-10-26 are not ingested or crosswalked."
   },
   "@graph": [
     {
@@ -135,7 +136,7 @@
     {
       "id": "doc:fl-science-2026-draft",
       "type": "StandardVersion",
-      "status": "proposed draft for public review",
+      "status": "First-round draft only; second-round PDFs dated 2026-10-26 are not represented.",
       "sourceDocument": "https://www.fldoe.org/standardsreview/",
       "sourceFiles": [
         {
@@ -159,7 +160,8 @@
           "sha256": "23f45801426be9b7c2eb501c14dcce0ed3c474d7d738ced033f29144a72cc62e"
         }
       ],
-      "title": "Florida Draft Science Standards (2026)"
+      "title": "Florida Draft Science Standards (2026)",
+      "sourceVersionNote": "First-round 1,512-leaf register; current second-round PDFs contain 1,572 unique leaf IDs. Full text diff and crosswalk pending."
     },
     {
       "id": "concept:genetic-variation",
