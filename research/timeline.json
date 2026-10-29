@@ -208,8 +208,20 @@
         "@type": "Event",
         "name": "Franklin Standards obtained, indexed, and compared as a candidate source",
         "startDate": "2026-10-29",
-        "description": "The NAS-hosted 133-page Franklin Standards PDF and extracted text were preserved privately with hashes, fully indexed in the offline corpus, and added page by page to the private graph. Five reviewed topic comparisons now cover evolution, climate change, Earth age, and universe age; a normalized eight-word scan found no distinctive extended match. Public materials cite and summarize the copyrighted source without redistributing its text. Related site revisions are prepared locally and have not been published.",
+        "description": "The NAS-hosted 133-page Franklin Standards PDF and extracted text were preserved privately with hashes, fully indexed in the offline corpus, and added page by page to the private graph. Five reviewed topic comparisons cover evolution, climate change, Earth age, and universe age; a normalized eight-word scan found no distinctive extended match. Public materials cite and summarize the copyrighted source without redistributing its text. Related site revisions were published in commit 94af428.",
         "url": "/research/florida-science-standards-review/research/sources/franklin-standards-comparison.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
+        "name": "Public notice and reactions summarized; sources added to project bibliography",
+        "startDate": "2026-10-29",
+        "description": "The review added a source-by-source summary of FDOE’s September–October notice and October 27 public hearing, plus selected reactions reported by WUSF, WLRN, Central Florida Public Media, and NCSE. Eight new verified references were added to the project bibliography and consolidated BibTeX. The current FDOE portal gives a month-range but no day-specific written-comment deadline; October 29 reporting records the Department’s nearly 1,800-comment figure and mixed views at the final session. The summary labels statements by source and does not treat them as representative public opinion. Published in commit 8ee8e9f.",
+        "url": "/research/florida-science-standards-review/research/public-notice-and-reactions.html",
+        "identifier": "8ee8e9f"
       }
     }
   ],
