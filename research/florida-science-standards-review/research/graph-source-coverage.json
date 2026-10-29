@@ -1,9 +1,9 @@
 {
-  "description": "Counts here describe encoded TextUnit nodes from the first-round 2026 draft graph, not current second-round coverage, nor the size or importance of original sources. The October 26, 2026 PDFs contain 1,572 leaf IDs and have not been fully ingested or crosswalked; low counts can also indicate incomplete extraction or graph modeling.",
+  "description": "Counts describe TextUnit and relationship records in the app’s combined graph: a retained first-round 2026 graph plus the October 26 second-round 2026 coded leaf and parent items. Selected supporting-text paraphrases are explicitly identified; the full clarification/task layer and online review Forms/STARS set are not complete. These counts describe graph encoding, not source size, instructional emphasis, or completeness outside the stated scope.",
   "sources": {
     "doc:fl-science-2026-draft": {
-      "coverage": "complete first-round draft benchmark enumeration only",
-      "note": "The graph contains all 1,512 unique leaf benchmark IDs plus one non-leaf summary/range row; foreword and tables are separately cited in the corpus inventory. The counts above cover the three grade-band PDFs only. The October 27, 2026 FDOE Forms inventory records 35 anchor placements to 26 unique forms; an initial STARS capture includes 11 numbered SC.K12.STR.*.1 standards absent from the PDFs and this graph. Form text is being reconciled and these items are not yet represented. The October 26 second-round PDF set has 1,572 leaf IDs; this graph remains first-round and has not been text-diffed or crosswalked to that version."
+      "coverage": "complete first-round leaf benchmark enumeration; historical version retained for comparisons",
+      "note": "This document is the first-round 2026 draft, with 1,512 unique leaf IDs and one aggregate summary row in the historical base graph. Do not read its wording or its reviewed crosswalk edges as October 26 findings. Separate FDOE online review forms/STARS standards are still not represented."
     },
     "doc:fl-science-2008": {
       "coverage": "complete benchmark-item extraction",
@@ -112,6 +112,10 @@
     "doc:external:franklin-standards-2024": {
       "coverage": "rights-limited topic-comparison extraction",
       "note": "Five original paraphrase TextUnits and five human-reviewed topicComparison assertions connect selected Franklin topics to Florida 2026 units. The complete 133-page source is preserved and page-indexed only in the private corpus; the public graph does not reproduce its text. Content comparison does not establish drafting influence, borrowing, or adoption."
+    },
+    "doc:fl-science-2026-10-26": {
+      "coverage": "complete October 26 leaf and parent-code enumeration; selected supporting-guidance paraphrases",
+      "note": "The current graph contains 1,573 leaf benchmark IDs and 339 coded parent-standard descriptions. Every leaf is linked to its code parent. Four additional paraphrase nodes highlight Earth age, universe age, common ancestry, and climate change in selected tasks/clarifications; they are not separate standards and do not constitute a complete supporting-text inventory. The current-vs-first-round textual comparison reports 1,463 same-ID identical sentences, 30 same-ID wording changes, and 19 exact-sentence reindexings. Of 61 current IDs new by code, six carry an exact first-round sentence under a different code and 55 have no exact first-round sentence match; this does not mean 61 concepts are new. There are 1,512 shared IDs, zero first-round IDs absent and 61 current IDs new. PDF p.230 SC.8.NT.1.5 was visually confirmed as a code with no separator before “Evaluate”; the October 29 parser was corrected. Exact-string and same-ID links cite the audit crosswalk; they do not establish drafting authorship or source access. The separate FDOE Forms/STARS material is not included."
     }
   },
   "corpusInventory": {
@@ -127,13 +131,17 @@
     "note": "Counts describe the current private research corpus and its offline LSI index. Copyright-sensitive external source text is retained locally; public graph nodes use citations and short original paraphrases."
   },
   "graphCounts": {
-    "nodes": 10036,
-    "textUnits": 3152,
-    "standardVersionDocuments": 27,
-    "evidenceAssertionsTotal": 6850,
+    "nodes": 15061,
+    "textUnits": 5068,
+    "standardVersionDocuments": 28,
+    "evidenceAssertionsTotal": 9958,
     "reviewedEvidenceAssertions": 3496,
     "unreviewedMachineRankedCandidateLinks": 3354,
-    "concepts": 7
+    "concepts": 7,
+    "currentVersionStructuralParentAndGuidanceLinks": 1577,
+    "currentVersionIdentifierOnlyLinks": 49,
+    "currentVersionExactSentenceLinks": 1482,
+    "note": "Effective combined graph after duplicate IDs in the addendum are resolved with primary-graph precedence, matching the app. Structural parent/guidance links, normalized-identifier-only links, and exact-text string matches are counted separately from human-reviewed conceptual comparisons."
   },
   "portalForms": {
     "checkedDate": "2026-10-27",
@@ -143,5 +151,15 @@
     "initialFormOnlyStandardsDiscovered": 11,
     "status": "partial capture and source-first reconciliation underway; do not count these in grade-band PDF coverage yet"
   },
-  "graphVersionScope": "First-round 2026 draft only; October 26 second-round PDFs not ingested."
+  "graphVersionScope": "Contains the historical first-round 2026 graph and a separately versioned October 26 second-round node set. Current leaf-to-parent structure is modeled, with four selected supporting-guidance paraphrases. First-round-to-October 26 edges distinguish exact sentence matches, sentence reindexings, and shared-code links with wording changes. New code labels do not imply new concepts. Full clarifications, task/example segmentation, and separate online review Forms/STARS items are not yet a complete graph layer.",
+  "currentVersionExtractionReview": {
+    "retrievedOn": "2026-10-29",
+    "auditUpdatedOn": "2026-10-29",
+    "sourceVersion": "October 26, 2026 FDOE second-round proposed PDFs",
+    "leafItems": 1573,
+    "parentStandardDescriptions": 339,
+    "selectedSupportingGuidanceParaphrases": 4,
+    "correction": "Rendered 6–8 PDF p.230 and confirmed SC.8.NT.1.5 is printed without a separator before “Evaluate”; the parser now splits the code and retains the benchmark sentence. The initial word-boundary inventory missed this item. Also recovered SC.912.M.2.1, whose code follows the preceding parent-description sentence on the same extracted line.",
+    "graphGeneration": "Private build script tools/build_oct26_graph_addendum.py uses the preserved October 26 extracts; input paths and source hashes are recorded in the private source register."
+  }
 }

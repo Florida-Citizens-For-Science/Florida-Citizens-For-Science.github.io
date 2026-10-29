@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Introduction and full-screen interactive app for exploring Florida science standards and their reviewed source relationships.">
-  <meta name="dateModified" content="2026-10-27">
+  <meta name="dateModified" content="2026-10-29">
   <title>Standards and source graph | Florida Science Standards Draft Review</title>
   <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
 </head>
@@ -18,10 +18,10 @@
       <p class="eyebrow">Explore the research graph</p>
       <h1>Standards, sources, and reviewed connections</h1>
       <p class="lede">The graph links Florida science benchmarks to earlier Florida standards, national and state frameworks, and reviewed comparison records. Search for a topic or benchmark, focus on its recorded neighborhood, and open its source and evidence notes in a detail window.</p>
-      <p class="notice"><strong>Version update:</strong> the graph represents the first-round 2026 draft (1,512 leaf items), not FDOE’s October 26 second-round PDFs (1,572 leaf IDs). The second-round text and current cross-version edges have not been ingested. It also does not yet include text from the FDOE online review forms. Dated form captures identify 11 numbered K–12 STARS standards outside the PDF register (25 forms complete, one partial). The graph does not yet model the separate STARS set. <a href="sources/2026-process/portal-monitoring-roadmap.html">Read the reconciliation roadmap.</a></p>
+      <p class="notice"><strong>Version update:</strong> the graph now includes the October 26 second-round PDFs: 1,573 leaf benchmarks, 339 coded parent descriptions, and four selected paraphrases of supporting tasks/clarifications. It retains the first-round 2026 graph for comparison. Version comparison separates 1,463 identical same-ID sentences, 30 same-ID wording changes, and 19 exact-sentence reindexings; 61 current IDs are new by code, but six use an exact first-round sentence under a different code. “New code” does not mean “new concept.” Separate source-structure, exact-sentence, reindex, and ID-only links are described in the coverage notes. The graph does not yet include FDOE online review forms or the 11 numbered STARS standards found in a partial forms capture. <a href="sources/2026-process/portal-monitoring-roadmap.html">Read the reconciliation roadmap.</a></p>
       <div class="actions">
         <a class="button primary" href="standards-graph-app.html">Start the graph app</a>
-        <a class="button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Open graph data (JSON)</a>
+        <a class="button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Open historical graph JSON</a> <a class="button" href="variant-graph-addendum.json" target="_blank" rel="noopener">Open Oct. 26 graph extension</a>
       </div>
     </section>
 
@@ -40,7 +40,7 @@
       <p>Solid connections represent recorded comparison assertions. Dashed amber connections mark standards files named in locators for composite crosswalk items that have no single source assignment; these citations add context but do not claim benchmark equivalence. Dashed purple connections in a focused view are machine-ranked similarity leads and remain unreviewed. They are discovery aids, not evidence of copying, authorship, or access. Each item detail identifies the relationship label, evidence note, and confidence where recorded.</p>
       <p>The graph contains benchmark items from the 1996 Florida standards, 1998/99 grade-level elaborations, adopted 2008 Florida standards, proposed 2026 draft, NGSS, Indiana 2000, and the 2007 Florida Citizens for Science proposal, plus document-level process and framework records. Source files remain at their public hosts unless redistribution has been checked.</p>
       <p>The Franklin Standards (2024) now appear as a cited source document with five public paraphrase units and five reviewed topic-comparison links. Its complete 133-page text is held and page-indexed in the private corpus, not reproduced in the downloadable public graph. The links record content comparisons, not drafting-source evidence. <a href="sources/franklin-standards-comparison.html">Read the source analysis</a>.</p>
-      <p><strong>Coverage limits:</strong> all 1,512 first-round leaf benchmarks and 498 Florida 2008 benchmark IDs are represented; coded parent descriptions are not graph nodes. Coverage for older and external sources varies. The graph also contains 3,354 machine-ranked leads. Some derived crosswalk items cite multiple source files without a single source-version assignment. Read the <a href="graph-source-coverage.json">source-coverage notes</a> before drawing conclusions from the map.</p>
+      <p><strong>Coverage limits:</strong> the historical graph represents all 1,512 first-round leaf benchmarks; the current graph represents 1,573 leaf benchmarks and 339 parent descriptions. The 498 Florida 2008 benchmark IDs are represented. Coverage for older and external sources varies. The graph also contains 3,354 machine-ranked leads. Some derived crosswalk items cite multiple source files without a single source-version assignment. Read the <a href="graph-source-coverage.json">source-coverage notes</a> and <a href="verification/oct26-id-text-crosswalk.html">October 26 ID and sentence crosswalk</a> before drawing conclusions from the map.</p>
       <p>Curriculum-material inventory is a focused first pass: 19 OpenSciEd matches have been verified. Other benchmarks remain not inventoried; a missing entry is not evidence that no material exists.</p>
       <p class="actions"><a class="button primary" href="standards-graph-app.html">Open the full-screen graph app</a> <a class="button" href="graph-source-coverage.json" target="_blank" rel="noopener">Source coverage</a> <a class="button" href="corpus-and-process.html">Corpus and process notes</a></p>
     </section>

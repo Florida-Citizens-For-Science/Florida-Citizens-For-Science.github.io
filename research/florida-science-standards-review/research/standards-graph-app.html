@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Full-viewport interactive graph of Florida science standards, comparison sources, and reviewed relationships.">
-  <meta name="dateModified" content="2026-10-25">
+  <meta name="dateModified" content="2026-10-29">
   <title>Standards graph app | Florida Science Standards Draft Review</title>
   <link rel="stylesheet" href="/research/florida-science-standards-review/site.css">
   <link rel="stylesheet" href="graph-viewer.css">
@@ -23,7 +23,7 @@
         <button id="export-svg" class="menu-button" type="button" title="Download the current view as SVG">Export SVG</button>
         <button id="export-png" class="menu-button" type="button" title="Download the current view as a PNG image">Export PNG</button>
         <button id="export-filtered" class="menu-button" type="button" title="Download all records matching the current filters">Filtered data</button>
-        <a class="menu-button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Full graph JSON</a>
+        <a class="menu-button" href="benchmark-variant-graph.json" target="_blank" rel="noopener">Historical graph JSON</a><a class="menu-button" href="variant-graph-addendum.json" target="_blank" rel="noopener">Oct. 26 graph extension</a>
       </nav>
     </header>
 
@@ -101,13 +101,13 @@
         <svg id="corpus-map" viewBox="0 0 1200 620" role="group" aria-label="Interactive map of source versions and reviewed relationships"></svg>
         <div class="canvas-hint" aria-hidden="true">Drag or arrows to pan · Wheel to zoom · Select a node for details</div>
       </div>
-      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparisons</span><span><i class="legend-line"></i>Recorded comparisons</span><span><i class="legend-line locator"></i>Source named in locator</span><span><i class="legend-line machine"></i>Unreviewed similarity lead</span></div>
+      <div id="map-legend" class="map-legend"><span><i class="legend-dot draft"></i>2026 draft</span><span><i class="legend-dot florida"></i>Florida predecessors</span><span><i class="legend-dot external"></i>External comparisons</span><span><i class="legend-line"></i>Recorded comparisons</span><span><i class="legend-line locator"></i>Source named in locator</span><span><i class="legend-line machine"></i>Unreviewed similarity lead</span><span><i class="legend-line exact"></i>Exact sentence match</span><span><i class="legend-line reindexed"></i>Sentence reindexed</span><span><i class="legend-line identifier"></i>Same code; wording changed</span></div>
     </main>
 
     <footer class="graph-statusbar">
       <span class="status-label">Graph status</span>
       <p id="map-status" aria-live="polite">Loading graph data…</p>
-      <span class="status-note">First-round graph data only; Oct. 26 draft not yet ingested</span>
+      <span class="status-note">Oct. 26 items are searchable; <a href="verification/oct26-id-text-crosswalk.html">read the code/text crosswalk</a></span>
     </footer>
   </div>
 

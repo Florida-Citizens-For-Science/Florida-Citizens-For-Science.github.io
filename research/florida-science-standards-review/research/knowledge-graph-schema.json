@@ -4,8 +4,14 @@
     "type": "@type",
     "@vocab": "urn:flscience:vocab:",
     "doc": "urn:flscience:document:",
-    "unit": "urn:flscience:unit:",
-    "concept": "urn:flscience:concept:",
+    "unit": {
+      "@id": "urn:flscience:vocab:unit",
+      "@type": "@id"
+    },
+    "concept": {
+      "@id": "urn:flscience:vocab:concept",
+      "@type": "@id"
+    },
     "assertion": "urn:flscience:assertion:",
     "StandardVersion": "urn:flscience:vocab:StandardVersion",
     "TextUnit": "urn:flscience:vocab:TextUnit",
@@ -15,13 +21,20 @@
     "gradeSpan": "urn:flscience:vocab:gradeSpan",
     "text": "urn:flscience:vocab:text",
     "conceptId": "urn:flscience:vocab:conceptId",
-    "sourceUnit": { "@id": "urn:flscience:vocab:sourceUnit", "@type": "@id" },
-    "targetUnit": { "@id": "urn:flscience:vocab:targetUnit", "@type": "@id" },
-    "unit": { "@id": "urn:flscience:vocab:unit", "@type": "@id" },
-    "concept": { "@id": "urn:flscience:vocab:concept", "@type": "@id" },
+    "sourceUnit": {
+      "@id": "urn:flscience:vocab:sourceUnit",
+      "@type": "@id"
+    },
+    "targetUnit": {
+      "@id": "urn:flscience:vocab:targetUnit",
+      "@type": "@id"
+    },
     "relation": "urn:flscience:vocab:relation",
     "evidence": "urn:flscience:vocab:evidence",
-    "sourceDocument": { "@id": "urn:flscience:vocab:sourceDocument", "@type": "@id" },
+    "sourceDocument": {
+      "@id": "urn:flscience:vocab:sourceDocument",
+      "@type": "@id"
+    },
     "sourceFiles": "urn:flscience:vocab:sourceFiles",
     "pageOrAnchor": "urn:flscience:vocab:pageOrAnchor",
     "confidence": "urn:flscience:vocab:confidence",
@@ -32,7 +45,12 @@
     "provenanceFollowup": "urn:flscience:vocab:provenanceFollowup",
     "sha256": "urn:flscience:vocab:sha256"
   },
-  "nodeTypes": ["StandardVersion", "TextUnit", "Concept", "EvidenceAssertion"],
+  "nodeTypes": [
+    "StandardVersion",
+    "TextUnit",
+    "Concept",
+    "EvidenceAssertion"
+  ],
   "relations": [
     "expressesConcept",
     "requiresConcept",
@@ -51,7 +69,9 @@
     "textualLineage",
     "assessmentCrosswalk",
     "semanticNeighborCandidate",
-    "topicComparison"
+    "topicComparison",
+    "containsBenchmark",
+    "identifierMatch"
   ],
   "crossVersionStatus": [
     "retained",
@@ -71,7 +91,10 @@
     "version_history",
     "meeting_or_comment_record",
     "human_review",
-    "semantic_neighbor_screen"
+    "semantic_neighbor_screen",
+    "source_structure_parse",
+    "normalized_identifier_match",
+    "normalized_exact_sentence_match"
   ],
   "rules": [
     "Keep original benchmark text and benchmark code on each TextUnit.",
@@ -82,6 +105,9 @@
     "Use unresolved when matching evidence is insufficient; absence of a match is not proof of deletion.",
     "An assessmentCrosswalk relation records an assessment/report alignment only; it does not assert one-to-one standard equivalence or source authorship.",
     "A semanticNeighborCandidate is a machine-ranked discovery lead only; similarity scores do not establish borrowing, continuity, or omission and require human review.",
-    "A topicComparison records a reviewed content comparison; it does not establish that the source informed drafting or that text was copied."
+    "A topicComparison records a reviewed content comparison; it does not establish that the source informed drafting or that text was copied.",
+    "An identifierMatch edge means only that normalized codes are shared; it does not imply wording or conceptual equivalence.",
+    "A normalized_exact_sentence_match edge means the benchmark sentence matches after Unicode NFKC and whitespace normalization; it does not identify an author or drafting source.",
+    "A containsBenchmark edge records code hierarchy parsed from the source document, not a conceptual relationship."
   ]
 }

@@ -72,21 +72,57 @@
   "versionScope": "All formal coded-text and full-packet word counts in this file describe the first-round 2026 draft PDFs. They are not current October 26 second-round counts.",
   "currentSecondRoundSnapshot": {
     "version": "FDOE second-round grade-band PDFs as of 2026-10-26",
-    "leafBenchmarkIds": 1572,
+    "leafBenchmarkIds": 1573,
     "leafIdsByGradeBand": {
       "K-5": 279,
-      "6-8": 235,
+      "6-8": 236,
       "9-12": 1058
     },
     "parentStandardIds": 339,
-    "firstRoundRegisterIdsShared": 1511,
+    "firstRoundRegisterIdsShared": 1512,
     "newLeafIds": 61,
-    "textDiffStatus": "Full wording changes among shared IDs have not yet been audited; do not infer the old crosswalk or word totals apply.",
-    "firstRoundIdsNotInSecondRound": 1
+    "textDiffStatus": "Exact normalized coded-sentence and ID comparison complete: 1,463 shared IDs have identical sentences, 30 changed sentences, and 19 old sentences are reindexed under another current code. Of 61 new IDs, 6 carry exact old sentences and 55 have no exact sentence match. Conceptual/task review of the 30 changed and 55 no-exact rows remains separate. Bounded predecessor comparison is also complete: 27 continuity, 46 partial matches, 7 candidate-specificity gaps, 5 unresolved among 85 changed/new rows; 13 continuity and 6 unresolved among 19 reindexes. Bounded predecessor review complete: among 85 changed/new sentences, 27 continuity, 46 partial matches, 7 candidate-specificity gaps, and 5 unresolved; among 19 reindexes, 13 continuity and 6 unresolved.",
+    "firstRoundIdsNotInSecondRound": 0,
+    "sharedIdSentenceComparison": {
+      "identicalSameId": 1463,
+      "wordingChangedSameId": 30,
+      "exactSentenceReindexed": 19,
+      "newIdsWithExactOldSentence": 6,
+      "newIdsWithoutExactSentenceMatch": 55
+    }
   },
   "formalCodedTextStatus": {
-    "status": "Withdrawn pending reproducible extraction; all previous formal coded-text word totals and derived percentages are retained only in the verification audit CSV with limitations.",
+    "status": "Withdrawn; do not treat earlier formal coded-text totals and derived percentages as verified.",
     "reason": "Independent recheck found a two-word heading artifact in one first-round leaf-register row and could not reproduce the parent-description total.",
-    "nextStep": "Document segmentation rules, reproduce counts from preserved source PDFs, then rerun against the October 26 second-round PDFs before publishing any comparison."
+    "nextStep": "No additional coded-text total is planned unless the source segmentation method can be reproduced and independently checked. The separately published matched standards-body comparison is complete."
+  },
+  "matchedStandardsBodyComparison": {
+    "dateChecked": "2026-10-29",
+    "methodScript": "research/verification/reproduce-size-comparison.py",
+    "register": "research/verification/matched-size-comparison.csv",
+    "tokenization": "Python Unicode regex \\b\\w+\\b after removing source IDs and specified repeated boilerplate; page ranges and preserved source/extract SHA-256 values are in the register.",
+    "counts": [
+      {
+        "source": "Florida 2026 proposed science standards (October 26)",
+        "unicodeWordTokens": 222031
+      },
+      {
+        "source": "Florida 2008 Next Generation Sunshine State Standards: Science",
+        "unicodeWordTokens": 17237
+      },
+      {
+        "source": "Next Generation Science Standards DCI Arrangements",
+        "unicodeWordTokens": 70884
+      },
+      {
+        "source": "Massachusetts 2016 Science and Technology/Engineering Framework",
+        "unicodeWordTokens": 26631
+      },
+      {
+        "source": "South Carolina 2014 Academic Standards and Performance Indicators for Science",
+        "unicodeWordTokens": 30236
+      }
+    ],
+    "interpretation": "The October 26 Florida standards-body prose is 12.9 times the 2008 Florida standards-body prose under these source-specific boundaries. This measures text volume, not number of distinct expectations, rigor, instructional time, or student workload. Different source structures and support levels limit direct equivalence; South Carolina 2014 is historical and superseded by its adopted 2021 standards."
   }
 }

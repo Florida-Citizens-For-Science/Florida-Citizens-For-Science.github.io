@@ -14,6 +14,9 @@
 #corpus-map{display:block;width:100%;min-width:900px;height:auto;min-height:500px;touch-action:pan-x pan-y}
 #corpus-map .map-edge{stroke:#596f65;stroke-width:1.8;opacity:.76;fill:none}
 #corpus-map .map-edge.locator-reference{stroke:#a95816;stroke-width:3;stroke-dasharray:7 5;opacity:.98}
+#corpus-map .map-edge.identifier-match{stroke:#876126;stroke-width:2.4;stroke-dasharray:2 5;opacity:1}
+#corpus-map .map-edge.exact-text-match{stroke:#176b58;stroke-width:2.5;stroke-dasharray:8 3;opacity:1}
+#corpus-map .map-edge.reindexed-text{stroke:#77458c;stroke-width:2.5;stroke-dasharray:1 4;opacity:1}
 #corpus-map .source-edge{cursor:pointer}
 #corpus-map .edge-hit-target{stroke:transparent;stroke-width:24;pointer-events:stroke;cursor:pointer}
 #corpus-map .source-edge:focus{outline:none}
@@ -66,6 +69,9 @@
 .legend-line{width:1.2rem;border-top:2px solid #879991;display:inline-block}
 .legend-line.machine{border-top:2px dashed #8a5aa8}
 .legend-line.locator{border-top:2px dashed #b36b27}
+.legend-line.exact{border-top:2px dashed #176b58}
+.legend-line.reindexed{border-top:2px dotted #77458c}
+.legend-line.identifier{border-top:2px dotted #876126}
 .map-status,.map-access-note{font-size:.9rem;color:#3e514a}
 .graph-controls h2,.item-detail h2,.source-browser h2,.graph-method h2{margin-top:0}
 .graph-controls label,.filter-row label{display:block;font-weight:650;margin:.5rem 0 .25rem}
