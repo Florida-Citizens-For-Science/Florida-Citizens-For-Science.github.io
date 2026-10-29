@@ -255,8 +255,9 @@
         "@type": "Event",
         "name": "Site-wide provenance and verification audit; second-round findings corrected",
         "startDate": "2026-10-29",
-        "description": "The audit checked all 37 bibliography records and 82 additional external links, reproduced current October 26 inventory counts, and checked high-interest wording against preserved PDFs. It corrected evolution/common-ancestry and age-of-Earth/universe claims, narrowed climate findings, corrected 2008 lexical counts, and withdrew unreproduced coded-text word totals. First-round crosswalks and graph data are labeled historical. The full second-round predecessor crosswalk and matched-layer size comparison remain open. Registers and methods are published in the provenance and verification report.",
-        "url": "/research/florida-science-standards-review/research/verification/provenance-and-verification.html"
+        "description": "The audit checked all 37 bibliography records and 82 additional external links, reproduced current October 26 inventory counts, and checked high-interest wording against preserved PDFs. It corrected evolution/common-ancestry and age-of-Earth/universe claims, narrowed climate findings, corrected 2008 lexical counts, and withdrew unreproduced coded-text word totals. First-round crosswalks and graph data are labeled historical. The full second-round predecessor crosswalk and matched-layer size comparison remain open. Registers and methods are published in the provenance and verification report. Published in commit 93bfc5f.",
+        "url": "/research/florida-science-standards-review/research/verification/provenance-and-verification.html",
+        "identifier": "93bfc5f"
       }
     }
   ],
