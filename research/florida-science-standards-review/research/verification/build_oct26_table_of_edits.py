@@ -7,6 +7,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE / "oct26-id-text-crosswalk.csv"
+PREDECESSOR_REVIEW = HERE / "residual-predecessor-review.csv"
 OUTPUT = HERE / "oct26-table-of-edits.csv"
 PAGE = HERE / "oct26-table-of-edits.html"
 
@@ -44,6 +45,10 @@ FIELDS = [
     "exact_matching_first_round_text",
     "fdoe_table_code_or_parent_listed",
     "comparison_note",
+    "selected_2008_codes",
+    "selected_2008_text_and_locators",
+    "selected_2008_review_category",
+    "selected_2008_finding_and_limit",
 ]
 
 STATUS_LABELS = {
@@ -56,6 +61,46 @@ STATUS_LABELS = {
 
 def esc(value):
     return escape(value or "", quote=True)
+
+
+def render_2008_comparison(row):
+    codes = row["selected_2008_codes"]
+    text = row["selected_2008_text_and_locators"]
+    category = row["selected_2008_review_category"]
+    finding = row["selected_2008_finding_and_limit"]
+    if text:
+        excerpts = []
+        for excerpt in text.split(" | "):
+            code, separator, wording = excerpt.partition(": ")
+            if separator:
+                excerpts.append(f"<p><code>{esc(code)}</code>: {esc(wording)}</p>")
+            else:
+                excerpts.append(f"<p>{esc(excerpt)}</p>")
+        label = esc(codes or "Selected 2008 source text")
+        category_html = f'<p class="row-meta">Bounded review: {esc(category)}</p>' if category else ""
+        finding_html = f'<p class="row-meta">{esc(finding)}</p>' if finding else ""
+        return (
+            f'<details><summary>View selected 2008 text · {label}</summary>'
+            f'{category_html}'
+            f'{"".join(excerpts)}'
+            f'{finding_html}'
+            '<p class="row-meta"><a href="residual-predecessor-review.html">Method, source locators, and limits</a></p></details>'
+        )
+    if codes:
+        return (
+            f'<p>2008 candidate code(s): <code>{esc(codes)}</code>, but this bounded review did not reproduce source wording in this row.</p>'
+            '<p class="row-meta"><a href="residual-predecessor-review.html">Review notes and limits</a></p>'
+        )
+    if category:
+        return (
+            '<p>No selected 2008 predecessor text was recorded for this row in the bounded review. '
+            'That is not evidence that the topic was absent from the 2008 standards.</p>'
+            '<p class="row-meta"><a href="residual-predecessor-review.html">Review notes and limits</a></p>'
+        )
+    return (
+        '<p>This row was not included in the bounded 2008 predecessor review. '
+        'No conclusion about its 2008 coverage is implied.</p>'
+    )
 
 
 def render_html(rows):
@@ -85,6 +130,7 @@ def render_html(rows):
         fdoe_label = "Not identified by code or parent" if fdoe_missing else "Code or parent identified"
         fdoe_class = "missing" if fdoe_missing else "listed"
         page_link = row["current_source_url"]
+        legacy = render_2008_comparison(row)
         table_rows.append(
             f'<tr data-grade="{grade}" data-fdoe="{"no" if fdoe_missing else "yes"}" '
             f'data-search="{esc(" ".join([row["current_code"], grade, row["revision_status"], same_code_text, prior_id, prior_text, row["october_26_benchmark_text"], fdoe_label]))}">'
@@ -93,6 +139,7 @@ def render_html(rows):
             f'<span class="change-type">{esc(status)}</span></th>'
             f'<td><strong>First-round text</strong>{earlier}</td>'
             f'<td><strong>October 26 text</strong><p>{esc(row["october_26_benchmark_text"])}</p></td>'
+            f'<td><strong>2008 Florida standards · selected predecessor</strong>{legacy}</td>'
             f'<td><span class="fdoe-badge {fdoe_class}">{esc(fdoe_label)}</span>'
             f'<p>{esc(row["comparison_note"])}</p></td></tr>'
         )
@@ -108,19 +155,19 @@ def render_html(rows):
 .edit-controls{{display:flex;flex-wrap:wrap;align-items:end;gap:.8rem 1rem;margin:1.2rem 0;padding:1rem;background:#f3f6f5;border:1px solid #cbd5d1;border-radius:.4rem}}
 .edit-controls label{{display:grid;gap:.3rem;font-weight:650}}.edit-controls input,.edit-controls select{{min-width:13rem;max-width:100%;padding:.6rem;border:1px solid #66736f;border-radius:.3rem;font:inherit;background:#fff}}
 #edit-count{{font-weight:700;margin:.5rem 0}}.edits-scroll{{max-width:100%;overflow:auto;border:1px solid #cbd5d1;border-radius:.35rem}}
-#edits-table{{display:table;width:100%;min-width:880px;table-layout:fixed;border-collapse:collapse;font-size:.9rem}}
+#edits-table{{display:table;width:100%;min-width:1260px;table-layout:fixed;border-collapse:collapse;font-size:.9rem}}
 #edits-table th,#edits-table td{{vertical-align:top;text-align:left;white-space:normal;overflow-wrap:anywhere;word-break:normal;padding:.7rem;border-bottom:1px solid #d8dfdc}}
-#edits-table th:nth-child(1){{width:17%}}#edits-table th:nth-child(2){{width:27%}}#edits-table th:nth-child(3){{width:34%}}#edits-table th:nth-child(4){{width:22%}}
+#edits-table th:nth-child(1){{width:14%}}#edits-table th:nth-child(2){{width:21%}}#edits-table th:nth-child(3){{width:25%}}#edits-table th:nth-child(4){{width:23%}}#edits-table th:nth-child(5){{width:17%}}
 #edits-table thead th{{position:sticky;top:0;background:#e8efed;z-index:1}}#edits-table tbody th{{background:#f8faf9}}
 .row-meta{{font-size:.82rem;color:#465751}}.change-type{{display:inline-block;margin-top:.35rem;padding:.15rem .4rem;border-radius:.25rem;background:#e8eef7;font-size:.78rem;font-weight:650}}
 .fdoe-badge{{display:inline-block;padding:.18rem .45rem;border-radius:999px;font-size:.78rem;font-weight:700}}.fdoe-badge.missing{{background:#fff0df;color:#733800}}.fdoe-badge.listed{{background:#e8f3eb;color:#245b35}}
 .match-note{{font-size:.84rem;color:#3f5049}}.no-results{{padding:1rem;border:1px dashed #9ba9a3;background:#f7f9f8}}
-@media(max-width:700px){{.edit-controls label,.edit-controls input,.edit-controls select{{width:100%;min-width:0}}#edits-table{{min-width:760px}}}}
+@media(max-width:700px){{.edit-controls label,.edit-controls input,.edit-controls select{{width:100%;min-width:0}}#edits-table{{min-width:1180px}}}}
 </style></head>
 <body class="document"><header class="docbar"><a href="../../index.html">← Florida Science Standards Draft Review</a><span>Version comparison · October 29, 2026</span></header>
 <main class="prose"><h1 class="doc-title">October 26 Table of Edits</h1>
-<p class="lede edits-lede">A searchable side-by-side comparison of the first-round and October 26 wording for all 110 changed or new numbered leaf benchmark codes in the current draft. Each row includes source PDF page links and whether FDOE’s own <a href="https://www.fldoe.org/file/18736/TOE-SciStands.pdf">Table of Edits</a> identifies the code or its parent standard.</p>
-<div class="edits-notice"><strong>Scope and finding:</strong> This table covers numbered benchmark sentences only. It is not a line-by-line comparison of every clarification, example, student task, parent description, or supplemental table. Our comparison found 18 changed or new benchmark codes that FDOE’s PDF does not identify by exact code or parent standard. The Department’s PDF remains useful for its feedback categories and stated rationales; it is not an exhaustive benchmark change log. <a href="oct26-complete-change-review.html">Read the methodology and examples.</a></div>
+<p class="lede edits-lede">A searchable comparison of the first-round and October 26 wording for all 110 changed or new numbered leaf benchmark codes. The fifth column opens selected 2008 Florida benchmark text from the bounded predecessor review, showing the prior state baseline where that review recorded a candidate. It is not a complete 2008 crosswalk or a one-to-one equivalence judgment. Each row also links to the current source PDF and records whether FDOE’s own <a href="https://www.fldoe.org/file/18736/TOE-SciStands.pdf">Table of Edits</a> identifies the code or its parent standard.</p>
+<div class="edits-notice"><strong>Scope and finding:</strong> This table covers numbered benchmark sentences only. It is not a line-by-line comparison of every clarification, example, student task, parent description, or supplemental table. Our comparison found 18 changed or new benchmark codes that FDOE’s PDF does not identify by exact code or parent standard. The 2008 text is selectively shown from the bounded predecessor review; rows without a quotation are marked as not assessed, not as evidence of absence. The Department’s PDF remains useful for its feedback categories and stated rationales; it is not an exhaustive benchmark change log. <a href="oct26-complete-change-review.html">Read the methodology and examples.</a></div>
 <div class="edit-summary" aria-label="Summary of benchmark edit categories"><article><strong>30</strong><span>Same code, wording changed</span></article><article><strong>19</strong><span>Existing codes carry text from another first-round code</span></article><article><strong>6</strong><span>New codes carry exact earlier text</span></article><article><strong>55</strong><span>New codes have no exact earlier sentence</span></article><article><strong>18</strong><span>Codes not identified in FDOE’s table by code or parent</span></article></div>
 <p><a class="button primary" href="oct26-table-of-edits.csv" download>Download the CSV</a> · <a href="oct26-id-text-crosswalk.csv">Full 1,573-code crosswalk</a> · <a href="oct26-reindexed-statement-map.csv">Exact reindex map</a></p>
 <h2>Find a changed benchmark</h2><p>Search by code or wording, or filter the list by grade band and FDOE table coverage. “No exact earlier sentence match” is a wording result; it does not prove that the concept is new.</p>
@@ -129,10 +176,10 @@ def render_html(rows):
 <label for="edits-fdoe">FDOE Table of Edits<select id="edits-fdoe"><option value="">All rows</option><option value="no">Not listed by code or parent</option><option value="yes">Code or parent listed</option></select></label></div>
 <noscript><p>JavaScript is off, so the filters are unavailable. All rows are still listed below; use your browser’s Find command to locate text or codes.</p></noscript>
 <p id="edit-count" aria-live="polite">{len(rows)} changed or new benchmark rows</p><p id="no-results" class="no-results" hidden>No rows match those filters. Clear the search or choose “All” in the filters.</p>
-<div class="edits-scroll"><table id="edits-table"><caption>First-round and October 26 benchmark wording, current code, locator, and FDOE table status</caption>
-<thead><tr><th scope="col">October 26 code</th><th scope="col">First-round text / match</th><th scope="col">October 26 text</th><th scope="col">FDOE table check</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div>
+<div class="edits-scroll"><table id="edits-table"><caption>First-round and October 26 benchmark wording, selected 2008 Florida source text, current code, locator, and FDOE table status</caption>
+<thead><tr><th scope="col">October 26 code</th><th scope="col">First-round text / match</th><th scope="col">October 26 text</th><th scope="col">2008 Florida standards</th><th scope="col">FDOE table check</th></tr></thead><tbody>{''.join(table_rows)}</tbody></table></div>
 <h2>How to read the change labels</h2><ul><li><strong>Existing code · wording changed:</strong> the same code has a revised sentence, with no exact sentence match elsewhere.</li><li><strong>Existing code · prior text moved:</strong> this current code carries a sentence that appeared under a different code in the first round.</li><li><strong>New code · carries earlier text:</strong> a new code carries an exact sentence from the first-round draft; it is not treated as a new concept.</li><li><strong>New code · no exact earlier sentence:</strong> no exact first-round sentence match was found. That does not establish conceptual novelty.</li></ul>
-<p>The exact-text comparison uses Unicode normalization and whitespace normalization. “FDOE code or parent listed” records whether the Table of Edits names the current code or a standard code covering it; it does not judge the adequacy of FDOE’s rationale. Counts and limitations are described in the <a href="oct26-complete-change-review.html">change review</a>.</p></main>
+<p>The exact-text comparison uses Unicode normalization and whitespace normalization. The 2008 column reproduces selected candidate text from the bounded predecessor review; it is intentionally incomplete and does not determine whether a concept was ever taught. “FDOE code or parent listed” records whether the Table of Edits names the current code or a standard code covering it; it does not judge the adequacy of FDOE’s rationale. Counts and limitations are described in the <a href="oct26-complete-change-review.html">change review</a>.</p></main>
 <footer class="docfooter"><a href="../../index.html">Review hub</a> · Benchmark-level change resource · <a href="oct26-complete-change-review.html">Method and limits</a></footer>
 <script>
 (()=>{{const search=document.getElementById('edits-search'),grade=document.getElementById('edits-grade'),fdoe=document.getElementById('edits-fdoe'),rows=[...document.querySelectorAll('#edits-table tbody tr')],count=document.getElementById('edit-count'),empty=document.getElementById('no-results');
@@ -151,6 +198,12 @@ def main():
     ]
     if len(changed_rows) != 110 or len({r["current_id"] for r in changed_rows}) != 110:
         raise SystemExit("Unexpected changed-row count; inspect source crosswalk before publishing.")
+
+    with PREDECESSOR_REVIEW.open(newline="", encoding="utf-8-sig") as review_file:
+        predecessor_rows = list(csv.DictReader(review_file))
+    predecessor_by_id = {row["current_id"]: row for row in predecessor_rows}
+    if len(predecessor_by_id) != len(predecessor_rows):
+        raise SystemExit("Duplicate current IDs in predecessor review; inspect before publishing.")
 
     public_rows = []
     with OUTPUT.open("w", newline="", encoding="utf-8") as output_file:
@@ -182,6 +235,10 @@ def main():
                     if exact_reindex
                     else "Exact ID/text comparison; no inference about conceptual novelty."
                 ),
+                "selected_2008_codes": predecessor_by_id.get(row["current_id"], {}).get("candidate_2008_ids", ""),
+                "selected_2008_text_and_locators": predecessor_by_id.get(row["current_id"], {}).get("candidate_2008_text_and_locators", ""),
+                "selected_2008_review_category": predecessor_by_id.get(row["current_id"], {}).get("review_category", ""),
+                "selected_2008_finding_and_limit": predecessor_by_id.get(row["current_id"], {}).get("finding_and_limit", ""),
             }
             writer.writerow(public_row)
             public_rows.append(public_row)
