@@ -292,6 +292,18 @@
         "description": "The review compared 1,573 October 26 benchmark records with the November 20 rule document and published a row-level register of 652 changed or unmatched benchmark records, including 52 latest records without a close text match. A second register covers 16 parent-description changes, including the SC.912.CB.11/CB.12 reorganization and a plant-description code move. Reference phrase overlaps are candidates, not proof of drafting, and viewpoint notes do not infer motive. The coded-standard appendices do not provide a cell-by-cell redline of noncoded support tables.",
         "url": "/research/florida-science-standards-review/research/verification/nov20-change-analysis.html"
       }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": "Event",
+        "name": "November 20 coded-standard comparison published and Pages deployment verified",
+        "startDate": "2026-11-25",
+        "description": "Commit d916584 published the November 20 version analysis and coded-standard change registers, along with the current formal comment notice and source-coverage updates. GitHub Pages workflow run 45553965010 completed successfully; the landing page, analysis page, and benchmark CSV returned HTTP 200 after deployment.",
+        "url": "/research/florida-science-standards-review/research/verification/nov20-change-analysis.html",
+        "identifier": "d916584"
+      }
     }
   ],
   "dateBasis": "The project author confirms that work began on 2026-10-22. Subsequent research and publication milestones are based on report-stated cutoffs, explicit source-check dates, and dated repository commit history. The timeline does not capture every off-repository activity."
