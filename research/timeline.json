@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Florida Science Standards Review Work Timeline",
-  "dateModified": "2026-10-29",
+  "dateModified": "2026-11-25",
   "about": "Dated public milestones in the independent review of Florida's proposed 2026 science standards.",
   "itemListElement": [
     {
@@ -258,6 +258,39 @@
         "description": "The audit checked all 37 bibliography records and 82 additional external links, reproduced current October 26 inventory counts, and checked high-interest wording against preserved PDFs. It corrected evolution/common-ancestry and age-of-Earth/universe claims, narrowed climate findings, corrected 2008 lexical counts, and withdrew unreproduced coded-text word totals. First-round crosswalks and graph data are labeled historical. The full second-round predecessor crosswalk and matched-layer size comparison remain open. Registers and methods are published in the provenance and verification report. Published in commit 93bfc5f.",
         "url": "/research/florida-science-standards-review/research/verification/provenance-and-verification.html",
         "identifier": "93bfc5f"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "item": {
+        "@type": "Event",
+        "name": "November evidence and portal comparison completed",
+        "startDate": "2026-11-21",
+        "description": "The November 21 source check compared the portal and monitored captures with October 27 and November 20, recorded hashes and incomplete form captures, and added attributed revision-group and public reactions. The October 27 baseline predates the second-round links; the separately linked STARS and Table of Edits files were not fetched in the latest capture. This is a research-check milestone, not a publication or adoption claim.",
+        "url": "/research/florida-science-standards-review/research/sources/2026-process/portal-comparison-2026-11-21.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "item": {
+        "@type": "Event",
+        "name": "Formal proposed-rule comment period opened for November 20 science standards",
+        "startDate": "2026-11-23",
+        "description": "The Florida Administrative Register published proposed-rule Notice 31634045 for Rule 6A-1.09401 and linked Ref-20438, the November 20 science standards. The notice accepts written comments through December 14, 2026; online submissions are limited to 8,000 characters. This official rulemaking notice is distinct from the September–October listening tour.",
+        "url": "/research/florida-science-standards-review/research/public-notice-and-reactions.html"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "item": {
+        "@type": "Event",
+        "name": "November 20 draft comparison and coded-standard change registers completed",
+        "startDate": "2026-11-24",
+        "description": "The review compared 1,573 October 26 benchmark records with the November 20 rule document and published a row-level register of 652 changed or unmatched benchmark records, including 52 latest records without a close text match. A second register covers 16 parent-description changes, including the SC.912.CB.11/CB.12 reorganization and a plant-description code move. Reference phrase overlaps are candidates, not proof of drafting, and viewpoint notes do not infer motive. The coded-standard appendices do not provide a cell-by-cell redline of noncoded support tables.",
+        "url": "/research/florida-science-standards-review/research/verification/nov20-change-analysis.html"
       }
     }
   ],

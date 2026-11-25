@@ -116,6 +116,10 @@
     "doc:fl-science-2026-10-26": {
       "coverage": "complete October 26 leaf and parent-code enumeration; selected supporting-guidance paraphrases",
       "note": "The current graph contains 1,573 leaf benchmark IDs and 339 coded parent-standard descriptions. Every leaf is linked to its code parent. Four additional paraphrase nodes highlight Earth age, universe age, common ancestry, and climate change in selected tasks/clarifications; they are not separate standards and do not constitute a complete supporting-text inventory. The current-vs-first-round textual comparison reports 1,463 same-ID identical sentences, 30 same-ID wording changes, and 19 exact-sentence reindexings. Of 61 current IDs new by code, six carry an exact first-round sentence under a different code and 55 have no exact first-round sentence match; this does not mean 61 concepts are new. There are 1,512 shared IDs, zero first-round IDs absent and 61 current IDs new. PDF p.230 SC.8.NT.1.5 was visually confirmed as a code with no separator before “Evaluate”; the October 29 parser was corrected. Exact-string and same-ID links cite the audit crosswalk; they do not establish drafting authorship or source access. The separate FDOE Forms/STARS material is not included."
+    },
+    "doc:fl-science-2026-nov20-rule": {
+      "coverage": "document-level comparison source only; not segmented into graph units or relations",
+      "note": "FLRules Ref-20438, Florida’s B.E.S.T. Science Standards dated November 20, 2026, was compared with the October 26 coded standards. The standards graph remains versioned through October 26 and does not include these November 20 codes or changes. Use the November 20 benchmark and parent-description change registers for this version. No graph relationship or drafting provenance is inferred from the text-overlap candidates."
     }
   },
   "corpusInventory": {
@@ -151,7 +155,7 @@
     "initialFormOnlyStandardsDiscovered": 11,
     "status": "partial capture and source-first reconciliation underway; do not count these in grade-band PDF coverage yet"
   },
-  "graphVersionScope": "Contains the historical first-round 2026 graph and a separately versioned October 26 second-round node set. Current leaf-to-parent structure is modeled, with four selected supporting-guidance paraphrases. First-round-to-October 26 edges distinguish exact sentence matches, sentence reindexings, and shared-code links with wording changes. New code labels do not imply new concepts. Full clarifications, task/example segmentation, and separate online review Forms/STARS items are not yet a complete graph layer.",
+  "graphVersionScope": "Contains the historical first-round 2026 graph and a separately versioned October 26 second-round node set. Current leaf-to-parent structure is modeled, with four selected supporting-guidance paraphrases. First-round-to-October 26 edges distinguish exact sentence matches, sentence reindexings, and shared-code links with wording changes. New code labels do not imply new concepts. Full clarifications, task/example segmentation, and separate online review Forms/STARS items are not yet a complete graph layer. The November 20 Ref-20438 rule text is now available and is documented as a comparison source only; its benchmarks and parent descriptions have not been ingested into this graph.",
   "currentVersionExtractionReview": {
     "retrievedOn": "2026-10-29",
     "auditUpdatedOn": "2026-10-29",
@@ -160,6 +164,8 @@
     "parentStandardDescriptions": 339,
     "selectedSupportingGuidanceParaphrases": 4,
     "correction": "Rendered 6–8 PDF p.230 and confirmed SC.8.NT.1.5 is printed without a separator before “Evaluate”; the parser now splits the code and retains the benchmark sentence. The initial word-boundary inventory missed this item. Also recovered SC.912.M.2.1, whose code follows the preceding parent-description sentence on the same extracted line.",
-    "graphGeneration": "Private build script tools/build_oct26_graph_addendum.py uses the preserved October 26 extracts; input paths and source hashes are recorded in the private source register."
+    "graphGeneration": "Private build script tools/build_oct26_graph_addendum.py uses the preserved October 26 extracts; input paths and source hashes are recorded in the private source register.",
+    "monitoringCheck2026-11-21": "The three monitored second-round grade-band PDF hashes matched the November 20 capture; their hashes also match the registered October 26 edition. The graph addendum was regenerated from its existing source registers with no output change. Online forms remain outside graph coverage; four form captures were incomplete, and the separately linked STARS and Table of Edits PDFs were inventory-only in the latest snapshot. See sources/2026-process/portal-comparison-2026-11-21.html.",
+    "november20RuleStatus": "Checked 2026-11-25: FLRules Ref-20438 is published and under formal comment. The graph remains scoped through October 26; the November 20 comparison is in separate change registers, not graph nodes."
   }
 }
