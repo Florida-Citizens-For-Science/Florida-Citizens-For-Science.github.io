@@ -304,6 +304,17 @@
         "url": "/research/florida-science-standards-review/research/verification/nov20-change-analysis.html",
         "identifier": "d916584"
       }
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "item": {
+        "@type": "Event",
+        "name": "Florida public-records and copyright status reviewed",
+        "startDate": "2026-11-25",
+        "description": "The review checked Florida Constitution Article I §24, Chapter 119, the Sunshine open-meetings statute, §1006.39, §119.084, Microdecisions v. Skinner, Georgia v. Public.Resource.Org, and Attorney General guidance. Public access and copying rights are broad, but §1006.39 may authorize rights in FDOE educational materials; its application to Ref-20438 remains unresolved. The DOCX has no express copyright notice. The site retains the official FLRules link and does not present the full text as cleared for unrestricted redistribution.",
+        "url": "/research/florida-science-standards-review/research/redistribution-rights.html"
+      }
     }
   ],
   "dateBasis": "The project author confirms that work began on 2026-10-22. Subsequent research and publication milestones are based on report-stated cutoffs, explicit source-check dates, and dated repository commit history. The timeline does not capture every off-repository activity."
